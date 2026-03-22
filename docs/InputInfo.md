@@ -1,0 +1,33 @@
+# InputInfo
+
+The required information of how to load the sources
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**input_type** | **str** |  | [optional] [default to 'archive']
+**url** | **str** |  | 
+**includes_submodules** | **bool** |  | [optional] 
+**revision** | **str** |  | [optional] 
+
+## Example
+
+```python
+from audithub_sdk.models.input_info import InputInfo
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of InputInfo from a JSON string
+input_info_instance = InputInfo.from_json(json)
+# print the JSON string representation of the object
+print(InputInfo.to_json())
+
+# convert the object into a dict
+input_info_dict = input_info_instance.to_dict()
+# create an instance of InputInfo from a dict
+input_info_from_dict = InputInfo.from_dict(input_info_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
