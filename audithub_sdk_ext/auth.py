@@ -41,11 +41,11 @@ class OIDCTokenProvider:
         self._client_factory = _client_factory or httpx.AsyncClient
         self._access_token: Optional[str] = None
         self._token_endpoint: Optional[str] = None
-        self._lock = asyncio.Lock()
+        self._lock: Optional[asyncio.Lock] = None
 
     async def get_token(self) -> str:
         """Return a cached access token, fetching one if needed."""
-        async with self._lock:
+        async with self._get_lock():
             if self._access_token is not None:
                 return self._access_token
 
@@ -72,8 +72,13 @@ class OIDCTokenProvider:
 
     async def invalidate(self) -> None:
         """Drop the cached access token."""
-        async with self._lock:
+        async with self._get_lock():
             self._access_token = None
+
+    def _get_lock(self) -> asyncio.Lock:
+        if self._lock is None:
+            self._lock = asyncio.Lock()
+        return self._lock
 
     async def _get_token_endpoint_locked(self) -> str:
         if self._token_endpoint is not None:
