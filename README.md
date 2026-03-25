@@ -59,6 +59,26 @@ async with audithub_sdk.ApiClient(configuration) as api_client:
     print(await api.about_admin_about_get())
 ```
 
+For OIDC client-credentials authentication, use the handwritten extension package:
+
+```python
+import audithub_sdk
+from audithub_sdk_ext import AuthenticatedApiClient, OIDCClientCredentialsContext
+
+configuration = audithub_sdk.Configuration(
+    host="https://audithub.dev.veridise.tools/api/v1"
+)
+auth_context = OIDCClientCredentialsContext(
+    oidc_configuration_url="https://issuer.example/.well-known/openid-configuration",
+    client_id="your-client-id",
+    client_secret="your-client-secret",
+)
+
+async with AuthenticatedApiClient(configuration, auth_context=auth_context) as api_client:
+    api = audithub_sdk.AdminApi(api_client)
+    print(await api.about_admin_about_get())
+```
+
 ## Testing
 
 Install dependencies and run the generated test suite:
