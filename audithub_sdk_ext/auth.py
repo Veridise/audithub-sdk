@@ -16,7 +16,7 @@ VerifyTypes = Union[bool, str, ssl.SSLContext]
 AsyncClientFactory = Callable[..., httpx.AsyncClient]
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class OIDCClientCredentialsContext:
     """Configuration for OIDC client-credentials authentication."""
 
