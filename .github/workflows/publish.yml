@@ -17,6 +17,56 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Verify release version
+        run: |
+          python - <<'PY'
+          import os
+          import re
+          import tomllib
+          from pathlib import Path
+
+          ref_type = os.environ.get("GITHUB_REF_TYPE")
+          tag_name = os.environ.get("GITHUB_REF_NAME", "")
+          if ref_type != "tag":
+              raise SystemExit(
+                  "Publishing requires a tag ref. For workflow_dispatch, run this workflow from the release tag."
+              )
+
+          expected = tag_name[1:] if tag_name.startswith("v") else tag_name
+          if not expected:
+              raise SystemExit("Could not determine release version from tag.")
+
+          with Path("pyproject.toml").open("rb") as file:
+              pyproject_version = tomllib.load(file)["project"]["version"]
+
+          def read_version(path: str, pattern: str) -> str:
+              match = re.search(pattern, Path(path).read_text(encoding="utf-8"), re.MULTILINE)
+              if match is None:
+                  raise SystemExit(f"Could not find package version in {path}.")
+              return match.group(1)
+
+          versions = {
+              "pyproject.toml": pyproject_version,
+              "setup.py": read_version("setup.py", r'^VERSION = "([^"]+)"$'),
+              "audithub_sdk/__init__.py": read_version(
+                  "audithub_sdk/__init__.py", r'^__version__ = "([^"]+)"$'
+              ),
+          }
+
+          mismatches = {
+              path: version
+              for path, version in versions.items()
+              if version != expected
+          }
+          if mismatches:
+              details = "\n".join(
+                  f"- {path}: {version} != tag {tag_name} ({expected})"
+                  for path, version in mismatches.items()
+              )
+              raise SystemExit(f"Release version mismatch:\n{details}")
+
+          print(f"Release version {expected} matches package metadata.")
+          PY
       - name: Build distributions
         run: |
           python -m pip install --upgrade pip
