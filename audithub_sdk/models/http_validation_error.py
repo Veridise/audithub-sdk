@@ -17,8 +17,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List
 from audithub_sdk.models.validation_error import ValidationError
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,8 +27,11 @@ class HTTPValidationError(BaseModel):
     """
     HTTPValidationError
     """ # noqa: E501
-    detail: Optional[List[ValidationError]] = None
-    __properties: ClassVar[List[str]] = ["detail"]
+    title: StrictStr
+    type: StrictStr
+    status: StrictInt
+    errors: List[ValidationError]
+    __properties: ClassVar[List[str]] = ["title", "type", "status", "errors"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -69,13 +72,13 @@ class HTTPValidationError(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in detail (list)
+        # override the default output from pydantic by calling `to_dict()` of each item in errors (list)
         _items = []
-        if self.detail:
-            for _item_detail in self.detail:
-                if _item_detail:
-                    _items.append(_item_detail.to_dict())
-            _dict['detail'] = _items
+        if self.errors:
+            for _item_errors in self.errors:
+                if _item_errors:
+                    _items.append(_item_errors.to_dict())
+            _dict['errors'] = _items
         return _dict
 
     @classmethod
@@ -88,7 +91,10 @@ class HTTPValidationError(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "detail": [ValidationError.from_dict(_item) for _item in obj["detail"]] if obj.get("detail") is not None else None
+            "title": obj.get("title"),
+            "type": obj.get("type"),
+            "status": obj.get("status"),
+            "errors": [ValidationError.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None
         })
         return _obj
 

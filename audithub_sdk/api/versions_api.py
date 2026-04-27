@@ -23,6 +23,8 @@ from audithub_sdk.models.comment import Comment
 from audithub_sdk.models.comment_with_mutations import CommentWithMutations
 from audithub_sdk.models.directory import Directory
 from audithub_sdk.models.id_and_message_response import IdAndMessageResponse
+from audithub_sdk.models.organization_consumption import OrganizationConsumption
+from audithub_sdk.models.organization_consumption_detailed import OrganizationConsumptionDetailed
 from audithub_sdk.models.success_and_message_response import SuccessAndMessageResponse
 from audithub_sdk.models.task_fio_data import TaskFIOData
 from audithub_sdk.models.temp_version import TempVersion
@@ -112,6 +114,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -188,6 +192,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -264,6 +270,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -314,7 +322,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -438,6 +447,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[CommentWithMutations]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -546,6 +557,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[CommentWithMutations]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -654,6 +667,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[CommentWithMutations]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -762,7 +777,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -858,6 +874,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Version",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -938,6 +956,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Version",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1018,6 +1038,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Version",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1075,7 +1097,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -1167,6 +1190,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1243,6 +1268,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1319,6 +1346,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1370,7 +1399,7 @@ class VersionsApi:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
                     'application/zip', 
-                    'application/json'
+                    'application/problem+json'
                 ]
             )
 
@@ -1462,6 +1491,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Directory",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1538,6 +1569,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Directory",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1614,6 +1647,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Directory",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1664,7 +1699,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -1699,6 +1735,7 @@ class VersionsApi:
         project_id: StrictInt,
         version_id: StrictInt,
         include_commenter_ids: Annotated[Optional[StrictBool], Field(description="Include distinct user ids of users who created comments in each thread.")] = None,
+        include_message_count: Annotated[Optional[StrictBool], Field(description="Include the count of messages in each thread.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1724,6 +1761,8 @@ class VersionsApi:
         :type version_id: int
         :param include_commenter_ids: Include distinct user ids of users who created comments in each thread.
         :type include_commenter_ids: bool
+        :param include_message_count: Include the count of messages in each thread.
+        :type include_message_count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1751,6 +1790,7 @@ class VersionsApi:
             project_id=project_id,
             version_id=version_id,
             include_commenter_ids=include_commenter_ids,
+            include_message_count=include_message_count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1760,6 +1800,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Thread]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1779,6 +1821,7 @@ class VersionsApi:
         project_id: StrictInt,
         version_id: StrictInt,
         include_commenter_ids: Annotated[Optional[StrictBool], Field(description="Include distinct user ids of users who created comments in each thread.")] = None,
+        include_message_count: Annotated[Optional[StrictBool], Field(description="Include the count of messages in each thread.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1804,6 +1847,8 @@ class VersionsApi:
         :type version_id: int
         :param include_commenter_ids: Include distinct user ids of users who created comments in each thread.
         :type include_commenter_ids: bool
+        :param include_message_count: Include the count of messages in each thread.
+        :type include_message_count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1831,6 +1876,7 @@ class VersionsApi:
             project_id=project_id,
             version_id=version_id,
             include_commenter_ids=include_commenter_ids,
+            include_message_count=include_message_count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1840,6 +1886,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Thread]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1859,6 +1907,7 @@ class VersionsApi:
         project_id: StrictInt,
         version_id: StrictInt,
         include_commenter_ids: Annotated[Optional[StrictBool], Field(description="Include distinct user ids of users who created comments in each thread.")] = None,
+        include_message_count: Annotated[Optional[StrictBool], Field(description="Include the count of messages in each thread.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1884,6 +1933,8 @@ class VersionsApi:
         :type version_id: int
         :param include_commenter_ids: Include distinct user ids of users who created comments in each thread.
         :type include_commenter_ids: bool
+        :param include_message_count: Include the count of messages in each thread.
+        :type include_message_count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1911,6 +1962,7 @@ class VersionsApi:
             project_id=project_id,
             version_id=version_id,
             include_commenter_ids=include_commenter_ids,
+            include_message_count=include_message_count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1920,6 +1972,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Thread]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1934,6 +1988,7 @@ class VersionsApi:
         project_id,
         version_id,
         include_commenter_ids,
+        include_message_count,
         _request_auth,
         _content_type,
         _headers,
@@ -1966,6 +2021,10 @@ class VersionsApi:
             
             _query_params.append(('include_commenter_ids', include_commenter_ids))
             
+        if include_message_count is not None:
+            
+            _query_params.append(('include_message_count', include_message_count))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -1975,7 +2034,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -2091,6 +2151,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Comment]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2191,6 +2253,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Comment]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2291,6 +2355,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Comment]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2389,7 +2455,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -2485,6 +2552,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2565,6 +2634,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2645,6 +2716,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2700,7 +2773,7 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/problem+json'
                 ]
             )
 
@@ -2792,6 +2865,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[TaskFIOData]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2868,6 +2943,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[TaskFIOData]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2944,6 +3021,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[TaskFIOData]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2994,7 +3073,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -3094,6 +3174,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Version",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3178,6 +3260,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Version",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3262,6 +3346,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Version",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3322,7 +3408,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -3335,6 +3422,642 @@ class VersionsApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/organizations/{organization_id}/projects/{project_id}/versions/{version_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def get_version_resource_detailed_organizations_organization_id_projects_project_id_versions_version_id_resource_consumption_detailed_get(
+        self,
+        organization_id: StrictInt,
+        project_id: StrictInt,
+        version_id: StrictInt,
+        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> OrganizationConsumptionDetailed:
+        """Get Version Resource Detailed
+
+        Returns version detailed consumption
+
+        :param organization_id: (required)
+        :type organization_id: int
+        :param project_id: (required)
+        :type project_id: int
+        :param version_id: (required)
+        :type version_id: int
+        :param months: Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.
+        :type months: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_version_resource_detailed_organizations_organization_id_projects_project_id_versions_version_id_resource_consumption_detailed_get_serialize(
+            organization_id=organization_id,
+            project_id=project_id,
+            version_id=version_id,
+            months=months,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "OrganizationConsumptionDetailed",
+            '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_version_resource_detailed_organizations_organization_id_projects_project_id_versions_version_id_resource_consumption_detailed_get_with_http_info(
+        self,
+        organization_id: StrictInt,
+        project_id: StrictInt,
+        version_id: StrictInt,
+        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[OrganizationConsumptionDetailed]:
+        """Get Version Resource Detailed
+
+        Returns version detailed consumption
+
+        :param organization_id: (required)
+        :type organization_id: int
+        :param project_id: (required)
+        :type project_id: int
+        :param version_id: (required)
+        :type version_id: int
+        :param months: Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.
+        :type months: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_version_resource_detailed_organizations_organization_id_projects_project_id_versions_version_id_resource_consumption_detailed_get_serialize(
+            organization_id=organization_id,
+            project_id=project_id,
+            version_id=version_id,
+            months=months,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "OrganizationConsumptionDetailed",
+            '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_version_resource_detailed_organizations_organization_id_projects_project_id_versions_version_id_resource_consumption_detailed_get_without_preload_content(
+        self,
+        organization_id: StrictInt,
+        project_id: StrictInt,
+        version_id: StrictInt,
+        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Get Version Resource Detailed
+
+        Returns version detailed consumption
+
+        :param organization_id: (required)
+        :type organization_id: int
+        :param project_id: (required)
+        :type project_id: int
+        :param version_id: (required)
+        :type version_id: int
+        :param months: Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.
+        :type months: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_version_resource_detailed_organizations_organization_id_projects_project_id_versions_version_id_resource_consumption_detailed_get_serialize(
+            organization_id=organization_id,
+            project_id=project_id,
+            version_id=version_id,
+            months=months,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "OrganizationConsumptionDetailed",
+            '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_version_resource_detailed_organizations_organization_id_projects_project_id_versions_version_id_resource_consumption_detailed_get_serialize(
+        self,
+        organization_id,
+        project_id,
+        version_id,
+        months,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if project_id is not None:
+            _path_params['project_id'] = project_id
+        if version_id is not None:
+            _path_params['version_id'] = version_id
+        # process the query parameters
+        if months is not None:
+            
+            _query_params.append(('months', months))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'OpenIdConnect'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/organizations/{organization_id}/projects/{project_id}/versions/{version_id}/resource-consumption-detailed',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def get_version_resource_usage_organizations_organization_id_projects_project_id_versions_version_id_resource_consumption_total_get(
+        self,
+        organization_id: StrictInt,
+        project_id: StrictInt,
+        version_id: StrictInt,
+        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> OrganizationConsumption:
+        """Get Version Resource Usage
+
+        Returns version consumption
+
+        :param organization_id: (required)
+        :type organization_id: int
+        :param project_id: (required)
+        :type project_id: int
+        :param version_id: (required)
+        :type version_id: int
+        :param months: Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.
+        :type months: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_version_resource_usage_organizations_organization_id_projects_project_id_versions_version_id_resource_consumption_total_get_serialize(
+            organization_id=organization_id,
+            project_id=project_id,
+            version_id=version_id,
+            months=months,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "OrganizationConsumption",
+            '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_version_resource_usage_organizations_organization_id_projects_project_id_versions_version_id_resource_consumption_total_get_with_http_info(
+        self,
+        organization_id: StrictInt,
+        project_id: StrictInt,
+        version_id: StrictInt,
+        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[OrganizationConsumption]:
+        """Get Version Resource Usage
+
+        Returns version consumption
+
+        :param organization_id: (required)
+        :type organization_id: int
+        :param project_id: (required)
+        :type project_id: int
+        :param version_id: (required)
+        :type version_id: int
+        :param months: Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.
+        :type months: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_version_resource_usage_organizations_organization_id_projects_project_id_versions_version_id_resource_consumption_total_get_serialize(
+            organization_id=organization_id,
+            project_id=project_id,
+            version_id=version_id,
+            months=months,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "OrganizationConsumption",
+            '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_version_resource_usage_organizations_organization_id_projects_project_id_versions_version_id_resource_consumption_total_get_without_preload_content(
+        self,
+        organization_id: StrictInt,
+        project_id: StrictInt,
+        version_id: StrictInt,
+        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Get Version Resource Usage
+
+        Returns version consumption
+
+        :param organization_id: (required)
+        :type organization_id: int
+        :param project_id: (required)
+        :type project_id: int
+        :param version_id: (required)
+        :type version_id: int
+        :param months: Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.
+        :type months: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_version_resource_usage_organizations_organization_id_projects_project_id_versions_version_id_resource_consumption_total_get_serialize(
+            organization_id=organization_id,
+            project_id=project_id,
+            version_id=version_id,
+            months=months,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "OrganizationConsumption",
+            '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_version_resource_usage_organizations_organization_id_projects_project_id_versions_version_id_resource_consumption_total_get_serialize(
+        self,
+        organization_id,
+        project_id,
+        version_id,
+        months,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if project_id is not None:
+            _path_params['project_id'] = project_id
+        if version_id is not None:
+            _path_params['version_id'] = version_id
+        # process the query parameters
+        if months is not None:
+            
+            _query_params.append(('months', months))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'OpenIdConnect'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/organizations/{organization_id}/projects/{project_id}/versions/{version_id}/resource-consumption-total',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -3410,6 +4133,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Version]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3482,6 +4207,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Version]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3554,6 +4281,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Version]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3601,7 +4330,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -3697,6 +4427,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3777,6 +4509,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3857,6 +4591,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3910,7 +4646,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -4023,6 +4760,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TempVersion",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4107,6 +4846,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TempVersion",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4191,6 +4932,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TempVersion",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4247,7 +4990,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -4372,6 +5116,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TempVersion",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4468,6 +5214,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TempVersion",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4564,6 +5312,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TempVersion",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4629,7 +5379,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -4746,6 +5497,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4834,6 +5587,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4922,6 +5677,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4981,7 +5738,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -5110,6 +5868,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -5210,6 +5970,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -5310,6 +6072,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -5378,7 +6142,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 

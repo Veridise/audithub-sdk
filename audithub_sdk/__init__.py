@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.1.0"
+__version__ = "1.0.2"
 
 # Define package exports
 __all__ = [
@@ -26,6 +26,7 @@ __all__ = [
     "GenericApi",
     "HintsOrgLibApi",
     "HintsStdLibApi",
+    "InvitationsApi",
     "IssuesApi",
     "OrganizationsApi",
     "ProjectsApi",
@@ -74,6 +75,7 @@ __all__ = [
     "EnvVar",
     "ExtraFunctionArguments",
     "FIOData",
+    "FavoriteOrganizationAssignment",
     "FavoriteProjectAssignment",
     "File",
     "FileThreadSubject",
@@ -120,6 +122,7 @@ __all__ = [
     "MachineInfo",
     "ModelToolInput",
     "ModelToolPhaseParameters",
+    "MyOrganization",
     "NPMProjectDependency",
     "NewInvitation",
     "NewOrganization",
@@ -134,6 +137,7 @@ __all__ = [
     "OrganizationActiveQuota",
     "OrganizationAdmin",
     "OrganizationConsumption",
+    "OrganizationConsumptionDetailed",
     "OrganizationQuota",
     "OrganizationSubscription",
     "PSA",
@@ -146,6 +150,7 @@ __all__ = [
     "PicusParameters",
     "PicusV2Input",
     "PicusV2Parameters",
+    "Problem",
     "Project",
     "ProjectAdmin",
     "ProjectData",
@@ -184,6 +189,7 @@ __all__ = [
     "ThreadPatch",
     "User",
     "UserAccessRestriction",
+    "UserAdmin",
     "UserForAdmin",
     "UserGroup",
     "UserInformation",
@@ -220,6 +226,7 @@ from audithub_sdk.api.editor_languages_api import EditorLanguagesApi as EditorLa
 from audithub_sdk.api.generic_api import GenericApi as GenericApi
 from audithub_sdk.api.hints_org_lib_api import HintsOrgLibApi as HintsOrgLibApi
 from audithub_sdk.api.hints_std_lib_api import HintsStdLibApi as HintsStdLibApi
+from audithub_sdk.api.invitations_api import InvitationsApi as InvitationsApi
 from audithub_sdk.api.issues_api import IssuesApi as IssuesApi
 from audithub_sdk.api.organizations_api import OrganizationsApi as OrganizationsApi
 from audithub_sdk.api.projects_api import ProjectsApi as ProjectsApi
@@ -272,6 +279,7 @@ from audithub_sdk.models.effective_user_access_restriction import EffectiveUserA
 from audithub_sdk.models.env_var import EnvVar as EnvVar
 from audithub_sdk.models.extra_function_arguments import ExtraFunctionArguments as ExtraFunctionArguments
 from audithub_sdk.models.fio_data import FIOData as FIOData
+from audithub_sdk.models.favorite_organization_assignment import FavoriteOrganizationAssignment as FavoriteOrganizationAssignment
 from audithub_sdk.models.favorite_project_assignment import FavoriteProjectAssignment as FavoriteProjectAssignment
 from audithub_sdk.models.file import File as File
 from audithub_sdk.models.file_thread_subject import FileThreadSubject as FileThreadSubject
@@ -318,6 +326,7 @@ from audithub_sdk.models.issue_type_info import IssueTypeInfo as IssueTypeInfo
 from audithub_sdk.models.machine_info import MachineInfo as MachineInfo
 from audithub_sdk.models.model_tool_input import ModelToolInput as ModelToolInput
 from audithub_sdk.models.model_tool_phase_parameters import ModelToolPhaseParameters as ModelToolPhaseParameters
+from audithub_sdk.models.my_organization import MyOrganization as MyOrganization
 from audithub_sdk.models.npm_project_dependency import NPMProjectDependency as NPMProjectDependency
 from audithub_sdk.models.new_invitation import NewInvitation as NewInvitation
 from audithub_sdk.models.new_organization import NewOrganization as NewOrganization
@@ -332,6 +341,7 @@ from audithub_sdk.models.organization_access_restriction import OrganizationAcce
 from audithub_sdk.models.organization_active_quota import OrganizationActiveQuota as OrganizationActiveQuota
 from audithub_sdk.models.organization_admin import OrganizationAdmin as OrganizationAdmin
 from audithub_sdk.models.organization_consumption import OrganizationConsumption as OrganizationConsumption
+from audithub_sdk.models.organization_consumption_detailed import OrganizationConsumptionDetailed as OrganizationConsumptionDetailed
 from audithub_sdk.models.organization_quota import OrganizationQuota as OrganizationQuota
 from audithub_sdk.models.organization_subscription import OrganizationSubscription as OrganizationSubscription
 from audithub_sdk.models.psa import PSA as PSA
@@ -344,6 +354,7 @@ from audithub_sdk.models.picus_input import PicusInput as PicusInput
 from audithub_sdk.models.picus_parameters import PicusParameters as PicusParameters
 from audithub_sdk.models.picus_v2_input import PicusV2Input as PicusV2Input
 from audithub_sdk.models.picus_v2_parameters import PicusV2Parameters as PicusV2Parameters
+from audithub_sdk.models.problem import Problem as Problem
 from audithub_sdk.models.project import Project as Project
 from audithub_sdk.models.project_admin import ProjectAdmin as ProjectAdmin
 from audithub_sdk.models.project_data import ProjectData as ProjectData
@@ -382,6 +393,7 @@ from audithub_sdk.models.thread_comment import ThreadComment as ThreadComment
 from audithub_sdk.models.thread_patch import ThreadPatch as ThreadPatch
 from audithub_sdk.models.user import User as User
 from audithub_sdk.models.user_access_restriction import UserAccessRestriction as UserAccessRestriction
+from audithub_sdk.models.user_admin import UserAdmin as UserAdmin
 from audithub_sdk.models.user_for_admin import UserForAdmin as UserForAdmin
 from audithub_sdk.models.user_group import UserGroup as UserGroup
 from audithub_sdk.models.user_information import UserInformation as UserInformation

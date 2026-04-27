@@ -29,9 +29,10 @@ class VersionResources(BaseModel):
     VersionResources
     """ # noqa: E501
     id: StrictInt
+    project_id: StrictInt
     resources: Resources
     tasks: List[TaskResources]
-    __properties: ClassVar[List[str]] = ["id", "resources", "tasks"]
+    __properties: ClassVar[List[str]] = ["id", "project_id", "resources", "tasks"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -95,6 +96,7 @@ class VersionResources(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
+            "project_id": obj.get("project_id"),
             "resources": Resources.from_dict(obj["resources"]) if obj.get("resources") is not None else None,
             "tasks": [TaskResources.from_dict(_item) for _item in obj["tasks"]] if obj.get("tasks") is not None else None
         })

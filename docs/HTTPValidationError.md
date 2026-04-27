@@ -5,7 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**detail** | [**List[ValidationError]**](ValidationError.md) |  | [optional] 
+**title** | **str** |  | 
+**type** | **str** |  | 
+**status** | **int** |  | 
+**errors** | [**List[ValidationError]**](ValidationError.md) |  | 
 
 ## Example
 

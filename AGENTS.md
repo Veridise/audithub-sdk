@@ -12,7 +12,7 @@ It is intended to be the shared/core dependency for other Python repositories th
 - Generator target: `python`
 - Distribution name: `audithub-sdk`
 - Import package: `audithub_sdk`
-- Package version currently used during generation: `0.1.0`
+- Package version currently used during generation: `1.0.2`
 - Transport template: `httpx`
 
 Preferred regeneration command:
@@ -28,7 +28,7 @@ openapi-generator generate \
   -i https://audithub.dev.veridise.tools/api/v1/openapi.json \
   -g python \
   -o . \
-  --additional-properties=packageName=audithub_sdk,projectName=audithub-sdk,packageVersion=0.1.0,hideGenerationTimestamp=true,library=httpx
+  --additional-properties=packageName=audithub_sdk,projectName=audithub-sdk,packageVersion=1.0.2,hideGenerationTimestamp=true,library=httpx
 ```
 
 ## Important Decisions From Prior Sessions

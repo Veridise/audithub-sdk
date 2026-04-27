@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | 
-**project_root** | **str** | Relative path inside archive | 
+**project_root** | **str** | Relative path inside archive, for current directory to use when starting external commands, such as npm | [optional] [default to '.']
 **env_vars** | [**List[EnvVar]**](EnvVar.md) |  | [optional] 
 **dependencies** | [**ProjectDependency**](ProjectDependency.md) |  | [optional] 
 **build_system** | **str** |  | [optional] 
