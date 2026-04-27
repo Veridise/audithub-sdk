@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -101,6 +101,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -168,7 +170,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -176,6 +178,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -257,7 +261,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -265,11 +269,13 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_project_comment_threads_organizations_organization_id_projects_project_id_comment_threads_get**
-> List[Thread] get_project_comment_threads_organizations_organization_id_projects_project_id_comment_threads_get(organization_id, project_id, include_commenter_ids=include_commenter_ids)
+> List[Thread] get_project_comment_threads_organizations_organization_id_projects_project_id_comment_threads_get(organization_id, project_id, include_commenter_ids=include_commenter_ids, include_message_count=include_message_count)
 
 Get Project Comment Threads
 
@@ -302,10 +308,11 @@ async with audithub_sdk.ApiClient(configuration) as api_client:
     organization_id = 56 # int | 
     project_id = 56 # int | 
     include_commenter_ids = False # bool | Include distinct user ids of users who created comments in each thread. (optional) (default to False)
+    include_message_count = False # bool | Include the count of messages in each thread. (optional) (default to False)
 
     try:
         # Get Project Comment Threads
-        api_response = await api_instance.get_project_comment_threads_organizations_organization_id_projects_project_id_comment_threads_get(organization_id, project_id, include_commenter_ids=include_commenter_ids)
+        api_response = await api_instance.get_project_comment_threads_organizations_organization_id_projects_project_id_comment_threads_get(organization_id, project_id, include_commenter_ids=include_commenter_ids, include_message_count=include_message_count)
         print("The response of ProjectsApi->get_project_comment_threads_organizations_organization_id_projects_project_id_comment_threads_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -322,6 +329,7 @@ Name | Type | Description  | Notes
  **organization_id** | **int**|  | 
  **project_id** | **int**|  | 
  **include_commenter_ids** | **bool**| Include distinct user ids of users who created comments in each thread. | [optional] [default to False]
+ **include_message_count** | **bool**| Include the count of messages in each thread. | [optional] [default to False]
 
 ### Return type
 
@@ -334,7 +342,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -342,11 +350,13 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_project_comments_organizations_organization_id_projects_project_id_comments_get**
-> List[Comment] get_project_comments_organizations_organization_id_projects_project_id_comments_get(organization_id, project_id, limit, offset, from_date=from_date, to_date=to_date, order_by=order_by)
+> List[Comment] get_project_comments_organizations_organization_id_projects_project_id_comments_get(organization_id, project_id, limit, offset, thread_id=thread_id, from_date=from_date, to_date=to_date, order_by=order_by)
 
 Get Project Comments
 
@@ -380,13 +390,14 @@ async with audithub_sdk.ApiClient(configuration) as api_client:
     project_id = 56 # int | 
     limit = 56 # int | 
     offset = 56 # int | 
+    thread_id = 56 # int |  (optional)
     from_date = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
     to_date = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
     order_by = 'created_at DESC' # str | Order of results, as a comma-separated list of columns and, optionally, a direction.     Column values are: thread_id, comment_id, created_by, created_at     If direction in specified for any column, separate it with a space from the column name and provide ASC or DESC for ascending or descending order.     e.g., \"created_by, created_at DESC\" orders the results per user, with the most recent task first for each user.      (optional) (default to 'created_at DESC')
 
     try:
         # Get Project Comments
-        api_response = await api_instance.get_project_comments_organizations_organization_id_projects_project_id_comments_get(organization_id, project_id, limit, offset, from_date=from_date, to_date=to_date, order_by=order_by)
+        api_response = await api_instance.get_project_comments_organizations_organization_id_projects_project_id_comments_get(organization_id, project_id, limit, offset, thread_id=thread_id, from_date=from_date, to_date=to_date, order_by=order_by)
         print("The response of ProjectsApi->get_project_comments_organizations_organization_id_projects_project_id_comments_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -404,6 +415,7 @@ Name | Type | Description  | Notes
  **project_id** | **int**|  | 
  **limit** | **int**|  | 
  **offset** | **int**|  | 
+ **thread_id** | **int**|  | [optional] 
  **from_date** | **datetime**|  | [optional] 
  **to_date** | **datetime**|  | [optional] 
  **order_by** | **str**| Order of results, as a comma-separated list of columns and, optionally, a direction.     Column values are: thread_id, comment_id, created_by, created_at     If direction in specified for any column, separate it with a space from the column name and provide ASC or DESC for ascending or descending order.     e.g., \&quot;created_by, created_at DESC\&quot; orders the results per user, with the most recent task first for each user.      | [optional] [default to &#39;created_at DESC&#39;]
@@ -419,7 +431,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -427,6 +439,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -494,7 +508,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -502,6 +516,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -569,7 +585,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -577,11 +593,13 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_project_resource_detailed_organizations_organization_id_projects_project_id_resource_consumption_detailed_get**
-> List[VersionResources] get_project_resource_detailed_organizations_organization_id_projects_project_id_resource_consumption_detailed_get(organization_id, project_id, months=months)
+> OrganizationConsumptionDetailed get_project_resource_detailed_organizations_organization_id_projects_project_id_resource_consumption_detailed_get(organization_id, project_id, months=months)
 
 Get Project Resource Detailed
 
@@ -592,7 +610,7 @@ Returns project detailed consumption
 
 ```python
 import audithub_sdk
-from audithub_sdk.models.version_resources import VersionResources
+from audithub_sdk.models.organization_consumption_detailed import OrganizationConsumptionDetailed
 from audithub_sdk.rest import ApiException
 from pprint import pprint
 
@@ -613,7 +631,7 @@ async with audithub_sdk.ApiClient(configuration) as api_client:
     api_instance = audithub_sdk.ProjectsApi(api_client)
     organization_id = 56 # int | 
     project_id = 56 # int | 
-    months = 3 # int | Fallback date interval in months when the organization has no active subscriptions. (optional) (default to 3)
+    months = 56 # int | Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used. (optional)
 
     try:
         # Get Project Resource Detailed
@@ -633,11 +651,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **int**|  | 
  **project_id** | **int**|  | 
- **months** | **int**| Fallback date interval in months when the organization has no active subscriptions. | [optional] [default to 3]
+ **months** | **int**| Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used. | [optional] 
 
 ### Return type
 
-[**List[VersionResources]**](VersionResources.md)
+[**OrganizationConsumptionDetailed**](OrganizationConsumptionDetailed.md)
 
 ### Authorization
 
@@ -646,7 +664,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -654,6 +672,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -690,7 +710,7 @@ async with audithub_sdk.ApiClient(configuration) as api_client:
     api_instance = audithub_sdk.ProjectsApi(api_client)
     organization_id = 56 # int | 
     project_id = 56 # int | 
-    months = 3 # int | Fallback date interval in months when the organization has no active subscriptions. (optional) (default to 3)
+    months = 56 # int | Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used. (optional)
 
     try:
         # Get Project Resource Usage
@@ -710,7 +730,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **int**|  | 
  **project_id** | **int**|  | 
- **months** | **int**| Fallback date interval in months when the organization has no active subscriptions. | [optional] [default to 3]
+ **months** | **int**| Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used. | [optional] 
 
 ### Return type
 
@@ -723,7 +743,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -731,6 +751,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -800,7 +822,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -808,6 +830,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -873,7 +897,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -881,6 +905,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -947,7 +973,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -955,6 +981,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1022,7 +1050,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -1030,6 +1058,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1099,7 +1129,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -1107,6 +1137,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1174,7 +1206,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -1182,6 +1214,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1252,7 +1286,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -1260,6 +1294,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1332,7 +1368,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -1340,6 +1376,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1412,7 +1450,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -1420,6 +1458,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1492,7 +1532,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -1500,6 +1540,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1570,7 +1612,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -1578,6 +1620,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1648,7 +1692,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -1656,6 +1700,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1726,7 +1772,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -1734,6 +1780,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1806,7 +1854,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -1814,6 +1862,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

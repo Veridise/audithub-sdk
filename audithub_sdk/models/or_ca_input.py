@@ -34,9 +34,10 @@ class OrCaInput(BaseModel):
     deployment_script_path_override: Optional[StrictStr] = None
     on_chain: Optional[StrictBool] = Field(default=False, description="Specifies whether to enable on chain fuzzing")
     deployment_info_file: Optional[StrictStr] = None
+    auxiliary_deployment_script: Optional[StrictStr] = None
     name: Optional[StrictStr] = Field(default=None, description="An optional name for this task. If not specified, the current time in UTC will be used.")
     parameters: OrCaParameters = Field(description="The parameters to pass to OrCa")
-    __properties: ClassVar[List[str]] = ["specs_override", "hints_override", "deployment_script_path_override", "on_chain", "deployment_info_file", "name", "parameters"]
+    __properties: ClassVar[List[str]] = ["specs_override", "hints_override", "deployment_script_path_override", "on_chain", "deployment_info_file", "auxiliary_deployment_script", "name", "parameters"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -109,6 +110,11 @@ class OrCaInput(BaseModel):
         if self.deployment_info_file is None and "deployment_info_file" in self.model_fields_set:
             _dict['deployment_info_file'] = None
 
+        # set to None if auxiliary_deployment_script (nullable) is None
+        # and model_fields_set contains the field
+        if self.auxiliary_deployment_script is None and "auxiliary_deployment_script" in self.model_fields_set:
+            _dict['auxiliary_deployment_script'] = None
+
         return _dict
 
     @classmethod
@@ -126,6 +132,7 @@ class OrCaInput(BaseModel):
             "deployment_script_path_override": obj.get("deployment_script_path_override"),
             "on_chain": obj.get("on_chain") if obj.get("on_chain") is not None else False,
             "deployment_info_file": obj.get("deployment_info_file"),
+            "auxiliary_deployment_script": obj.get("auxiliary_deployment_script"),
             "name": obj.get("name"),
             "parameters": OrCaParameters.from_dict(obj["parameters"]) if obj.get("parameters") is not None else None
         })

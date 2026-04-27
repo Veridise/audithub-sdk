@@ -42,6 +42,7 @@ from audithub_sdk.models.effective_user_access_restriction import EffectiveUserA
 from audithub_sdk.models.env_var import EnvVar
 from audithub_sdk.models.extra_function_arguments import ExtraFunctionArguments
 from audithub_sdk.models.fio_data import FIOData
+from audithub_sdk.models.favorite_organization_assignment import FavoriteOrganizationAssignment
 from audithub_sdk.models.favorite_project_assignment import FavoriteProjectAssignment
 from audithub_sdk.models.file import File
 from audithub_sdk.models.file_thread_subject import FileThreadSubject
@@ -88,6 +89,7 @@ from audithub_sdk.models.issue_type_info import IssueTypeInfo
 from audithub_sdk.models.machine_info import MachineInfo
 from audithub_sdk.models.model_tool_input import ModelToolInput
 from audithub_sdk.models.model_tool_phase_parameters import ModelToolPhaseParameters
+from audithub_sdk.models.my_organization import MyOrganization
 from audithub_sdk.models.npm_project_dependency import NPMProjectDependency
 from audithub_sdk.models.new_invitation import NewInvitation
 from audithub_sdk.models.new_organization import NewOrganization
@@ -102,6 +104,7 @@ from audithub_sdk.models.organization_access_restriction import OrganizationAcce
 from audithub_sdk.models.organization_active_quota import OrganizationActiveQuota
 from audithub_sdk.models.organization_admin import OrganizationAdmin
 from audithub_sdk.models.organization_consumption import OrganizationConsumption
+from audithub_sdk.models.organization_consumption_detailed import OrganizationConsumptionDetailed
 from audithub_sdk.models.organization_quota import OrganizationQuota
 from audithub_sdk.models.organization_subscription import OrganizationSubscription
 from audithub_sdk.models.psa import PSA
@@ -114,6 +117,7 @@ from audithub_sdk.models.picus_input import PicusInput
 from audithub_sdk.models.picus_parameters import PicusParameters
 from audithub_sdk.models.picus_v2_input import PicusV2Input
 from audithub_sdk.models.picus_v2_parameters import PicusV2Parameters
+from audithub_sdk.models.problem import Problem
 from audithub_sdk.models.project import Project
 from audithub_sdk.models.project_admin import ProjectAdmin
 from audithub_sdk.models.project_data import ProjectData
@@ -152,6 +156,7 @@ from audithub_sdk.models.thread_comment import ThreadComment
 from audithub_sdk.models.thread_patch import ThreadPatch
 from audithub_sdk.models.user import User
 from audithub_sdk.models.user_access_restriction import UserAccessRestriction
+from audithub_sdk.models.user_admin import UserAdmin
 from audithub_sdk.models.user_for_admin import UserForAdmin
 from audithub_sdk.models.user_group import UserGroup
 from audithub_sdk.models.user_information import UserInformation

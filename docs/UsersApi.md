@@ -4,17 +4,96 @@ All URIs are relative to *https://audithub.dev.veridise.tools/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**add_organization_to_favorites_users_favorite_organizations_post**](UsersApi.md#add_organization_to_favorites_users_favorite_organizations_post) | **POST** /users/favorite-organizations | Add Organization To Favorites
 [**create_api_key_users_api_keys_post**](UsersApi.md#create_api_key_users_api_keys_post) | **POST** /users/api-keys | Create Api Key
 [**get_api_keys_users_api_keys_get**](UsersApi.md#get_api_keys_users_api_keys_get) | **GET** /users/api-keys | Get Api Keys
 [**get_arbitrary_user_info_users_user_id_get**](UsersApi.md#get_arbitrary_user_info_users_user_id_get) | **GET** /users/{user_id} | Get Arbitrary User Info
+[**get_favorite_organizations_users_favorite_organizations_get**](UsersApi.md#get_favorite_organizations_users_favorite_organizations_get) | **GET** /users/favorite-organizations | Get Favorite Organizations
 [**get_organizations_users_myorganizations_get**](UsersApi.md#get_organizations_users_myorganizations_get) | **GET** /users/myorganizations | Get Organizations
 [**get_profile_users_myprofile_get**](UsersApi.md#get_profile_users_myprofile_get) | **GET** /users/myprofile | Get Profile
 [**onboard_request_users_onboard_request_post**](UsersApi.md#onboard_request_users_onboard_request_post) | **POST** /users/onboard-request | Onboard Request
 [**patch_profile_users_myprofile_patch**](UsersApi.md#patch_profile_users_myprofile_patch) | **PATCH** /users/myprofile | Patch Profile
 [**put_profile_users_myprofile_put**](UsersApi.md#put_profile_users_myprofile_put) | **PUT** /users/myprofile | Put Profile
+[**remove_organization_from_favorites_users_favorite_organizations_organization_id_delete**](UsersApi.md#remove_organization_from_favorites_users_favorite_organizations_organization_id_delete) | **DELETE** /users/favorite-organizations/{organization_id} | Remove Organization From Favorites
 [**revoke_api_key_users_api_keys_client_id_delete**](UsersApi.md#revoke_api_key_users_api_keys_client_id_delete) | **DELETE** /users/api-keys/{client_id} | Revoke Api Key
 [**self_onboard_users_self_onboard_post**](UsersApi.md#self_onboard_users_self_onboard_post) | **POST** /users/self-onboard | Self Onboard
 
+
+# **add_organization_to_favorites_users_favorite_organizations_post**
+> IdAndMessageResponse add_organization_to_favorites_users_favorite_organizations_post(favorite_organization_assignment)
+
+Add Organization To Favorites
+
+Adds an organization to the user's favorite ones
+
+### Example
+
+
+```python
+import audithub_sdk
+from audithub_sdk.models.favorite_organization_assignment import FavoriteOrganizationAssignment
+from audithub_sdk.models.id_and_message_response import IdAndMessageResponse
+from audithub_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://audithub.dev.veridise.tools/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = audithub_sdk.Configuration(
+    host = "https://audithub.dev.veridise.tools/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Enter a context with an instance of the API client
+async with audithub_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = audithub_sdk.UsersApi(api_client)
+    favorite_organization_assignment = audithub_sdk.FavoriteOrganizationAssignment() # FavoriteOrganizationAssignment | 
+
+    try:
+        # Add Organization To Favorites
+        api_response = await api_instance.add_organization_to_favorites_users_favorite_organizations_post(favorite_organization_assignment)
+        print("The response of UsersApi->add_organization_to_favorites_users_favorite_organizations_post:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling UsersApi->add_organization_to_favorites_users_favorite_organizations_post: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **favorite_organization_assignment** | [**FavoriteOrganizationAssignment**](FavoriteOrganizationAssignment.md)|  | 
+
+### Return type
+
+[**IdAndMessageResponse**](IdAndMessageResponse.md)
+
+### Authorization
+
+[OpenIdConnect](../README.md#OpenIdConnect)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_api_key_users_api_keys_post**
 > ApiKeyWithSecret create_api_key_users_api_keys_post(api_key_base)
@@ -77,7 +156,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -85,6 +164,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -144,13 +225,15 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -216,7 +299,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -224,11 +307,82 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_favorite_organizations_users_favorite_organizations_get**
+> List[Optional[int]] get_favorite_organizations_users_favorite_organizations_get()
+
+Get Favorite Organizations
+
+Get the user's favorite organizations
+
+### Example
+
+
+```python
+import audithub_sdk
+from audithub_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://audithub.dev.veridise.tools/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = audithub_sdk.Configuration(
+    host = "https://audithub.dev.veridise.tools/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Enter a context with an instance of the API client
+async with audithub_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = audithub_sdk.UsersApi(api_client)
+
+    try:
+        # Get Favorite Organizations
+        api_response = await api_instance.get_favorite_organizations_users_favorite_organizations_get()
+        print("The response of UsersApi->get_favorite_organizations_users_favorite_organizations_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling UsersApi->get_favorite_organizations_users_favorite_organizations_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**List[Optional[int]]**
+
+### Authorization
+
+[OpenIdConnect](../README.md#OpenIdConnect)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_organizations_users_myorganizations_get**
-> List[Organization] get_organizations_users_myorganizations_get()
+> List[MyOrganization] get_organizations_users_myorganizations_get()
 
 Get Organizations
 
@@ -239,7 +393,7 @@ Returns the organizations the currently logged in user has access to
 
 ```python
 import audithub_sdk
-from audithub_sdk.models.organization import Organization
+from audithub_sdk.models.my_organization import MyOrganization
 from audithub_sdk.rest import ApiException
 from pprint import pprint
 
@@ -276,7 +430,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List[Organization]**](Organization.md)
+[**List[MyOrganization]**](MyOrganization.md)
 
 ### Authorization
 
@@ -285,13 +439,15 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -353,13 +509,15 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -421,13 +579,15 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -494,7 +654,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -502,6 +662,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -568,7 +730,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -576,6 +738,83 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **remove_organization_from_favorites_users_favorite_organizations_organization_id_delete**
+> SuccessAndMessageResponse remove_organization_from_favorites_users_favorite_organizations_organization_id_delete(organization_id)
+
+Remove Organization From Favorites
+
+Remove an organization from the user's favorite ones
+
+### Example
+
+
+```python
+import audithub_sdk
+from audithub_sdk.models.success_and_message_response import SuccessAndMessageResponse
+from audithub_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://audithub.dev.veridise.tools/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = audithub_sdk.Configuration(
+    host = "https://audithub.dev.veridise.tools/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Enter a context with an instance of the API client
+async with audithub_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = audithub_sdk.UsersApi(api_client)
+    organization_id = 56 # int | 
+
+    try:
+        # Remove Organization From Favorites
+        api_response = await api_instance.remove_organization_from_favorites_users_favorite_organizations_organization_id_delete(organization_id)
+        print("The response of UsersApi->remove_organization_from_favorites_users_favorite_organizations_organization_id_delete:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling UsersApi->remove_organization_from_favorites_users_favorite_organizations_organization_id_delete: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **int**|  | 
+
+### Return type
+
+[**SuccessAndMessageResponse**](SuccessAndMessageResponse.md)
+
+### Authorization
+
+[OpenIdConnect](../README.md#OpenIdConnect)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -639,7 +878,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -647,6 +886,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -713,7 +954,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -721,6 +962,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

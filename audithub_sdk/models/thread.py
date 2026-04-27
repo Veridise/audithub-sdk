@@ -40,7 +40,8 @@ class Thread(BaseModel):
     resolved: Optional[StrictBool] = False
     resolved_at: Optional[datetime] = None
     resolved_by: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["project_id", "version_id", "type", "subject", "title", "id", "created_at", "created_by", "commenter_ids", "resolved", "resolved_at", "resolved_by"]
+    message_count: Optional[StrictInt] = None
+    __properties: ClassVar[List[str]] = ["project_id", "version_id", "type", "subject", "title", "id", "created_at", "created_by", "commenter_ids", "resolved", "resolved_at", "resolved_by", "message_count"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -116,6 +117,11 @@ class Thread(BaseModel):
         if self.resolved_by is None and "resolved_by" in self.model_fields_set:
             _dict['resolved_by'] = None
 
+        # set to None if message_count (nullable) is None
+        # and model_fields_set contains the field
+        if self.message_count is None and "message_count" in self.model_fields_set:
+            _dict['message_count'] = None
+
         return _dict
 
     @classmethod
@@ -139,7 +145,8 @@ class Thread(BaseModel):
             "commenter_ids": obj.get("commenter_ids"),
             "resolved": obj.get("resolved") if obj.get("resolved") is not None else False,
             "resolved_at": obj.get("resolved_at"),
-            "resolved_by": obj.get("resolved_by")
+            "resolved_by": obj.get("resolved_by"),
+            "message_count": obj.get("message_count")
         })
         return _obj
 

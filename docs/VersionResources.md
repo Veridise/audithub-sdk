@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | 
+**project_id** | **int** |  | 
 **resources** | [**Resources**](Resources.md) |  | 
 **tasks** | [**List[TaskResources]**](TaskResources.md) |  | 
 
