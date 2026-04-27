@@ -44,6 +44,41 @@ types-python-dateutil = ">= 2.8.19.14"
 mypy = ">= 1.5"
 
 
+[tool.bumpversion]
+parse = "(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)"
+serialize = ["{major}.{minor}.{patch}"]
+search = "{current_version}"
+replace = "{new_version}"
+regex = false
+ignore_missing_version = false
+tag = true
+sign_tags = false
+tag_name = "v{new_version}"
+tag_message = "Bump version: {current_version} -> {new_version}"
+commit = true
+message = "Bump version: {current_version} -> {new_version}"
+
+[[tool.bumpversion.files]]
+filename = "setup.py"
+search = 'VERSION = "{current_version}"'
+replace = 'VERSION = "{new_version}"'
+
+[[tool.bumpversion.files]]
+filename = "audithub_sdk/__init__.py"
+search = '__version__ = "{current_version}"'
+replace = '__version__ = "{new_version}"'
+
+[[tool.bumpversion.files]]
+filename = "audithub_sdk/api_client.py"
+search = "OpenAPI-Generator/{current_version}/python"
+replace = "OpenAPI-Generator/{new_version}/python"
+
+[[tool.bumpversion.files]]
+filename = "audithub_sdk/configuration.py"
+search = "SDK Package Version: {current_version}"
+replace = "SDK Package Version: {new_version}"
+
+
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
