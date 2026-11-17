@@ -5,12 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**org_restrictions** | [**List[OrganizationAccessRestriction]**](OrganizationAccessRestriction.md) |  | [optional] 
-**user_restrictions** | [**List[UserAccessRestriction]**](UserAccessRestriction.md) |  | [optional] 
-**user_limit** | **int** |  | [optional] 
-**subscription** | [**PackageSubscription**](PackageSubscription.md) |  | 
+**extra_credits** | [**PackageExtraCredits**](PackageExtraCredits.md) |  | [optional] 
 **org_name** | **str** | Template name for creating new organization. Available keywords to be replaced are user attributes &#39;name&#39;, &#39;email&#39;, &#39;id&#39; and &#39;timestamp&#39; that the organization gets created | [optional] [default to 'demo-organization-{email}']
 **name** | **str** |  | 
+**tools_only** | **bool** |  | [optional] [default to True]
 
 ## Example
 

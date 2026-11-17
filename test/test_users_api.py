@@ -17,79 +17,100 @@ import unittest
 from audithub_sdk.api.users_api import UsersApi
 
 
-class TestUsersApi(unittest.TestCase):
+class TestUsersApi(unittest.IsolatedAsyncioTestCase):
     """UsersApi unit test stubs"""
 
-    def setUp(self) -> None:
+    async def asyncSetUp(self) -> None:
         self.api = UsersApi()
 
-    def tearDown(self) -> None:
+    async def asyncTearDown(self) -> None:
+        await self.api.api_client.close()
+
+    async def test_add_organization_to_favorites_users_favorite_organizations_post(self) -> None:
+        """Test case for add_organization_to_favorites_users_favorite_organizations_post
+
+        Add Organization To Favorites
+        """
         pass
 
-    def test_create_api_key_users_api_keys_post(self) -> None:
+    async def test_create_api_key_users_api_keys_post(self) -> None:
         """Test case for create_api_key_users_api_keys_post
 
         Create Api Key
         """
         pass
 
-    def test_get_api_keys_users_api_keys_get(self) -> None:
+    async def test_get_api_keys_users_api_keys_get(self) -> None:
         """Test case for get_api_keys_users_api_keys_get
 
         Get Api Keys
         """
         pass
 
-    def test_get_arbitrary_user_info_users_user_id_get(self) -> None:
+    async def test_get_arbitrary_user_info_users_user_id_get(self) -> None:
         """Test case for get_arbitrary_user_info_users_user_id_get
 
         Get Arbitrary User Info
         """
         pass
 
-    def test_get_organizations_users_myorganizations_get(self) -> None:
+    async def test_get_favorite_organizations_users_favorite_organizations_get(self) -> None:
+        """Test case for get_favorite_organizations_users_favorite_organizations_get
+
+        Get Favorite Organizations
+        """
+        pass
+
+    async def test_get_organizations_users_myorganizations_get(self) -> None:
         """Test case for get_organizations_users_myorganizations_get
 
         Get Organizations
         """
         pass
 
-    def test_get_profile_users_myprofile_get(self) -> None:
+    async def test_get_profile_users_myprofile_get(self) -> None:
         """Test case for get_profile_users_myprofile_get
 
         Get Profile
         """
         pass
 
-    def test_onboard_request_users_onboard_request_post(self) -> None:
+    async def test_onboard_request_users_onboard_request_post(self) -> None:
         """Test case for onboard_request_users_onboard_request_post
 
         Onboard Request
         """
         pass
 
-    def test_patch_profile_users_myprofile_patch(self) -> None:
+    async def test_patch_profile_users_myprofile_patch(self) -> None:
         """Test case for patch_profile_users_myprofile_patch
 
         Patch Profile
         """
         pass
 
-    def test_put_profile_users_myprofile_put(self) -> None:
+    async def test_put_profile_users_myprofile_put(self) -> None:
         """Test case for put_profile_users_myprofile_put
 
         Put Profile
         """
         pass
 
-    def test_revoke_api_key_users_api_keys_client_id_delete(self) -> None:
+    async def test_remove_organization_from_favorites_users_favorite_organizations_organization_id_delete(self) -> None:
+        """Test case for remove_organization_from_favorites_users_favorite_organizations_organization_id_delete
+
+        Remove Organization From Favorites
+        """
+        pass
+
+    async def test_revoke_api_key_users_api_keys_client_id_delete(self) -> None:
         """Test case for revoke_api_key_users_api_keys_client_id_delete
 
         Revoke Api Key
         """
         pass
 
-    def test_self_onboard_users_self_onboard_post(self) -> None:
+    async def test_self_onboard_users_self_onboard_post(self) -> None:
         """Test case for self_onboard_users_self_onboard_post
 
         Self Onboard

@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List
-from audithub_sdk.models.project_info_output import ProjectInfoOutput
+from audithub_sdk.models.project_info import ProjectInfo
 from audithub_sdk.models.version_data import VersionData
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,7 +28,7 @@ class ProjectData(BaseModel):
     """
     ProjectData
     """ # noqa: E501
-    definition: ProjectInfoOutput
+    definition: ProjectInfo
     version: VersionData
     __properties: ClassVar[List[str]] = ["definition", "version"]
 
@@ -89,7 +89,7 @@ class ProjectData(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "definition": ProjectInfoOutput.from_dict(obj["definition"]) if obj.get("definition") is not None else None,
+            "definition": ProjectInfo.from_dict(obj["definition"]) if obj.get("definition") is not None else None,
             "version": VersionData.from_dict(obj["version"]) if obj.get("version") is not None else None
         })
         return _obj

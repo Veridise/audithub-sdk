@@ -18,8 +18,9 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,29 +28,21 @@ class OrganizationSubscription(BaseModel):
     """
     OrganizationSubscription
     """ # noqa: E501
-    subscription_type: Optional[StrictStr] = Field(default='S', description="Subscription type can be S for subscription and E for extension.")
-    from_date: datetime
-    to_date: datetime
-    monthly_cpu_minutes: Optional[StrictInt] = Field(default=None, alias="monthly_CPU_minutes")
-    storage_mb: Optional[StrictInt] = None
-    package_name: Optional[StrictStr] = None
-    enforce_monthly_resource_consumption: Optional[StrictBool] = Field(default=False, description="It indicates how to enforce quotas: a) when True, monthly quotas can only be consumed within the specific month, and b) when False, quota are freely consumed any time within the subscription time window")
+    plan_id: Annotated[int, Field(strict=True, gt=0)]
+    start_time: datetime = Field(description="Inclusive start in UTC. A task starting exactly at this timestamp may be funded by this subscription. ")
+    end_time: Optional[datetime] = None
+    duration_months: Optional[Annotated[int, Field(strict=True, gt=0)]] = None
+    purchase_time: datetime
+    purchase_price: StrictStr
+    monthly_credits: Optional[StrictStr] = None
+    total_credits: Optional[StrictStr] = None
     id: StrictInt
-    created_at: datetime
-    created_by: StrictStr
-    last_updated_at: datetime
-    last_updated_by: StrictStr
-    __properties: ClassVar[List[str]] = ["subscription_type", "from_date", "to_date", "monthly_CPU_minutes", "storage_mb", "package_name", "enforce_monthly_resource_consumption", "id", "created_at", "created_by", "last_updated_at", "last_updated_by"]
-
-    @field_validator('subscription_type')
-    def subscription_type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['S', 'E']):
-            raise ValueError("must be one of enum values ('S', 'E')")
-        return value
+    organization_id: StrictInt
+    user_id: StrictStr
+    canceled_time: Optional[datetime] = None
+    stripe_subscription_id: Optional[StrictStr] = None
+    stripe_latest_invoice_id: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["plan_id", "start_time", "end_time", "duration_months", "purchase_time", "purchase_price", "monthly_credits", "total_credits", "id", "organization_id", "user_id", "canceled_time", "stripe_subscription_id", "stripe_latest_invoice_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,20 +83,40 @@ class OrganizationSubscription(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if monthly_cpu_minutes (nullable) is None
+        # set to None if end_time (nullable) is None
         # and model_fields_set contains the field
-        if self.monthly_cpu_minutes is None and "monthly_cpu_minutes" in self.model_fields_set:
-            _dict['monthly_CPU_minutes'] = None
+        if self.end_time is None and "end_time" in self.model_fields_set:
+            _dict['end_time'] = None
 
-        # set to None if storage_mb (nullable) is None
+        # set to None if duration_months (nullable) is None
         # and model_fields_set contains the field
-        if self.storage_mb is None and "storage_mb" in self.model_fields_set:
-            _dict['storage_mb'] = None
+        if self.duration_months is None and "duration_months" in self.model_fields_set:
+            _dict['duration_months'] = None
 
-        # set to None if package_name (nullable) is None
+        # set to None if monthly_credits (nullable) is None
         # and model_fields_set contains the field
-        if self.package_name is None and "package_name" in self.model_fields_set:
-            _dict['package_name'] = None
+        if self.monthly_credits is None and "monthly_credits" in self.model_fields_set:
+            _dict['monthly_credits'] = None
+
+        # set to None if total_credits (nullable) is None
+        # and model_fields_set contains the field
+        if self.total_credits is None and "total_credits" in self.model_fields_set:
+            _dict['total_credits'] = None
+
+        # set to None if canceled_time (nullable) is None
+        # and model_fields_set contains the field
+        if self.canceled_time is None and "canceled_time" in self.model_fields_set:
+            _dict['canceled_time'] = None
+
+        # set to None if stripe_subscription_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.stripe_subscription_id is None and "stripe_subscription_id" in self.model_fields_set:
+            _dict['stripe_subscription_id'] = None
+
+        # set to None if stripe_latest_invoice_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.stripe_latest_invoice_id is None and "stripe_latest_invoice_id" in self.model_fields_set:
+            _dict['stripe_latest_invoice_id'] = None
 
         return _dict
 
@@ -117,18 +130,20 @@ class OrganizationSubscription(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "subscription_type": obj.get("subscription_type") if obj.get("subscription_type") is not None else 'S',
-            "from_date": obj.get("from_date"),
-            "to_date": obj.get("to_date"),
-            "monthly_CPU_minutes": obj.get("monthly_CPU_minutes"),
-            "storage_mb": obj.get("storage_mb"),
-            "package_name": obj.get("package_name"),
-            "enforce_monthly_resource_consumption": obj.get("enforce_monthly_resource_consumption") if obj.get("enforce_monthly_resource_consumption") is not None else False,
+            "plan_id": obj.get("plan_id"),
+            "start_time": obj.get("start_time"),
+            "end_time": obj.get("end_time"),
+            "duration_months": obj.get("duration_months"),
+            "purchase_time": obj.get("purchase_time"),
+            "purchase_price": obj.get("purchase_price"),
+            "monthly_credits": obj.get("monthly_credits"),
+            "total_credits": obj.get("total_credits"),
             "id": obj.get("id"),
-            "created_at": obj.get("created_at"),
-            "created_by": obj.get("created_by"),
-            "last_updated_at": obj.get("last_updated_at"),
-            "last_updated_by": obj.get("last_updated_by")
+            "organization_id": obj.get("organization_id"),
+            "user_id": obj.get("user_id"),
+            "canceled_time": obj.get("canceled_time"),
+            "stripe_subscription_id": obj.get("stripe_subscription_id"),
+            "stripe_latest_invoice_id": obj.get("stripe_latest_invoice_id")
         })
         return _obj
 

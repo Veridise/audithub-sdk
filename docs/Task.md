@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **status** | **str** |  | 
 **info_text** | **str** |  | [optional] 
 **created_at** | **datetime** |  | 
+**created_by** | **str** | The id of user that started the task. | 
 **started_at** | **datetime** |  | [optional] 
 **finished_at** | **datetime** |  | [optional] 
 **artifacts** | [**List[Artifact]**](Artifact.md) |  | [optional] 

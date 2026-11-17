@@ -17,58 +17,58 @@ import unittest
 from audithub_sdk.api.hints_org_lib_api import HintsOrgLibApi
 
 
-class TestHintsOrgLibApi(unittest.TestCase):
+class TestHintsOrgLibApi(unittest.IsolatedAsyncioTestCase):
     """HintsOrgLibApi unit test stubs"""
 
-    def setUp(self) -> None:
+    async def asyncSetUp(self) -> None:
         self.api = HintsOrgLibApi()
 
-    def tearDown(self) -> None:
-        pass
+    async def asyncTearDown(self) -> None:
+        await self.api.api_client.close()
 
-    def test_delete_hint_organizations_organization_id_hints_hint_id_delete(self) -> None:
+    async def test_delete_hint_organizations_organization_id_hints_hint_id_delete(self) -> None:
         """Test case for delete_hint_organizations_organization_id_hints_hint_id_delete
 
         Delete Hint
         """
         pass
 
-    def test_get_blacklisted_hints_organizations_organization_id_projects_project_id_blacklisted_hints_get(self) -> None:
+    async def test_get_blacklisted_hints_organizations_organization_id_projects_project_id_blacklisted_hints_get(self) -> None:
         """Test case for get_blacklisted_hints_organizations_organization_id_projects_project_id_blacklisted_hints_get
 
         Get Blacklisted Hints
         """
         pass
 
-    def test_get_hints_organizations_organization_id_hints_get(self) -> None:
+    async def test_get_hint_organizations_organization_id_hints_hint_id_get(self) -> None:
+        """Test case for get_hint_organizations_organization_id_hints_hint_id_get
+
+        Get Hint
+        """
+        pass
+
+    async def test_get_hints_organizations_organization_id_hints_get(self) -> None:
         """Test case for get_hints_organizations_organization_id_hints_get
 
         Get Hints
         """
         pass
 
-    def test_get_vspec_organizations_organization_id_hints_hint_id_get(self) -> None:
-        """Test case for get_vspec_organizations_organization_id_hints_hint_id_get
-
-        Get Vspec
-        """
-        pass
-
-    def test_post_hint_organizations_organization_id_hints_post(self) -> None:
+    async def test_post_hint_organizations_organization_id_hints_post(self) -> None:
         """Test case for post_hint_organizations_organization_id_hints_post
 
         Post Hint
         """
         pass
 
-    def test_put_blacklisted_hints_organizations_organization_id_projects_project_id_blacklisted_hints_put(self) -> None:
+    async def test_put_blacklisted_hints_organizations_organization_id_projects_project_id_blacklisted_hints_put(self) -> None:
         """Test case for put_blacklisted_hints_organizations_organization_id_projects_project_id_blacklisted_hints_put
 
         Put Blacklisted Hints
         """
         pass
 
-    def test_put_hint_organizations_organization_id_hints_hint_id_put(self) -> None:
+    async def test_put_hint_organizations_organization_id_hints_hint_id_put(self) -> None:
         """Test case for put_hint_organizations_organization_id_hints_hint_id_put
 
         Put Hint

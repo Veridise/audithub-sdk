@@ -31,7 +31,7 @@ class ProjectAdmin(BaseModel):
     ProjectAdmin
     """ # noqa: E501
     name: StrictStr
-    project_root: StrictStr = Field(description="Relative path inside archive")
+    project_root: Optional[StrictStr] = Field(default='.', description="Relative path inside archive, for current directory to use when starting external commands, such as npm")
     env_vars: Optional[List[EnvVar]] = None
     dependencies: Optional[ProjectDependency] = None
     build_system: Optional[StrictStr] = None
@@ -182,7 +182,7 @@ class ProjectAdmin(BaseModel):
 
         _obj = cls.model_validate({
             "name": obj.get("name"),
-            "project_root": obj.get("project_root"),
+            "project_root": obj.get("project_root") if obj.get("project_root") is not None else '.',
             "env_vars": [EnvVar.from_dict(_item) for _item in obj["env_vars"]] if obj.get("env_vars") is not None else None,
             "dependencies": ProjectDependency.from_dict(obj["dependencies"]) if obj.get("dependencies") is not None else None,
             "build_system": obj.get("build_system"),

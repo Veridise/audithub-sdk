@@ -100,6 +100,8 @@ class VSpecsOrgLibApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -172,6 +174,8 @@ class VSpecsOrgLibApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -244,6 +248,8 @@ class VSpecsOrgLibApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -291,7 +297,8 @@ class VSpecsOrgLibApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -379,6 +386,8 @@ class VSpecsOrgLibApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "VSpec",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -451,6 +460,8 @@ class VSpecsOrgLibApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "VSpec",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -523,6 +534,8 @@ class VSpecsOrgLibApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "VSpec",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -570,7 +583,8 @@ class VSpecsOrgLibApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -654,6 +668,8 @@ class VSpecsOrgLibApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[VSpecWithId]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -722,6 +738,8 @@ class VSpecsOrgLibApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[VSpecWithId]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -790,6 +808,8 @@ class VSpecsOrgLibApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[VSpecWithId]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -834,7 +854,8 @@ class VSpecsOrgLibApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -922,6 +943,8 @@ class VSpecsOrgLibApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -994,6 +1017,8 @@ class VSpecsOrgLibApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1066,6 +1091,8 @@ class VSpecsOrgLibApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1113,7 +1140,8 @@ class VSpecsOrgLibApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -1218,6 +1246,8 @@ class VSpecsOrgLibApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1294,6 +1324,8 @@ class VSpecsOrgLibApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1370,6 +1402,8 @@ class VSpecsOrgLibApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1420,7 +1454,8 @@ class VSpecsOrgLibApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 

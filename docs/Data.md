@@ -5,29 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** | Issue unique id. | 
-**gh_issue_url** | **str** |  | 
-**gh_security_advisory_url** | **str** |  | 
-**status** | **str** | State describing the next action item for resolving this issue. | 
-**revision_id** | **int** | Unique id for issue revisions. This is used to track concurrent modifications | 
-**resolutions** | [**List[IssueResolution]**](IssueResolution.md) | The list resolution PRs or resolution commits to resolve this issue | [optional] 
-**description** | **str** | The long, markdown formatted text that describes the issue in detail. | 
-**affected_files** | [**List[SourceReference]**](SourceReference.md) | A list of locations in files. | 
-**type** | **List[int]** | Categorization of the issue’s root cause. | 
-**title** | **str** | Title for this issue. | 
-**likelihood** | **int** | Probability that the issue will be exploited.. | 
-**impact** | **int** | Magnitude of the effect on the protocol if the issue is exploited. | 
-**severity** | **int** | The protocol risk associated to an issue, based on its likelihood and impact. | 
-**created_at** | **datetime** | The time at which the issue was created. | 
-**last_updated_at** | **datetime** | The time at which the issue was last updated. | 
-**created_by** | **str** | The user that created the issue. | 
-**last_updated_by** | **str** | The user that last updated the issue. | 
-**externally_shared** | **bool** | If the issue has been shared in the project public thread. | 
-**promoted_findings** | [**List[FindingReference]**](FindingReference.md) | Tool findings related to this issue. | 
-**candidate_for_tool** | **List[int]** | If one or more of our tools would be a good candidate for finding this issue. | 
-**raised_by** | **List[str]** | The user that raised the issue. Allows for a potentially different user than the one that inputs it. | 
-**poc_author** | **List[str]** | AuditHub user that created the PoC. | 
-**document_authors** | **List[str]** | The list of auditors that authored the document for this issue. | 
+**action** | **str** |  | 
+**start_time** | **datetime** | New inclusive start in UTC. Task funding uses start_time &lt;&#x3D; task.started_at &lt; end_time. The entire subscription must have no task allocations; all periods are regenerated. | 
+**end_time** | **datetime** |  | [optional] 
+**monthly_credits** | [**MonthlyCredits2**](MonthlyCredits2.md) |  | 
 
 ## Example
 

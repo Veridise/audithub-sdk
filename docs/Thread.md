@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **resolved** | **bool** |  | [optional] [default to False]
 **resolved_at** | **datetime** |  | [optional] 
 **resolved_by** | **str** |  | [optional] 
+**message_count** | **int** |  | [optional] 
 
 ## Example
 

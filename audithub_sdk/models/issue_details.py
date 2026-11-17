@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from audithub_sdk.models.data import Data
+from audithub_sdk.models.data1 import Data1
 from audithub_sdk.models.issue_state_transition_function import IssueStateTransitionFunction
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,7 +29,7 @@ class IssueDetails(BaseModel):
     IssueDetails
     """ # noqa: E501
     kind: StrictStr = Field(description="Clarifies the type of model returned in data. 'complete' is the complete data model, while 'public' is only its public part")
-    data: Data
+    data: Data1
     functions: Optional[List[IssueStateTransitionFunction]] = Field(default=None, description="A list of transition functions that are available based on the current status for the issue")
     __properties: ClassVar[List[str]] = ["kind", "data", "functions"]
 
@@ -102,7 +102,7 @@ class IssueDetails(BaseModel):
 
         _obj = cls.model_validate({
             "kind": obj.get("kind"),
-            "data": Data.from_dict(obj["data"]) if obj.get("data") is not None else None,
+            "data": Data1.from_dict(obj["data"]) if obj.get("data") is not None else None,
             "functions": [IssueStateTransitionFunction.from_dict(_item) for _item in obj["functions"]] if obj.get("functions") is not None else None
         })
         return _obj

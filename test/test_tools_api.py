@@ -17,58 +17,51 @@ import unittest
 from audithub_sdk.api.tools_api import ToolsApi
 
 
-class TestToolsApi(unittest.TestCase):
+class TestToolsApi(unittest.IsolatedAsyncioTestCase):
     """ToolsApi unit test stubs"""
 
-    def setUp(self) -> None:
+    async def asyncSetUp(self) -> None:
         self.api = ToolsApi()
 
-    def tearDown(self) -> None:
+    async def asyncTearDown(self) -> None:
+        await self.api.api_client.close()
+
+    async def test_post_tool_agent_organizations_organization_id_projects_project_id_versions_version_id_tools_agent_post(self) -> None:
+        """Test case for post_tool_agent_organizations_organization_id_projects_project_id_versions_version_id_tools_agent_post
+
+        Post Tool Agent
+        """
         pass
 
-    def test_post_tool_model_organizations_organization_id_projects_project_id_versions_version_id_tools_model_tool_post(self) -> None:
+    async def test_post_tool_model_organizations_organization_id_projects_project_id_versions_version_id_tools_model_tool_post(self) -> None:
         """Test case for post_tool_model_organizations_organization_id_projects_project_id_versions_version_id_tools_model_tool_post
 
         Post Tool Model
         """
         pass
 
-    def test_post_tool_orca_organizations_organization_id_projects_project_id_versions_version_id_tools_orca_post(self) -> None:
+    async def test_post_tool_orca_organizations_organization_id_projects_project_id_versions_version_id_tools_orca_post(self) -> None:
         """Test case for post_tool_orca_organizations_organization_id_projects_project_id_versions_version_id_tools_orca_post
 
         Post Tool Orca
         """
         pass
 
-    def test_post_tool_picus_organizations_organization_id_projects_project_id_versions_version_id_tools_picus_post(self) -> None:
-        """Test case for post_tool_picus_organizations_organization_id_projects_project_id_versions_version_id_tools_picus_post
-
-        Post Tool Picus
-        """
-        pass
-
-    def test_post_tool_picus_organizations_organization_id_projects_project_id_versions_version_id_tools_picus_v2_post(self) -> None:
+    async def test_post_tool_picus_organizations_organization_id_projects_project_id_versions_version_id_tools_picus_v2_post(self) -> None:
         """Test case for post_tool_picus_organizations_organization_id_projects_project_id_versions_version_id_tools_picus_v2_post
 
         Post Tool Picus
         """
         pass
 
-    def test_post_tool_vanguard_v2_organizations_organization_id_projects_project_id_versions_version_id_tools_vanguard_v2_post(self) -> None:
+    async def test_post_tool_vanguard_v2_organizations_organization_id_projects_project_id_versions_version_id_tools_vanguard_v2_post(self) -> None:
         """Test case for post_tool_vanguard_v2_organizations_organization_id_projects_project_id_versions_version_id_tools_vanguard_v2_post
 
         Post Tool Vanguard V2
         """
         pass
 
-    def test_post_tool_zk_vanguard_organizations_organization_id_projects_project_id_versions_version_id_tools_zk_vanguard_post(self) -> None:
-        """Test case for post_tool_zk_vanguard_organizations_organization_id_projects_project_id_versions_version_id_tools_zk_vanguard_post
-
-        Post Tool Zk Vanguard
-        """
-        pass
-
-    def test_post_tool_zk_vanguard_v2_organizations_organization_id_projects_project_id_versions_version_id_tools_zk_vanguard_v2_post(self) -> None:
+    async def test_post_tool_zk_vanguard_v2_organizations_organization_id_projects_project_id_versions_version_id_tools_zk_vanguard_v2_post(self) -> None:
         """Test case for post_tool_zk_vanguard_v2_organizations_organization_id_projects_project_id_versions_version_id_tools_zk_vanguard_v2_post
 
         Post Tool Zk Vanguard V2

@@ -112,6 +112,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -188,6 +190,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -264,6 +268,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -314,7 +320,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -438,6 +445,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[CommentWithMutations]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -546,6 +555,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[CommentWithMutations]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -654,6 +665,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[CommentWithMutations]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -762,7 +775,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -858,6 +872,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Version",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -938,6 +954,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Version",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1018,6 +1036,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Version",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1075,7 +1095,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -1167,6 +1188,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1243,6 +1266,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1319,6 +1344,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1370,7 +1397,7 @@ class VersionsApi:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
                     'application/zip', 
-                    'application/json'
+                    'application/problem+json'
                 ]
             )
 
@@ -1462,6 +1489,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Directory",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1538,6 +1567,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Directory",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1614,6 +1645,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Directory",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1664,7 +1697,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -1699,6 +1733,7 @@ class VersionsApi:
         project_id: StrictInt,
         version_id: StrictInt,
         include_commenter_ids: Annotated[Optional[StrictBool], Field(description="Include distinct user ids of users who created comments in each thread.")] = None,
+        include_message_count: Annotated[Optional[StrictBool], Field(description="Include the count of messages in each thread.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1724,6 +1759,8 @@ class VersionsApi:
         :type version_id: int
         :param include_commenter_ids: Include distinct user ids of users who created comments in each thread.
         :type include_commenter_ids: bool
+        :param include_message_count: Include the count of messages in each thread.
+        :type include_message_count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1751,6 +1788,7 @@ class VersionsApi:
             project_id=project_id,
             version_id=version_id,
             include_commenter_ids=include_commenter_ids,
+            include_message_count=include_message_count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1760,6 +1798,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Thread]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1779,6 +1819,7 @@ class VersionsApi:
         project_id: StrictInt,
         version_id: StrictInt,
         include_commenter_ids: Annotated[Optional[StrictBool], Field(description="Include distinct user ids of users who created comments in each thread.")] = None,
+        include_message_count: Annotated[Optional[StrictBool], Field(description="Include the count of messages in each thread.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1804,6 +1845,8 @@ class VersionsApi:
         :type version_id: int
         :param include_commenter_ids: Include distinct user ids of users who created comments in each thread.
         :type include_commenter_ids: bool
+        :param include_message_count: Include the count of messages in each thread.
+        :type include_message_count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1831,6 +1874,7 @@ class VersionsApi:
             project_id=project_id,
             version_id=version_id,
             include_commenter_ids=include_commenter_ids,
+            include_message_count=include_message_count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1840,6 +1884,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Thread]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1859,6 +1905,7 @@ class VersionsApi:
         project_id: StrictInt,
         version_id: StrictInt,
         include_commenter_ids: Annotated[Optional[StrictBool], Field(description="Include distinct user ids of users who created comments in each thread.")] = None,
+        include_message_count: Annotated[Optional[StrictBool], Field(description="Include the count of messages in each thread.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1884,6 +1931,8 @@ class VersionsApi:
         :type version_id: int
         :param include_commenter_ids: Include distinct user ids of users who created comments in each thread.
         :type include_commenter_ids: bool
+        :param include_message_count: Include the count of messages in each thread.
+        :type include_message_count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1911,6 +1960,7 @@ class VersionsApi:
             project_id=project_id,
             version_id=version_id,
             include_commenter_ids=include_commenter_ids,
+            include_message_count=include_message_count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1920,6 +1970,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Thread]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1934,6 +1986,7 @@ class VersionsApi:
         project_id,
         version_id,
         include_commenter_ids,
+        include_message_count,
         _request_auth,
         _content_type,
         _headers,
@@ -1966,6 +2019,10 @@ class VersionsApi:
             
             _query_params.append(('include_commenter_ids', include_commenter_ids))
             
+        if include_message_count is not None:
+            
+            _query_params.append(('include_message_count', include_message_count))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -1975,7 +2032,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -2091,6 +2149,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Comment]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2191,6 +2251,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Comment]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2291,6 +2353,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Comment]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2389,7 +2453,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -2485,6 +2550,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2565,6 +2632,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2645,6 +2714,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2700,7 +2771,7 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/problem+json'
                 ]
             )
 
@@ -2792,6 +2863,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[TaskFIOData]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2868,6 +2941,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[TaskFIOData]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2944,6 +3019,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[TaskFIOData]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2994,7 +3071,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -3094,6 +3172,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Version",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3178,6 +3258,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Version",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3262,6 +3344,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Version",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3322,7 +3406,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -3410,6 +3495,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Version]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3482,6 +3569,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Version]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3554,6 +3643,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Version]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3601,7 +3692,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -3697,6 +3789,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3777,6 +3871,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3857,6 +3953,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3910,7 +4008,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -4023,6 +4122,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TempVersion",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4107,6 +4208,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TempVersion",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4191,6 +4294,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TempVersion",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4247,7 +4352,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -4372,6 +4478,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TempVersion",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4468,6 +4576,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TempVersion",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4564,6 +4674,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TempVersion",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4629,7 +4741,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -4746,6 +4859,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4834,6 +4949,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4922,6 +5039,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4981,7 +5100,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -5110,6 +5230,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -5210,6 +5332,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -5310,6 +5434,8 @@ class VersionsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -5378,7 +5504,8 @@ class VersionsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 

@@ -18,8 +18,12 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from audithub_sdk.models.monthly_credits import MonthlyCredits
+from audithub_sdk.models.purchase_price import PurchasePrice
+from audithub_sdk.models.total_credits import TotalCredits
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,24 +31,15 @@ class NewOrganizationSubscription(BaseModel):
     """
     NewOrganizationSubscription
     """ # noqa: E501
-    subscription_type: Optional[StrictStr] = Field(default='S', description="Subscription type can be S for subscription and E for extension.")
-    from_date: datetime
-    to_date: datetime
-    monthly_cpu_minutes: Optional[StrictInt] = Field(default=None, alias="monthly_CPU_minutes")
-    storage_mb: Optional[StrictInt] = None
-    package_name: Optional[StrictStr] = None
-    enforce_monthly_resource_consumption: Optional[StrictBool] = Field(default=False, description="It indicates how to enforce quotas: a) when True, monthly quotas can only be consumed within the specific month, and b) when False, quota are freely consumed any time within the subscription time window")
-    __properties: ClassVar[List[str]] = ["subscription_type", "from_date", "to_date", "monthly_CPU_minutes", "storage_mb", "package_name", "enforce_monthly_resource_consumption"]
-
-    @field_validator('subscription_type')
-    def subscription_type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['S', 'E']):
-            raise ValueError("must be one of enum values ('S', 'E')")
-        return value
+    plan_id: Annotated[int, Field(strict=True, gt=0)]
+    start_time: datetime = Field(description="Inclusive start in UTC. A task starting exactly at this timestamp may be funded by this subscription. ")
+    end_time: Optional[datetime] = None
+    duration_months: Optional[Annotated[int, Field(strict=True, gt=0)]] = None
+    purchase_time: datetime
+    purchase_price: PurchasePrice
+    monthly_credits: Optional[MonthlyCredits] = None
+    total_credits: Optional[TotalCredits] = None
+    __properties: ClassVar[List[str]] = ["plan_id", "start_time", "end_time", "duration_months", "purchase_time", "purchase_price", "monthly_credits", "total_credits"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,20 +80,34 @@ class NewOrganizationSubscription(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if monthly_cpu_minutes (nullable) is None
+        # override the default output from pydantic by calling `to_dict()` of purchase_price
+        if self.purchase_price:
+            _dict['purchase_price'] = self.purchase_price.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of monthly_credits
+        if self.monthly_credits:
+            _dict['monthly_credits'] = self.monthly_credits.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of total_credits
+        if self.total_credits:
+            _dict['total_credits'] = self.total_credits.to_dict()
+        # set to None if end_time (nullable) is None
         # and model_fields_set contains the field
-        if self.monthly_cpu_minutes is None and "monthly_cpu_minutes" in self.model_fields_set:
-            _dict['monthly_CPU_minutes'] = None
+        if self.end_time is None and "end_time" in self.model_fields_set:
+            _dict['end_time'] = None
 
-        # set to None if storage_mb (nullable) is None
+        # set to None if duration_months (nullable) is None
         # and model_fields_set contains the field
-        if self.storage_mb is None and "storage_mb" in self.model_fields_set:
-            _dict['storage_mb'] = None
+        if self.duration_months is None and "duration_months" in self.model_fields_set:
+            _dict['duration_months'] = None
 
-        # set to None if package_name (nullable) is None
+        # set to None if monthly_credits (nullable) is None
         # and model_fields_set contains the field
-        if self.package_name is None and "package_name" in self.model_fields_set:
-            _dict['package_name'] = None
+        if self.monthly_credits is None and "monthly_credits" in self.model_fields_set:
+            _dict['monthly_credits'] = None
+
+        # set to None if total_credits (nullable) is None
+        # and model_fields_set contains the field
+        if self.total_credits is None and "total_credits" in self.model_fields_set:
+            _dict['total_credits'] = None
 
         return _dict
 
@@ -112,13 +121,14 @@ class NewOrganizationSubscription(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "subscription_type": obj.get("subscription_type") if obj.get("subscription_type") is not None else 'S',
-            "from_date": obj.get("from_date"),
-            "to_date": obj.get("to_date"),
-            "monthly_CPU_minutes": obj.get("monthly_CPU_minutes"),
-            "storage_mb": obj.get("storage_mb"),
-            "package_name": obj.get("package_name"),
-            "enforce_monthly_resource_consumption": obj.get("enforce_monthly_resource_consumption") if obj.get("enforce_monthly_resource_consumption") is not None else False
+            "plan_id": obj.get("plan_id"),
+            "start_time": obj.get("start_time"),
+            "end_time": obj.get("end_time"),
+            "duration_months": obj.get("duration_months"),
+            "purchase_time": obj.get("purchase_time"),
+            "purchase_price": PurchasePrice.from_dict(obj["purchase_price"]) if obj.get("purchase_price") is not None else None,
+            "monthly_credits": MonthlyCredits.from_dict(obj["monthly_credits"]) if obj.get("monthly_credits") is not None else None,
+            "total_credits": TotalCredits.from_dict(obj["total_credits"]) if obj.get("total_credits") is not None else None
         })
         return _obj
 

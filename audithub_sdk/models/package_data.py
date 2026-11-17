@@ -17,12 +17,10 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from audithub_sdk.models.organization_access_restriction import OrganizationAccessRestriction
-from audithub_sdk.models.package_subscription import PackageSubscription
+from audithub_sdk.models.package_extra_credits import PackageExtraCredits
 from audithub_sdk.models.project_data import ProjectData
-from audithub_sdk.models.user_access_restriction import UserAccessRestriction
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -31,12 +29,10 @@ class PackageData(BaseModel):
     PackageData
     """ # noqa: E501
     organization_name: StrictStr
-    user_limit: Optional[StrictInt]
     projects: List[ProjectData]
-    org_restrictions: Optional[List[OrganizationAccessRestriction]]
-    user_restrictions: Optional[List[UserAccessRestriction]]
-    subscription: PackageSubscription
-    __properties: ClassVar[List[str]] = ["organization_name", "user_limit", "projects", "org_restrictions", "user_restrictions", "subscription"]
+    extra_credits: Optional[PackageExtraCredits] = None
+    tools_only: Optional[StrictBool] = True
+    __properties: ClassVar[List[str]] = ["organization_name", "projects", "extra_credits", "tools_only"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,37 +80,13 @@ class PackageData(BaseModel):
                 if _item_projects:
                     _items.append(_item_projects.to_dict())
             _dict['projects'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in org_restrictions (list)
-        _items = []
-        if self.org_restrictions:
-            for _item_org_restrictions in self.org_restrictions:
-                if _item_org_restrictions:
-                    _items.append(_item_org_restrictions.to_dict())
-            _dict['org_restrictions'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in user_restrictions (list)
-        _items = []
-        if self.user_restrictions:
-            for _item_user_restrictions in self.user_restrictions:
-                if _item_user_restrictions:
-                    _items.append(_item_user_restrictions.to_dict())
-            _dict['user_restrictions'] = _items
-        # override the default output from pydantic by calling `to_dict()` of subscription
-        if self.subscription:
-            _dict['subscription'] = self.subscription.to_dict()
-        # set to None if user_limit (nullable) is None
+        # override the default output from pydantic by calling `to_dict()` of extra_credits
+        if self.extra_credits:
+            _dict['extra_credits'] = self.extra_credits.to_dict()
+        # set to None if extra_credits (nullable) is None
         # and model_fields_set contains the field
-        if self.user_limit is None and "user_limit" in self.model_fields_set:
-            _dict['user_limit'] = None
-
-        # set to None if org_restrictions (nullable) is None
-        # and model_fields_set contains the field
-        if self.org_restrictions is None and "org_restrictions" in self.model_fields_set:
-            _dict['org_restrictions'] = None
-
-        # set to None if user_restrictions (nullable) is None
-        # and model_fields_set contains the field
-        if self.user_restrictions is None and "user_restrictions" in self.model_fields_set:
-            _dict['user_restrictions'] = None
+        if self.extra_credits is None and "extra_credits" in self.model_fields_set:
+            _dict['extra_credits'] = None
 
         return _dict
 
@@ -129,11 +101,9 @@ class PackageData(BaseModel):
 
         _obj = cls.model_validate({
             "organization_name": obj.get("organization_name"),
-            "user_limit": obj.get("user_limit"),
             "projects": [ProjectData.from_dict(_item) for _item in obj["projects"]] if obj.get("projects") is not None else None,
-            "org_restrictions": [OrganizationAccessRestriction.from_dict(_item) for _item in obj["org_restrictions"]] if obj.get("org_restrictions") is not None else None,
-            "user_restrictions": [UserAccessRestriction.from_dict(_item) for _item in obj["user_restrictions"]] if obj.get("user_restrictions") is not None else None,
-            "subscription": PackageSubscription.from_dict(obj["subscription"]) if obj.get("subscription") is not None else None
+            "extra_credits": PackageExtraCredits.from_dict(obj["extra_credits"]) if obj.get("extra_credits") is not None else None,
+            "tools_only": obj.get("tools_only") if obj.get("tools_only") is not None else True
         })
         return _obj
 

@@ -11,8 +11,6 @@ Method | HTTP request | Description
 [**get_project_comments_organizations_organization_id_projects_project_id_comments_get**](ProjectsApi.md#get_project_comments_organizations_organization_id_projects_project_id_comments_get) | **GET** /organizations/{organization_id}/projects/{project_id}/comments | Get Project Comments
 [**get_project_findings_organizations_organization_id_projects_project_id_findings_get**](ProjectsApi.md#get_project_findings_organizations_organization_id_projects_project_id_findings_get) | **GET** /organizations/{organization_id}/projects/{project_id}/findings | Get Project Findings
 [**get_project_organizations_organization_id_projects_project_id_get**](ProjectsApi.md#get_project_organizations_organization_id_projects_project_id_get) | **GET** /organizations/{organization_id}/projects/{project_id} | Get Project
-[**get_project_resource_detailed_organizations_organization_id_projects_project_id_resource_consumption_detailed_get**](ProjectsApi.md#get_project_resource_detailed_organizations_organization_id_projects_project_id_resource_consumption_detailed_get) | **GET** /organizations/{organization_id}/projects/{project_id}/resource-consumption-detailed | Get Project Resource Detailed
-[**get_project_resource_usage_organizations_organization_id_projects_project_id_resource_consumption_total_get**](ProjectsApi.md#get_project_resource_usage_organizations_organization_id_projects_project_id_resource_consumption_total_get) | **GET** /organizations/{organization_id}/projects/{project_id}/resource-consumption-total | Get Project Resource Usage
 [**get_project_revision_organizations_organization_id_projects_project_id_revision_revision_get**](ProjectsApi.md#get_project_revision_organizations_organization_id_projects_project_id_revision_revision_get) | **GET** /organizations/{organization_id}/projects/{project_id}/revision/{revision} | Get Project Revision
 [**get_projects_organizations_organization_id_projects_get**](ProjectsApi.md#get_projects_organizations_organization_id_projects_get) | **GET** /organizations/{organization_id}/projects | Get Projects
 [**get_projects_revisions_organizations_organization_id_projects_project_id_revisions_get**](ProjectsApi.md#get_projects_revisions_organizations_organization_id_projects_project_id_revisions_get) | **GET** /organizations/{organization_id}/projects/{project_id}/revisions | Get Projects Revisions
@@ -93,7 +91,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -101,6 +99,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -176,6 +176,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -257,7 +259,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -265,11 +267,13 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_project_comment_threads_organizations_organization_id_projects_project_id_comment_threads_get**
-> List[Thread] get_project_comment_threads_organizations_organization_id_projects_project_id_comment_threads_get(organization_id, project_id, include_commenter_ids=include_commenter_ids)
+> List[Thread] get_project_comment_threads_organizations_organization_id_projects_project_id_comment_threads_get(organization_id, project_id, include_commenter_ids=include_commenter_ids, include_message_count=include_message_count)
 
 Get Project Comment Threads
 
@@ -302,10 +306,11 @@ async with audithub_sdk.ApiClient(configuration) as api_client:
     organization_id = 56 # int | 
     project_id = 56 # int | 
     include_commenter_ids = False # bool | Include distinct user ids of users who created comments in each thread. (optional) (default to False)
+    include_message_count = False # bool | Include the count of messages in each thread. (optional) (default to False)
 
     try:
         # Get Project Comment Threads
-        api_response = await api_instance.get_project_comment_threads_organizations_organization_id_projects_project_id_comment_threads_get(organization_id, project_id, include_commenter_ids=include_commenter_ids)
+        api_response = await api_instance.get_project_comment_threads_organizations_organization_id_projects_project_id_comment_threads_get(organization_id, project_id, include_commenter_ids=include_commenter_ids, include_message_count=include_message_count)
         print("The response of ProjectsApi->get_project_comment_threads_organizations_organization_id_projects_project_id_comment_threads_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -322,6 +327,7 @@ Name | Type | Description  | Notes
  **organization_id** | **int**|  | 
  **project_id** | **int**|  | 
  **include_commenter_ids** | **bool**| Include distinct user ids of users who created comments in each thread. | [optional] [default to False]
+ **include_message_count** | **bool**| Include the count of messages in each thread. | [optional] [default to False]
 
 ### Return type
 
@@ -334,7 +340,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -342,11 +348,13 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_project_comments_organizations_organization_id_projects_project_id_comments_get**
-> List[Comment] get_project_comments_organizations_organization_id_projects_project_id_comments_get(organization_id, project_id, limit, offset, from_date=from_date, to_date=to_date, order_by=order_by)
+> List[Comment] get_project_comments_organizations_organization_id_projects_project_id_comments_get(organization_id, project_id, limit, offset, thread_id=thread_id, from_date=from_date, to_date=to_date, order_by=order_by)
 
 Get Project Comments
 
@@ -380,13 +388,14 @@ async with audithub_sdk.ApiClient(configuration) as api_client:
     project_id = 56 # int | 
     limit = 56 # int | 
     offset = 56 # int | 
+    thread_id = 56 # int |  (optional)
     from_date = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
     to_date = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
     order_by = 'created_at DESC' # str | Order of results, as a comma-separated list of columns and, optionally, a direction.     Column values are: thread_id, comment_id, created_by, created_at     If direction in specified for any column, separate it with a space from the column name and provide ASC or DESC for ascending or descending order.     e.g., \"created_by, created_at DESC\" orders the results per user, with the most recent task first for each user.      (optional) (default to 'created_at DESC')
 
     try:
         # Get Project Comments
-        api_response = await api_instance.get_project_comments_organizations_organization_id_projects_project_id_comments_get(organization_id, project_id, limit, offset, from_date=from_date, to_date=to_date, order_by=order_by)
+        api_response = await api_instance.get_project_comments_organizations_organization_id_projects_project_id_comments_get(organization_id, project_id, limit, offset, thread_id=thread_id, from_date=from_date, to_date=to_date, order_by=order_by)
         print("The response of ProjectsApi->get_project_comments_organizations_organization_id_projects_project_id_comments_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -404,6 +413,7 @@ Name | Type | Description  | Notes
  **project_id** | **int**|  | 
  **limit** | **int**|  | 
  **offset** | **int**|  | 
+ **thread_id** | **int**|  | [optional] 
  **from_date** | **datetime**|  | [optional] 
  **to_date** | **datetime**|  | [optional] 
  **order_by** | **str**| Order of results, as a comma-separated list of columns and, optionally, a direction.     Column values are: thread_id, comment_id, created_by, created_at     If direction in specified for any column, separate it with a space from the column name and provide ASC or DESC for ascending or descending order.     e.g., \&quot;created_by, created_at DESC\&quot; orders the results per user, with the most recent task first for each user.      | [optional] [default to &#39;created_at DESC&#39;]
@@ -419,7 +429,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -427,6 +437,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -494,7 +506,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -502,6 +514,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -569,7 +583,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -577,165 +591,13 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_project_resource_detailed_organizations_organization_id_projects_project_id_resource_consumption_detailed_get**
-> List[VersionResources] get_project_resource_detailed_organizations_organization_id_projects_project_id_resource_consumption_detailed_get(organization_id, project_id, months=months)
-
-Get Project Resource Detailed
-
-Returns project detailed consumption
-
-### Example
-
-
-```python
-import audithub_sdk
-from audithub_sdk.models.version_resources import VersionResources
-from audithub_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://audithub.dev.veridise.tools/api/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = audithub_sdk.Configuration(
-    host = "https://audithub.dev.veridise.tools/api/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Enter a context with an instance of the API client
-async with audithub_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = audithub_sdk.ProjectsApi(api_client)
-    organization_id = 56 # int | 
-    project_id = 56 # int | 
-    months = 3 # int | Fallback date interval in months when the organization has no active subscriptions. (optional) (default to 3)
-
-    try:
-        # Get Project Resource Detailed
-        api_response = await api_instance.get_project_resource_detailed_organizations_organization_id_projects_project_id_resource_consumption_detailed_get(organization_id, project_id, months=months)
-        print("The response of ProjectsApi->get_project_resource_detailed_organizations_organization_id_projects_project_id_resource_consumption_detailed_get:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling ProjectsApi->get_project_resource_detailed_organizations_organization_id_projects_project_id_resource_consumption_detailed_get: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **int**|  | 
- **project_id** | **int**|  | 
- **months** | **int**| Fallback date interval in months when the organization has no active subscriptions. | [optional] [default to 3]
-
-### Return type
-
-[**List[VersionResources]**](VersionResources.md)
-
-### Authorization
-
-[OpenIdConnect](../README.md#OpenIdConnect)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_project_resource_usage_organizations_organization_id_projects_project_id_resource_consumption_total_get**
-> OrganizationConsumption get_project_resource_usage_organizations_organization_id_projects_project_id_resource_consumption_total_get(organization_id, project_id, months=months)
-
-Get Project Resource Usage
-
-Returns project consumption
-
-### Example
-
-
-```python
-import audithub_sdk
-from audithub_sdk.models.organization_consumption import OrganizationConsumption
-from audithub_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://audithub.dev.veridise.tools/api/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = audithub_sdk.Configuration(
-    host = "https://audithub.dev.veridise.tools/api/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Enter a context with an instance of the API client
-async with audithub_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = audithub_sdk.ProjectsApi(api_client)
-    organization_id = 56 # int | 
-    project_id = 56 # int | 
-    months = 3 # int | Fallback date interval in months when the organization has no active subscriptions. (optional) (default to 3)
-
-    try:
-        # Get Project Resource Usage
-        api_response = await api_instance.get_project_resource_usage_organizations_organization_id_projects_project_id_resource_consumption_total_get(organization_id, project_id, months=months)
-        print("The response of ProjectsApi->get_project_resource_usage_organizations_organization_id_projects_project_id_resource_consumption_total_get:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling ProjectsApi->get_project_resource_usage_organizations_organization_id_projects_project_id_resource_consumption_total_get: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **int**|  | 
- **project_id** | **int**|  | 
- **months** | **int**| Fallback date interval in months when the organization has no active subscriptions. | [optional] [default to 3]
-
-### Return type
-
-[**OrganizationConsumption**](OrganizationConsumption.md)
-
-### Authorization
-
-[OpenIdConnect](../README.md#OpenIdConnect)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_project_revision_organizations_organization_id_projects_project_id_revision_revision_get**
-> ProjectInfoOutput get_project_revision_organizations_organization_id_projects_project_id_revision_revision_get(organization_id, project_id, revision)
+> ProjectInfo get_project_revision_organizations_organization_id_projects_project_id_revision_revision_get(organization_id, project_id, revision)
 
 Get Project Revision
 
@@ -746,7 +608,7 @@ Returns project attributes for a specific revision
 
 ```python
 import audithub_sdk
-from audithub_sdk.models.project_info_output import ProjectInfoOutput
+from audithub_sdk.models.project_info import ProjectInfo
 from audithub_sdk.rest import ApiException
 from pprint import pprint
 
@@ -791,7 +653,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectInfoOutput**](ProjectInfoOutput.md)
+[**ProjectInfo**](ProjectInfo.md)
 
 ### Authorization
 
@@ -800,7 +662,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -808,6 +670,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -873,7 +737,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -881,6 +745,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -947,7 +813,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -955,6 +821,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1022,7 +890,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -1030,6 +898,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1099,7 +969,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -1107,6 +977,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1174,7 +1046,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -1182,6 +1054,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1252,7 +1126,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -1260,6 +1134,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1332,7 +1208,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -1340,6 +1216,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1412,7 +1290,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -1420,11 +1298,13 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_project_organizations_organization_id_projects_post**
-> IdAndMessageResponse post_project_organizations_organization_id_projects_post(organization_id, project_info_input, temp_version_id=temp_version_id, version_name=version_name)
+> IdAndMessageResponse post_project_organizations_organization_id_projects_post(organization_id, project_info, temp_version_id=temp_version_id, version_name=version_name)
 
 Post Project
 
@@ -1436,7 +1316,7 @@ Post initial data and its first source version
 ```python
 import audithub_sdk
 from audithub_sdk.models.id_and_message_response import IdAndMessageResponse
-from audithub_sdk.models.project_info_input import ProjectInfoInput
+from audithub_sdk.models.project_info import ProjectInfo
 from audithub_sdk.rest import ApiException
 from pprint import pprint
 
@@ -1456,13 +1336,13 @@ async with audithub_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = audithub_sdk.ProjectsApi(api_client)
     organization_id = 56 # int | 
-    project_info_input = audithub_sdk.ProjectInfoInput() # ProjectInfoInput | 
+    project_info = audithub_sdk.ProjectInfo() # ProjectInfo | 
     temp_version_id = 'temp_version_id_example' # str |  (optional)
     version_name = 'version_name_example' # str |  (optional)
 
     try:
         # Post Project
-        api_response = await api_instance.post_project_organizations_organization_id_projects_post(organization_id, project_info_input, temp_version_id=temp_version_id, version_name=version_name)
+        api_response = await api_instance.post_project_organizations_organization_id_projects_post(organization_id, project_info, temp_version_id=temp_version_id, version_name=version_name)
         print("The response of ProjectsApi->post_project_organizations_organization_id_projects_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -1477,7 +1357,7 @@ async with audithub_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **int**|  | 
- **project_info_input** | [**ProjectInfoInput**](ProjectInfoInput.md)|  | 
+ **project_info** | [**ProjectInfo**](ProjectInfo.md)|  | 
  **temp_version_id** | **str**|  | [optional] 
  **version_name** | **str**|  | [optional] 
 
@@ -1492,7 +1372,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -1500,6 +1380,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1570,7 +1452,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -1578,11 +1460,13 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_project_organizations_organization_id_projects_project_id_put**
-> ProjectUpdateResponse put_project_organizations_organization_id_projects_project_id_put(organization_id, project_id, project_info_input)
+> ProjectUpdateResponse put_project_organizations_organization_id_projects_project_id_put(organization_id, project_id, project_info)
 
 Put Project
 
@@ -1593,7 +1477,7 @@ Update project attributes
 
 ```python
 import audithub_sdk
-from audithub_sdk.models.project_info_input import ProjectInfoInput
+from audithub_sdk.models.project_info import ProjectInfo
 from audithub_sdk.models.project_update_response import ProjectUpdateResponse
 from audithub_sdk.rest import ApiException
 from pprint import pprint
@@ -1615,11 +1499,11 @@ async with audithub_sdk.ApiClient(configuration) as api_client:
     api_instance = audithub_sdk.ProjectsApi(api_client)
     organization_id = 56 # int | 
     project_id = 56 # int | 
-    project_info_input = audithub_sdk.ProjectInfoInput() # ProjectInfoInput | 
+    project_info = audithub_sdk.ProjectInfo() # ProjectInfo | 
 
     try:
         # Put Project
-        api_response = await api_instance.put_project_organizations_organization_id_projects_project_id_put(organization_id, project_id, project_info_input)
+        api_response = await api_instance.put_project_organizations_organization_id_projects_project_id_put(organization_id, project_id, project_info)
         print("The response of ProjectsApi->put_project_organizations_organization_id_projects_project_id_put:\n")
         pprint(api_response)
     except Exception as e:
@@ -1635,7 +1519,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **int**|  | 
  **project_id** | **int**|  | 
- **project_info_input** | [**ProjectInfoInput**](ProjectInfoInput.md)|  | 
+ **project_info** | [**ProjectInfo**](ProjectInfo.md)|  | 
 
 ### Return type
 
@@ -1648,7 +1532,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -1656,6 +1540,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1726,7 +1612,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -1734,6 +1620,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1806,7 +1694,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -1814,6 +1702,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

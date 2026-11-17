@@ -33,3 +33,6 @@ setup.py
 scripts/
 audithub_sdk_ext/
 tests/
+
+# Keep valid pip syntax; the 7.20.0 httpx template emits invalid syntax.
+requirements.txt

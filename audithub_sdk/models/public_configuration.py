@@ -17,8 +17,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from audithub_sdk.models.ai_budget import AIBudget
 from audithub_sdk.models.application_function import ApplicationFunction
 from audithub_sdk.models.fork_network_public import ForkNetworkPublic
 from audithub_sdk.models.issue_configuration_options import IssueConfigurationOptions
@@ -33,6 +34,7 @@ class PublicConfiguration(BaseModel):
     """
     PublicConfiguration
     """ # noqa: E501
+    agent_allowed_organization_name_prefixes: List[StrictStr]
     fork_networks: List[ForkNetworkPublic]
     vanguard_solc_versions: List[StrictStr]
     vanguard_defi_detectors: Optional[List[VanguardDetector]]
@@ -45,9 +47,12 @@ class PublicConfiguration(BaseModel):
     issue_configuration_options: IssueConfigurationOptions
     available_tools: List[SecurityTool]
     application_functions: List[ApplicationFunction]
+    ai_budgets: List[AIBudget]
     version_archive_size_limit: Optional[StrictInt] = Field(default=200000000, description="Max allowed size of version archive in bytes")
     onboarding_package: StrictStr
-    __properties: ClassVar[List[str]] = ["fork_networks", "vanguard_solc_versions", "vanguard_defi_detectors", "vanguard_v2_defi_detectors", "vanguard_zk_detectors", "vanguard_v2_zk_detectors", "node_versions", "workflow_steps", "orca", "issue_configuration_options", "available_tools", "application_functions", "version_archive_size_limit", "onboarding_package"]
+    subscription_error_msg_suffix: StrictStr
+    disable_stripe: StrictBool
+    __properties: ClassVar[List[str]] = ["agent_allowed_organization_name_prefixes", "fork_networks", "vanguard_solc_versions", "vanguard_defi_detectors", "vanguard_v2_defi_detectors", "vanguard_zk_detectors", "vanguard_v2_zk_detectors", "node_versions", "workflow_steps", "orca", "issue_configuration_options", "available_tools", "application_functions", "ai_budgets", "version_archive_size_limit", "onboarding_package", "subscription_error_msg_suffix", "disable_stripe"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -154,6 +159,13 @@ class PublicConfiguration(BaseModel):
                 if _item_application_functions:
                     _items.append(_item_application_functions.to_dict())
             _dict['application_functions'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in ai_budgets (list)
+        _items = []
+        if self.ai_budgets:
+            for _item_ai_budgets in self.ai_budgets:
+                if _item_ai_budgets:
+                    _items.append(_item_ai_budgets.to_dict())
+            _dict['ai_budgets'] = _items
         # set to None if vanguard_defi_detectors (nullable) is None
         # and model_fields_set contains the field
         if self.vanguard_defi_detectors is None and "vanguard_defi_detectors" in self.model_fields_set:
@@ -186,6 +198,7 @@ class PublicConfiguration(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "agent_allowed_organization_name_prefixes": obj.get("agent_allowed_organization_name_prefixes"),
             "fork_networks": [ForkNetworkPublic.from_dict(_item) for _item in obj["fork_networks"]] if obj.get("fork_networks") is not None else None,
             "vanguard_solc_versions": obj.get("vanguard_solc_versions"),
             "vanguard_defi_detectors": [VanguardDetector.from_dict(_item) for _item in obj["vanguard_defi_detectors"]] if obj.get("vanguard_defi_detectors") is not None else None,
@@ -208,8 +221,11 @@ class PublicConfiguration(BaseModel):
             "issue_configuration_options": IssueConfigurationOptions.from_dict(obj["issue_configuration_options"]) if obj.get("issue_configuration_options") is not None else None,
             "available_tools": [SecurityTool.from_dict(_item) for _item in obj["available_tools"]] if obj.get("available_tools") is not None else None,
             "application_functions": [ApplicationFunction.from_dict(_item) for _item in obj["application_functions"]] if obj.get("application_functions") is not None else None,
+            "ai_budgets": [AIBudget.from_dict(_item) for _item in obj["ai_budgets"]] if obj.get("ai_budgets") is not None else None,
             "version_archive_size_limit": obj.get("version_archive_size_limit") if obj.get("version_archive_size_limit") is not None else 200000000,
-            "onboarding_package": obj.get("onboarding_package")
+            "onboarding_package": obj.get("onboarding_package"),
+            "subscription_error_msg_suffix": obj.get("subscription_error_msg_suffix"),
+            "disable_stripe": obj.get("disable_stripe")
         })
         return _obj
 

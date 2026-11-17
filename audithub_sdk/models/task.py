@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from audithub_sdk.models.artifact import Artifact
 from audithub_sdk.models.task_step import TaskStep
@@ -40,11 +40,12 @@ class Task(BaseModel):
     status: StrictStr
     info_text: Optional[StrictStr] = None
     created_at: datetime
+    created_by: StrictStr = Field(description="The id of user that started the task.")
     started_at: Optional[datetime] = None
     finished_at: Optional[datetime] = None
     artifacts: Optional[List[Artifact]] = None
     findings_counters: Optional[Dict[str, StrictInt]] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "tool_name", "tool_version", "tool_parameters", "tool_extra", "version_id", "steps", "status", "info_text", "created_at", "started_at", "finished_at", "artifacts", "findings_counters"]
+    __properties: ClassVar[List[str]] = ["id", "name", "tool_name", "tool_version", "tool_parameters", "tool_extra", "version_id", "steps", "status", "info_text", "created_at", "created_by", "started_at", "finished_at", "artifacts", "findings_counters"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -174,6 +175,7 @@ class Task(BaseModel):
             "status": obj.get("status"),
             "info_text": obj.get("info_text"),
             "created_at": obj.get("created_at"),
+            "created_by": obj.get("created_by"),
             "started_at": obj.get("started_at"),
             "finished_at": obj.get("finished_at"),
             "artifacts": [Artifact.from_dict(_item) for _item in obj["artifacts"]] if obj.get("artifacts") is not None else None,

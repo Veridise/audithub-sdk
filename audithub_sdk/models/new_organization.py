@@ -17,8 +17,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,8 +29,10 @@ class NewOrganization(BaseModel):
     """ # noqa: E501
     name: StrictStr
     support_channel: Optional[StrictStr] = None
-    user_limit: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["name", "support_channel", "user_limit"]
+    user_limit: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
+    project_limit: Optional[StrictInt] = None
+    tools_only: Optional[StrictBool] = Field(default=False, description="Indicates if this organization is a tools-only organization. Tools-only organizations have no access to auditing features.")
+    __properties: ClassVar[List[str]] = ["name", "support_channel", "user_limit", "project_limit", "tools_only"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,6 +83,11 @@ class NewOrganization(BaseModel):
         if self.user_limit is None and "user_limit" in self.model_fields_set:
             _dict['user_limit'] = None
 
+        # set to None if project_limit (nullable) is None
+        # and model_fields_set contains the field
+        if self.project_limit is None and "project_limit" in self.model_fields_set:
+            _dict['project_limit'] = None
+
         return _dict
 
     @classmethod
@@ -94,7 +102,9 @@ class NewOrganization(BaseModel):
         _obj = cls.model_validate({
             "name": obj.get("name"),
             "support_channel": obj.get("support_channel"),
-            "user_limit": obj.get("user_limit")
+            "user_limit": obj.get("user_limit"),
+            "project_limit": obj.get("project_limit"),
+            "tools_only": obj.get("tools_only") if obj.get("tools_only") is not None else False
         })
         return _obj
 

@@ -17,47 +17,54 @@ import unittest
 from audithub_sdk.api.subscriptions_api import SubscriptionsApi
 
 
-class TestSubscriptionsApi(unittest.TestCase):
+class TestSubscriptionsApi(unittest.IsolatedAsyncioTestCase):
     """SubscriptionsApi unit test stubs"""
 
-    def setUp(self) -> None:
+    async def asyncSetUp(self) -> None:
         self.api = SubscriptionsApi()
 
-    def tearDown(self) -> None:
-        pass
+    async def asyncTearDown(self) -> None:
+        await self.api.api_client.close()
 
-    def test_get_current_organization_subscriptions_organizations_organization_id_subscriptions_get(self) -> None:
-        """Test case for get_current_organization_subscriptions_organizations_organization_id_subscriptions_get
+    async def test_get_extras_organizations_organization_id_extras_get(self) -> None:
+        """Test case for get_extras_organizations_organization_id_extras_get
 
-        Get Current Organization Subscriptions
+        List organization extra credits
         """
         pass
 
-    def test_get_organization_subscription_organizations_organization_id_subscriptions_subscription_id_get(self) -> None:
-        """Test case for get_organization_subscription_organizations_organization_id_subscriptions_subscription_id_get
+    async def test_get_subscription_organizations_organization_id_subscriptions_subscription_id_get(self) -> None:
+        """Test case for get_subscription_organizations_organization_id_subscriptions_subscription_id_get
 
-        Get Organization Subscription
+        Get an organization subscription
         """
         pass
 
-    def test_patch_subscription_organizations_organization_id_subscriptions_subscription_id_patch(self) -> None:
+    async def test_get_subscriptions_organizations_organization_id_subscriptions_get(self) -> None:
+        """Test case for get_subscriptions_organizations_organization_id_subscriptions_get
+
+        List organization subscriptions
+        """
+        pass
+
+    async def test_patch_subscription_organizations_organization_id_subscriptions_subscription_id_patch(self) -> None:
         """Test case for patch_subscription_organizations_organization_id_subscriptions_subscription_id_patch
 
-        Patch Subscription
+        Update or soft delete an organization subscription
         """
         pass
 
-    def test_post_organization_subscription_organizations_organization_id_subscriptions_post(self) -> None:
-        """Test case for post_organization_subscription_organizations_organization_id_subscriptions_post
+    async def test_post_extra_organizations_organization_id_extras_post(self) -> None:
+        """Test case for post_extra_organizations_organization_id_extras_post
 
-        Post Organization Subscription
+        Create organization extra credits
         """
         pass
 
-    def test_put_organization_subscription_organizations_organization_id_subscriptions_subscription_id_put(self) -> None:
-        """Test case for put_organization_subscription_organizations_organization_id_subscriptions_subscription_id_put
+    async def test_post_subscription_organizations_organization_id_subscriptions_post(self) -> None:
+        """Test case for post_subscription_organizations_organization_id_subscriptions_post
 
-        Put Organization Subscription
+        Create an organization subscription
         """
         pass
 

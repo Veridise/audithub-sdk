@@ -14,24 +14,30 @@
 """  # noqa: E501
 
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 # Define package exports
 __all__ = [
     "AdminApi",
     "ConfigurationApi",
+    "CreditsApi",
     "CustomDetectorsOrgLibApi",
     "CustomDetectorsStdLibApi",
     "EditorLanguagesApi",
     "GenericApi",
     "HintsOrgLibApi",
     "HintsStdLibApi",
+    "InvitationsApi",
+    "IssueTypesApi",
     "IssuesApi",
     "OrganizationsApi",
+    "ProjectDocumentsApi",
     "ProjectsApi",
+    "StripeApi",
     "SubscriptionsApi",
     "TasksApi",
     "ToolsApi",
+    "UiApi",
     "UsersApi",
     "VSpecsOrgLibApi",
     "VSpecsStdLibApi",
@@ -45,10 +51,13 @@ __all__ = [
     "ApiKeyError",
     "ApiAttributeError",
     "ApiException",
+    "AIBudget",
     "APIBlacklistedHint",
     "AccountingData",
     "ActiveOrganizationUsers",
     "AdminResourcePatch",
+    "AgentInput",
+    "AgentParameters",
     "ApiKey",
     "ApiKeyBase",
     "ApiKeyWithSecret",
@@ -57,14 +66,18 @@ __all__ = [
     "Artifact",
     "Comment",
     "CommentWithMutations",
-    "ContainerResources",
     "ContentsInner",
+    "CreditSourceType",
+    "CreditTask",
+    "Credits",
+    "Credits1",
     "CustomDetector",
     "CustomDetectorFromOrganizationLibrary",
     "CustomDetectorFromStandardLibrary",
     "CustomDetectorFromVersion",
     "CustomDetectorWithId",
     "Data",
+    "Data1",
     "DefiVanguardV2Input",
     "DefiVanguardV2Parameters",
     "Directory",
@@ -72,8 +85,12 @@ __all__ = [
     "EditorLanguageWithId",
     "EffectiveUserAccessRestriction",
     "EnvVar",
+    "ExtraCheckoutRequest",
+    "ExtraCreditsConfig",
+    "ExtraCreditsConfigAdmin",
     "ExtraFunctionArguments",
     "FIOData",
+    "FavoriteOrganizationAssignment",
     "FavoriteProjectAssignment",
     "File",
     "FileThreadSubject",
@@ -120,46 +137,59 @@ __all__ = [
     "MachineInfo",
     "ModelToolInput",
     "ModelToolPhaseParameters",
+    "MonthlyCredits",
+    "MonthlyCredits1",
+    "MonthlyCredits2",
+    "MyOrganization",
     "NPMProjectDependency",
+    "NewExtraCreditsConfig",
     "NewInvitation",
     "NewOrganization",
+    "NewOrganizationExtra",
     "NewOrganizationPackage",
     "NewOrganizationSubscription",
+    "NewSubscriptionPlan",
     "OnboardingRequest",
     "OrCaInput",
     "OrCaParameters",
     "OrcaValue",
     "Organization",
     "OrganizationAccessRestriction",
-    "OrganizationActiveQuota",
     "OrganizationAdmin",
-    "OrganizationConsumption",
-    "OrganizationQuota",
+    "OrganizationCreditPeriod",
+    "OrganizationCreditSummary",
+    "OrganizationCredits",
+    "OrganizationExtra",
+    "OrganizationExtras",
     "OrganizationSubscription",
+    "OrganizationSubscriptionLight",
     "PSA",
     "PSAMessage",
     "PackageData",
-    "PackageSubscription",
+    "PackageExtraCredits",
     "PatchUser",
     "PendingFindingActions",
-    "PicusInput",
-    "PicusParameters",
     "PicusV2Input",
     "PicusV2Parameters",
+    "Price",
+    "Problem",
     "Project",
     "ProjectAdmin",
     "ProjectData",
     "ProjectDependency",
+    "ProjectDocument",
+    "ProjectDocumentData",
+    "ProjectForUI",
     "ProjectGitHubLink",
-    "ProjectInfoInput",
-    "ProjectInfoOutput",
+    "ProjectInfo",
     "ProjectThreadSubject",
     "ProjectUpdateResponse",
     "PublicConfiguration",
+    "PurchasePrice",
     "PutUser",
     "RegisteredUser",
     "ResourcePatch",
-    "Resources",
+    "ResponsePatchSubscriptionOrganizationsOrganizationIdSubscriptionsSubscriptionIdPatch",
     "RootModelListUnionCustomDetectorFromVersionCustomDetectorFromStandardLibraryCustomDetectorFromOrganizationLibraryInner",
     "RootModelListUnionHintFromVersionHintFromStandardLibraryHintFromOrganizationLibraryHintAdHocInner",
     "RootModelListUnionVSpecFromVersionVSpecFromStandardLibraryVSpecFromOrganizationLibraryVSpecAdHocInner",
@@ -167,23 +197,35 @@ __all__ = [
     "SelfOnboardRequest",
     "SourceReference",
     "StepDefinition",
-    "StepResources",
+    "StripeEvent",
+    "StripeExtraSeatsDecrease",
+    "StripeExtraSeatsIncrease",
+    "StripeSession",
     "Subject",
+    "SubscriptionCheckoutRequest",
+    "SubscriptionCreditsPatch",
+    "SubscriptionDeletePatch",
+    "SubscriptionDurationPatch",
+    "SubscriptionPlan",
+    "SubscriptionPlanAdmin",
     "SuccessAndMessageResponse",
     "Task",
     "TaskAdmin",
     "TaskCreation",
+    "TaskCreditConsumption",
+    "TaskCreditSource",
     "TaskFIOData",
     "TaskPatch",
-    "TaskResources",
     "TaskStatus",
     "TaskStep",
     "TempVersion",
     "Thread",
     "ThreadComment",
     "ThreadPatch",
+    "TotalCredits",
     "User",
     "UserAccessRestriction",
+    "UserAdmin",
     "UserForAdmin",
     "UserGroup",
     "UserInformation",
@@ -204,9 +246,6 @@ __all__ = [
     "VersionAdmin",
     "VersionData",
     "VersionPatch",
-    "VersionResources",
-    "ZKVanguardInput",
-    "ZKVanguardParameters",
     "ZKVanguardV2Input",
     "ZKVanguardV2Parameters",
 ]
@@ -214,18 +253,24 @@ __all__ = [
 # import apis into sdk package
 from audithub_sdk.api.admin_api import AdminApi as AdminApi
 from audithub_sdk.api.configuration_api import ConfigurationApi as ConfigurationApi
+from audithub_sdk.api.credits_api import CreditsApi as CreditsApi
 from audithub_sdk.api.custom_detectors_org_lib_api import CustomDetectorsOrgLibApi as CustomDetectorsOrgLibApi
 from audithub_sdk.api.custom_detectors_std_lib_api import CustomDetectorsStdLibApi as CustomDetectorsStdLibApi
 from audithub_sdk.api.editor_languages_api import EditorLanguagesApi as EditorLanguagesApi
 from audithub_sdk.api.generic_api import GenericApi as GenericApi
 from audithub_sdk.api.hints_org_lib_api import HintsOrgLibApi as HintsOrgLibApi
 from audithub_sdk.api.hints_std_lib_api import HintsStdLibApi as HintsStdLibApi
+from audithub_sdk.api.invitations_api import InvitationsApi as InvitationsApi
+from audithub_sdk.api.issue_types_api import IssueTypesApi as IssueTypesApi
 from audithub_sdk.api.issues_api import IssuesApi as IssuesApi
 from audithub_sdk.api.organizations_api import OrganizationsApi as OrganizationsApi
+from audithub_sdk.api.project_documents_api import ProjectDocumentsApi as ProjectDocumentsApi
 from audithub_sdk.api.projects_api import ProjectsApi as ProjectsApi
+from audithub_sdk.api.stripe_api import StripeApi as StripeApi
 from audithub_sdk.api.subscriptions_api import SubscriptionsApi as SubscriptionsApi
 from audithub_sdk.api.tasks_api import TasksApi as TasksApi
 from audithub_sdk.api.tools_api import ToolsApi as ToolsApi
+from audithub_sdk.api.ui_api import UiApi as UiApi
 from audithub_sdk.api.users_api import UsersApi as UsersApi
 from audithub_sdk.api.v_specs_org_lib_api import VSpecsOrgLibApi as VSpecsOrgLibApi
 from audithub_sdk.api.v_specs_std_lib_api import VSpecsStdLibApi as VSpecsStdLibApi
@@ -243,10 +288,13 @@ from audithub_sdk.exceptions import ApiAttributeError as ApiAttributeError
 from audithub_sdk.exceptions import ApiException as ApiException
 
 # import models into sdk package
+from audithub_sdk.models.ai_budget import AIBudget as AIBudget
 from audithub_sdk.models.api_blacklisted_hint import APIBlacklistedHint as APIBlacklistedHint
 from audithub_sdk.models.accounting_data import AccountingData as AccountingData
 from audithub_sdk.models.active_organization_users import ActiveOrganizationUsers as ActiveOrganizationUsers
 from audithub_sdk.models.admin_resource_patch import AdminResourcePatch as AdminResourcePatch
+from audithub_sdk.models.agent_input import AgentInput as AgentInput
+from audithub_sdk.models.agent_parameters import AgentParameters as AgentParameters
 from audithub_sdk.models.api_key import ApiKey as ApiKey
 from audithub_sdk.models.api_key_base import ApiKeyBase as ApiKeyBase
 from audithub_sdk.models.api_key_with_secret import ApiKeyWithSecret as ApiKeyWithSecret
@@ -255,14 +303,18 @@ from audithub_sdk.models.archive_input import ArchiveInput as ArchiveInput
 from audithub_sdk.models.artifact import Artifact as Artifact
 from audithub_sdk.models.comment import Comment as Comment
 from audithub_sdk.models.comment_with_mutations import CommentWithMutations as CommentWithMutations
-from audithub_sdk.models.container_resources import ContainerResources as ContainerResources
 from audithub_sdk.models.contents_inner import ContentsInner as ContentsInner
+from audithub_sdk.models.credit_source_type import CreditSourceType as CreditSourceType
+from audithub_sdk.models.credit_task import CreditTask as CreditTask
+from audithub_sdk.models.credits import Credits as Credits
+from audithub_sdk.models.credits1 import Credits1 as Credits1
 from audithub_sdk.models.custom_detector import CustomDetector as CustomDetector
 from audithub_sdk.models.custom_detector_from_organization_library import CustomDetectorFromOrganizationLibrary as CustomDetectorFromOrganizationLibrary
 from audithub_sdk.models.custom_detector_from_standard_library import CustomDetectorFromStandardLibrary as CustomDetectorFromStandardLibrary
 from audithub_sdk.models.custom_detector_from_version import CustomDetectorFromVersion as CustomDetectorFromVersion
 from audithub_sdk.models.custom_detector_with_id import CustomDetectorWithId as CustomDetectorWithId
 from audithub_sdk.models.data import Data as Data
+from audithub_sdk.models.data1 import Data1 as Data1
 from audithub_sdk.models.defi_vanguard_v2_input import DefiVanguardV2Input as DefiVanguardV2Input
 from audithub_sdk.models.defi_vanguard_v2_parameters import DefiVanguardV2Parameters as DefiVanguardV2Parameters
 from audithub_sdk.models.directory import Directory as Directory
@@ -270,8 +322,12 @@ from audithub_sdk.models.editor_language import EditorLanguage as EditorLanguage
 from audithub_sdk.models.editor_language_with_id import EditorLanguageWithId as EditorLanguageWithId
 from audithub_sdk.models.effective_user_access_restriction import EffectiveUserAccessRestriction as EffectiveUserAccessRestriction
 from audithub_sdk.models.env_var import EnvVar as EnvVar
+from audithub_sdk.models.extra_checkout_request import ExtraCheckoutRequest as ExtraCheckoutRequest
+from audithub_sdk.models.extra_credits_config import ExtraCreditsConfig as ExtraCreditsConfig
+from audithub_sdk.models.extra_credits_config_admin import ExtraCreditsConfigAdmin as ExtraCreditsConfigAdmin
 from audithub_sdk.models.extra_function_arguments import ExtraFunctionArguments as ExtraFunctionArguments
 from audithub_sdk.models.fio_data import FIOData as FIOData
+from audithub_sdk.models.favorite_organization_assignment import FavoriteOrganizationAssignment as FavoriteOrganizationAssignment
 from audithub_sdk.models.favorite_project_assignment import FavoriteProjectAssignment as FavoriteProjectAssignment
 from audithub_sdk.models.file import File as File
 from audithub_sdk.models.file_thread_subject import FileThreadSubject as FileThreadSubject
@@ -318,46 +374,59 @@ from audithub_sdk.models.issue_type_info import IssueTypeInfo as IssueTypeInfo
 from audithub_sdk.models.machine_info import MachineInfo as MachineInfo
 from audithub_sdk.models.model_tool_input import ModelToolInput as ModelToolInput
 from audithub_sdk.models.model_tool_phase_parameters import ModelToolPhaseParameters as ModelToolPhaseParameters
+from audithub_sdk.models.monthly_credits import MonthlyCredits as MonthlyCredits
+from audithub_sdk.models.monthly_credits1 import MonthlyCredits1 as MonthlyCredits1
+from audithub_sdk.models.monthly_credits2 import MonthlyCredits2 as MonthlyCredits2
+from audithub_sdk.models.my_organization import MyOrganization as MyOrganization
 from audithub_sdk.models.npm_project_dependency import NPMProjectDependency as NPMProjectDependency
+from audithub_sdk.models.new_extra_credits_config import NewExtraCreditsConfig as NewExtraCreditsConfig
 from audithub_sdk.models.new_invitation import NewInvitation as NewInvitation
 from audithub_sdk.models.new_organization import NewOrganization as NewOrganization
+from audithub_sdk.models.new_organization_extra import NewOrganizationExtra as NewOrganizationExtra
 from audithub_sdk.models.new_organization_package import NewOrganizationPackage as NewOrganizationPackage
 from audithub_sdk.models.new_organization_subscription import NewOrganizationSubscription as NewOrganizationSubscription
+from audithub_sdk.models.new_subscription_plan import NewSubscriptionPlan as NewSubscriptionPlan
 from audithub_sdk.models.onboarding_request import OnboardingRequest as OnboardingRequest
 from audithub_sdk.models.or_ca_input import OrCaInput as OrCaInput
 from audithub_sdk.models.or_ca_parameters import OrCaParameters as OrCaParameters
 from audithub_sdk.models.orca_value import OrcaValue as OrcaValue
 from audithub_sdk.models.organization import Organization as Organization
 from audithub_sdk.models.organization_access_restriction import OrganizationAccessRestriction as OrganizationAccessRestriction
-from audithub_sdk.models.organization_active_quota import OrganizationActiveQuota as OrganizationActiveQuota
 from audithub_sdk.models.organization_admin import OrganizationAdmin as OrganizationAdmin
-from audithub_sdk.models.organization_consumption import OrganizationConsumption as OrganizationConsumption
-from audithub_sdk.models.organization_quota import OrganizationQuota as OrganizationQuota
+from audithub_sdk.models.organization_credit_period import OrganizationCreditPeriod as OrganizationCreditPeriod
+from audithub_sdk.models.organization_credit_summary import OrganizationCreditSummary as OrganizationCreditSummary
+from audithub_sdk.models.organization_credits import OrganizationCredits as OrganizationCredits
+from audithub_sdk.models.organization_extra import OrganizationExtra as OrganizationExtra
+from audithub_sdk.models.organization_extras import OrganizationExtras as OrganizationExtras
 from audithub_sdk.models.organization_subscription import OrganizationSubscription as OrganizationSubscription
+from audithub_sdk.models.organization_subscription_light import OrganizationSubscriptionLight as OrganizationSubscriptionLight
 from audithub_sdk.models.psa import PSA as PSA
 from audithub_sdk.models.psa_message import PSAMessage as PSAMessage
 from audithub_sdk.models.package_data import PackageData as PackageData
-from audithub_sdk.models.package_subscription import PackageSubscription as PackageSubscription
+from audithub_sdk.models.package_extra_credits import PackageExtraCredits as PackageExtraCredits
 from audithub_sdk.models.patch_user import PatchUser as PatchUser
 from audithub_sdk.models.pending_finding_actions import PendingFindingActions as PendingFindingActions
-from audithub_sdk.models.picus_input import PicusInput as PicusInput
-from audithub_sdk.models.picus_parameters import PicusParameters as PicusParameters
 from audithub_sdk.models.picus_v2_input import PicusV2Input as PicusV2Input
 from audithub_sdk.models.picus_v2_parameters import PicusV2Parameters as PicusV2Parameters
+from audithub_sdk.models.price import Price as Price
+from audithub_sdk.models.problem import Problem as Problem
 from audithub_sdk.models.project import Project as Project
 from audithub_sdk.models.project_admin import ProjectAdmin as ProjectAdmin
 from audithub_sdk.models.project_data import ProjectData as ProjectData
 from audithub_sdk.models.project_dependency import ProjectDependency as ProjectDependency
+from audithub_sdk.models.project_document import ProjectDocument as ProjectDocument
+from audithub_sdk.models.project_document_data import ProjectDocumentData as ProjectDocumentData
+from audithub_sdk.models.project_for_ui import ProjectForUI as ProjectForUI
 from audithub_sdk.models.project_git_hub_link import ProjectGitHubLink as ProjectGitHubLink
-from audithub_sdk.models.project_info_input import ProjectInfoInput as ProjectInfoInput
-from audithub_sdk.models.project_info_output import ProjectInfoOutput as ProjectInfoOutput
+from audithub_sdk.models.project_info import ProjectInfo as ProjectInfo
 from audithub_sdk.models.project_thread_subject import ProjectThreadSubject as ProjectThreadSubject
 from audithub_sdk.models.project_update_response import ProjectUpdateResponse as ProjectUpdateResponse
 from audithub_sdk.models.public_configuration import PublicConfiguration as PublicConfiguration
+from audithub_sdk.models.purchase_price import PurchasePrice as PurchasePrice
 from audithub_sdk.models.put_user import PutUser as PutUser
 from audithub_sdk.models.registered_user import RegisteredUser as RegisteredUser
 from audithub_sdk.models.resource_patch import ResourcePatch as ResourcePatch
-from audithub_sdk.models.resources import Resources as Resources
+from audithub_sdk.models.response_patch_subscription_organizations_organization_id_subscriptions_subscription_id_patch import ResponsePatchSubscriptionOrganizationsOrganizationIdSubscriptionsSubscriptionIdPatch as ResponsePatchSubscriptionOrganizationsOrganizationIdSubscriptionsSubscriptionIdPatch
 from audithub_sdk.models.root_model_list_union_custom_detector_from_version_custom_detector_from_standard_library_custom_detector_from_organization_library_inner import RootModelListUnionCustomDetectorFromVersionCustomDetectorFromStandardLibraryCustomDetectorFromOrganizationLibraryInner as RootModelListUnionCustomDetectorFromVersionCustomDetectorFromStandardLibraryCustomDetectorFromOrganizationLibraryInner
 from audithub_sdk.models.root_model_list_union_hint_from_version_hint_from_standard_library_hint_from_organization_library_hint_ad_hoc_inner import RootModelListUnionHintFromVersionHintFromStandardLibraryHintFromOrganizationLibraryHintAdHocInner as RootModelListUnionHintFromVersionHintFromStandardLibraryHintFromOrganizationLibraryHintAdHocInner
 from audithub_sdk.models.root_model_list_union_v_spec_from_version_v_spec_from_standard_library_v_spec_from_organization_library_v_spec_ad_hoc_inner import RootModelListUnionVSpecFromVersionVSpecFromStandardLibraryVSpecFromOrganizationLibraryVSpecAdHocInner as RootModelListUnionVSpecFromVersionVSpecFromStandardLibraryVSpecFromOrganizationLibraryVSpecAdHocInner
@@ -365,23 +434,35 @@ from audithub_sdk.models.security_tool import SecurityTool as SecurityTool
 from audithub_sdk.models.self_onboard_request import SelfOnboardRequest as SelfOnboardRequest
 from audithub_sdk.models.source_reference import SourceReference as SourceReference
 from audithub_sdk.models.step_definition import StepDefinition as StepDefinition
-from audithub_sdk.models.step_resources import StepResources as StepResources
+from audithub_sdk.models.stripe_event import StripeEvent as StripeEvent
+from audithub_sdk.models.stripe_extra_seats_decrease import StripeExtraSeatsDecrease as StripeExtraSeatsDecrease
+from audithub_sdk.models.stripe_extra_seats_increase import StripeExtraSeatsIncrease as StripeExtraSeatsIncrease
+from audithub_sdk.models.stripe_session import StripeSession as StripeSession
 from audithub_sdk.models.subject import Subject as Subject
+from audithub_sdk.models.subscription_checkout_request import SubscriptionCheckoutRequest as SubscriptionCheckoutRequest
+from audithub_sdk.models.subscription_credits_patch import SubscriptionCreditsPatch as SubscriptionCreditsPatch
+from audithub_sdk.models.subscription_delete_patch import SubscriptionDeletePatch as SubscriptionDeletePatch
+from audithub_sdk.models.subscription_duration_patch import SubscriptionDurationPatch as SubscriptionDurationPatch
+from audithub_sdk.models.subscription_plan import SubscriptionPlan as SubscriptionPlan
+from audithub_sdk.models.subscription_plan_admin import SubscriptionPlanAdmin as SubscriptionPlanAdmin
 from audithub_sdk.models.success_and_message_response import SuccessAndMessageResponse as SuccessAndMessageResponse
 from audithub_sdk.models.task import Task as Task
 from audithub_sdk.models.task_admin import TaskAdmin as TaskAdmin
 from audithub_sdk.models.task_creation import TaskCreation as TaskCreation
+from audithub_sdk.models.task_credit_consumption import TaskCreditConsumption as TaskCreditConsumption
+from audithub_sdk.models.task_credit_source import TaskCreditSource as TaskCreditSource
 from audithub_sdk.models.task_fio_data import TaskFIOData as TaskFIOData
 from audithub_sdk.models.task_patch import TaskPatch as TaskPatch
-from audithub_sdk.models.task_resources import TaskResources as TaskResources
 from audithub_sdk.models.task_status import TaskStatus as TaskStatus
 from audithub_sdk.models.task_step import TaskStep as TaskStep
 from audithub_sdk.models.temp_version import TempVersion as TempVersion
 from audithub_sdk.models.thread import Thread as Thread
 from audithub_sdk.models.thread_comment import ThreadComment as ThreadComment
 from audithub_sdk.models.thread_patch import ThreadPatch as ThreadPatch
+from audithub_sdk.models.total_credits import TotalCredits as TotalCredits
 from audithub_sdk.models.user import User as User
 from audithub_sdk.models.user_access_restriction import UserAccessRestriction as UserAccessRestriction
+from audithub_sdk.models.user_admin import UserAdmin as UserAdmin
 from audithub_sdk.models.user_for_admin import UserForAdmin as UserForAdmin
 from audithub_sdk.models.user_group import UserGroup as UserGroup
 from audithub_sdk.models.user_information import UserInformation as UserInformation
@@ -402,9 +483,6 @@ from audithub_sdk.models.version import Version as Version
 from audithub_sdk.models.version_admin import VersionAdmin as VersionAdmin
 from audithub_sdk.models.version_data import VersionData as VersionData
 from audithub_sdk.models.version_patch import VersionPatch as VersionPatch
-from audithub_sdk.models.version_resources import VersionResources as VersionResources
-from audithub_sdk.models.zk_vanguard_input import ZKVanguardInput as ZKVanguardInput
-from audithub_sdk.models.zk_vanguard_parameters import ZKVanguardParameters as ZKVanguardParameters
 from audithub_sdk.models.zk_vanguard_v2_input import ZKVanguardV2Input as ZKVanguardV2Input
 from audithub_sdk.models.zk_vanguard_v2_parameters import ZKVanguardV2Parameters as ZKVanguardV2Parameters
 
