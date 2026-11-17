@@ -20,6 +20,7 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,12 +30,17 @@ class OrganizationAdmin(BaseModel):
     """ # noqa: E501
     name: StrictStr
     support_channel: Optional[StrictStr] = None
-    user_limit: Optional[StrictInt] = None
+    user_limit: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
+    project_limit: Optional[StrictInt] = None
+    tools_only: Optional[StrictBool] = Field(default=False, description="Indicates if this organization is a tools-only organization. Tools-only organizations have no access to auditing features.")
     id: StrictInt
+    plan_seats: StrictInt
+    extra_seats: StrictInt
+    manual_user_limit: StrictInt
     gh_connected: StrictBool
     created_at: datetime
     deleted: StrictBool = Field(description="If true, then the Organization has been soft-deleted.")
-    __properties: ClassVar[List[str]] = ["name", "support_channel", "user_limit", "id", "gh_connected", "created_at", "deleted"]
+    __properties: ClassVar[List[str]] = ["name", "support_channel", "user_limit", "project_limit", "tools_only", "id", "plan_seats", "extra_seats", "manual_user_limit", "gh_connected", "created_at", "deleted"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,6 +91,11 @@ class OrganizationAdmin(BaseModel):
         if self.user_limit is None and "user_limit" in self.model_fields_set:
             _dict['user_limit'] = None
 
+        # set to None if project_limit (nullable) is None
+        # and model_fields_set contains the field
+        if self.project_limit is None and "project_limit" in self.model_fields_set:
+            _dict['project_limit'] = None
+
         return _dict
 
     @classmethod
@@ -100,7 +111,12 @@ class OrganizationAdmin(BaseModel):
             "name": obj.get("name"),
             "support_channel": obj.get("support_channel"),
             "user_limit": obj.get("user_limit"),
+            "project_limit": obj.get("project_limit"),
+            "tools_only": obj.get("tools_only") if obj.get("tools_only") is not None else False,
             "id": obj.get("id"),
+            "plan_seats": obj.get("plan_seats"),
+            "extra_seats": obj.get("extra_seats"),
+            "manual_user_limit": obj.get("manual_user_limit"),
             "gh_connected": obj.get("gh_connected"),
             "created_at": obj.get("created_at"),
             "deleted": obj.get("deleted")

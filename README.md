@@ -9,7 +9,7 @@ The client code in this repository is generated from the live OpenAPI document:
 
 `https://audithub.dev.veridise.tools/api/v1/openapi.json`
 
-The repository contents are produced with OpenAPI Generator 7.20.0. The current generated package version is `0.1.0`.
+The repository contents are produced with OpenAPI Generator 7.20.0. The current generated package version is `0.2.0`.
 
 The current generation command is:
 
@@ -18,7 +18,7 @@ openapi-generator generate \
   -i https://audithub.dev.veridise.tools/api/v1/openapi.json \
   -g python \
   -o . \
-  --additional-properties=packageName=audithub_sdk,projectName=audithub-sdk,packageVersion=0.1.0,hideGenerationTimestamp=true,library=httpx
+  --additional-properties=packageName=audithub_sdk,projectName=audithub-sdk,packageVersion=0.2.0,hideGenerationTimestamp=true,library=httpx
 ```
 
 ## Regenerating
@@ -26,8 +26,10 @@ openapi-generator generate \
 When the AuditHub API schema changes, regenerate the SDK from the repository root and pass the new SDK version:
 
 ```sh
-scripts/regenerate-sdk.sh 0.1.1
+scripts/regenerate-sdk.sh 0.2.0
 ```
+
+Set `OPENAPI_SPEC` to a downloaded OpenAPI JSON file to regenerate from a fixed snapshot. The script replaces generator-owned source, documentation, and test directories so removed API elements do not remain in the SDK. Handwritten extensions and tests are preserved.
 
 The script passes that version as `packageVersion` to OpenAPI Generator, then syncs repository-maintained version references in:
 
@@ -62,10 +64,23 @@ bump-my-version bump patch
 To set an exact version:
 
 ```sh
-bump-my-version bump --new-version 0.1.1
+bump-my-version bump --new-version 0.2.0
 ```
 
 The bump configuration intentionally does not update this README's generator command. That command is updated by `scripts/regenerate-sdk.sh` when the SDK is regenerated.
+
+## API update in 0.2.0
+
+Regenerated on 2026-11-17 from the configured development API's live OpenAPI
+schema (SHA-256 `1d3487ecaa616c2dc4e6aa6c7d8a4113c7c6ddf3dd2f8e4325fc762cc5b29073`).
+The API document still reports version `0.1.0`; the SDK package version is `0.2.0`.
+
+This update adds agent scans, credits, project documents, Stripe/billing, favorites,
+and UI aggregate endpoints. Credit/plan-based subscription models replace older
+resource/quota fields. Removed API endpoints and their unused models are no longer
+exported, including legacy Picus/ZK Vanguard launch inputs (the v2 endpoints remain).
+Consumers should update calls to removed endpoints and subscription/resource models
+before upgrading. Authentication extensions remain unchanged.
 
 ## Installation
 
@@ -145,6 +160,6 @@ Publishing is handled by `.github/workflows/publish.yml` from a GitHub release t
 Use `vX.Y.Z` tags for releases, for example:
 
 ```sh
-git tag v0.1.1
-git push origin v0.1.1
+git tag v0.2.0
+git push origin v0.2.0
 ```

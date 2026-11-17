@@ -17,44 +17,44 @@ import unittest
 from audithub_sdk.api.custom_detectors_org_lib_api import CustomDetectorsOrgLibApi
 
 
-class TestCustomDetectorsOrgLibApi(unittest.TestCase):
+class TestCustomDetectorsOrgLibApi(unittest.IsolatedAsyncioTestCase):
     """CustomDetectorsOrgLibApi unit test stubs"""
 
-    def setUp(self) -> None:
+    async def asyncSetUp(self) -> None:
         self.api = CustomDetectorsOrgLibApi()
 
-    def tearDown(self) -> None:
-        pass
+    async def asyncTearDown(self) -> None:
+        await self.api.api_client.close()
 
-    def test_delete_custom_detector_organizations_organization_id_custom_detectors_custom_detector_id_delete(self) -> None:
+    async def test_delete_custom_detector_organizations_organization_id_custom_detectors_custom_detector_id_delete(self) -> None:
         """Test case for delete_custom_detector_organizations_organization_id_custom_detectors_custom_detector_id_delete
 
         Delete Custom Detector
         """
         pass
 
-    def test_get_custom_detector_organizations_organization_id_custom_detectors_custom_detector_id_get(self) -> None:
+    async def test_get_custom_detector_organizations_organization_id_custom_detectors_custom_detector_id_get(self) -> None:
         """Test case for get_custom_detector_organizations_organization_id_custom_detectors_custom_detector_id_get
 
         Get Custom Detector
         """
         pass
 
-    def test_get_custom_detectors_organizations_organization_id_custom_detectors_get(self) -> None:
+    async def test_get_custom_detectors_organizations_organization_id_custom_detectors_get(self) -> None:
         """Test case for get_custom_detectors_organizations_organization_id_custom_detectors_get
 
         Get Custom Detectors
         """
         pass
 
-    def test_post_custom_detector_organizations_organization_id_custom_detectors_post(self) -> None:
+    async def test_post_custom_detector_organizations_organization_id_custom_detectors_post(self) -> None:
         """Test case for post_custom_detector_organizations_organization_id_custom_detectors_post
 
         Post Custom Detector
         """
         pass
 
-    def test_put_custom_detector_organizations_organization_id_custom_detectors_custom_detector_id_put(self) -> None:
+    async def test_put_custom_detector_organizations_organization_id_custom_detectors_custom_detector_id_put(self) -> None:
         """Test case for put_custom_detector_organizations_organization_id_custom_detectors_custom_detector_id_put
 
         Put Custom Detector

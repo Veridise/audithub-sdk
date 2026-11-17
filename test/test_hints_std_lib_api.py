@@ -17,23 +17,23 @@ import unittest
 from audithub_sdk.api.hints_std_lib_api import HintsStdLibApi
 
 
-class TestHintsStdLibApi(unittest.TestCase):
+class TestHintsStdLibApi(unittest.IsolatedAsyncioTestCase):
     """HintsStdLibApi unit test stubs"""
 
-    def setUp(self) -> None:
+    async def asyncSetUp(self) -> None:
         self.api = HintsStdLibApi()
 
-    def tearDown(self) -> None:
-        pass
+    async def asyncTearDown(self) -> None:
+        await self.api.api_client.close()
 
-    def test_get_hints_library_hint_library_get(self) -> None:
+    async def test_get_hints_library_hint_library_get(self) -> None:
         """Test case for get_hints_library_hint_library_get
 
         Get Hints Library
         """
         pass
 
-    def test_get_v_specifications_library_version_hint_library_version_id_get(self) -> None:
+    async def test_get_v_specifications_library_version_hint_library_version_id_get(self) -> None:
         """Test case for get_v_specifications_library_version_hint_library_version_id_get
 
         Get V Specifications Library Version

@@ -24,17 +24,11 @@ from audithub_sdk.models.effective_user_access_restriction import EffectiveUserA
 from audithub_sdk.models.favorite_project_assignment import FavoriteProjectAssignment
 from audithub_sdk.models.id_and_message_response import IdAndMessageResponse
 from audithub_sdk.models.invitation import Invitation
-from audithub_sdk.models.invitation_patch import InvitationPatch
-from audithub_sdk.models.issue_type import IssueType
-from audithub_sdk.models.issue_type_info import IssueTypeInfo
-from audithub_sdk.models.new_invitation import NewInvitation
 from audithub_sdk.models.new_organization import NewOrganization
 from audithub_sdk.models.new_organization_package import NewOrganizationPackage
 from audithub_sdk.models.organization import Organization
 from audithub_sdk.models.organization_access_restriction import OrganizationAccessRestriction
 from audithub_sdk.models.organization_admin import OrganizationAdmin
-from audithub_sdk.models.organization_consumption import OrganizationConsumption
-from audithub_sdk.models.organization_quota import OrganizationQuota
 from audithub_sdk.models.package_data import PackageData
 from audithub_sdk.models.resource_patch import ResourcePatch
 from audithub_sdk.models.success_and_message_response import SuccessAndMessageResponse
@@ -43,7 +37,6 @@ from audithub_sdk.models.user_group import UserGroup
 from audithub_sdk.models.user_organization_setting import UserOrganizationSetting
 from audithub_sdk.models.user_patch import UserPatch
 from audithub_sdk.models.user_to_organization_assignment import UserToOrganizationAssignment
-from audithub_sdk.models.version_resources import VersionResources
 
 from audithub_sdk.api_client import ApiClient, RequestSerialized
 from audithub_sdk.api_response import ApiResponse
@@ -123,6 +116,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -195,6 +190,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -267,6 +264,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -314,7 +313,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -411,6 +411,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -479,6 +481,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -547,6 +551,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -591,7 +597,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -670,6 +677,8 @@ class OrganizationsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[OrganizationAdmin]",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -733,6 +742,8 @@ class OrganizationsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[OrganizationAdmin]",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -796,6 +807,8 @@ class OrganizationsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[OrganizationAdmin]",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -837,7 +850,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -921,6 +935,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -989,6 +1005,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1057,6 +1075,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1101,7 +1121,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -1114,564 +1135,6 @@ class OrganizationsApi:
         return self.api_client.param_serialize(
             method='DELETE',
             resource_path='/organizations/{organization_id}/github-connect',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def delete_invitation_organizations_organization_id_invitations_invitation_id_delete(
-        self,
-        organization_id: StrictInt,
-        invitation_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessAndMessageResponse:
-        """Delete Invitation
-
-        Delete an invitation by id
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param invitation_id: (required)
-        :type invitation_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._delete_invitation_organizations_organization_id_invitations_invitation_id_delete_serialize(
-            organization_id=organization_id,
-            invitation_id=invitation_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessAndMessageResponse",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def delete_invitation_organizations_organization_id_invitations_invitation_id_delete_with_http_info(
-        self,
-        organization_id: StrictInt,
-        invitation_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessAndMessageResponse]:
-        """Delete Invitation
-
-        Delete an invitation by id
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param invitation_id: (required)
-        :type invitation_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._delete_invitation_organizations_organization_id_invitations_invitation_id_delete_serialize(
-            organization_id=organization_id,
-            invitation_id=invitation_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessAndMessageResponse",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def delete_invitation_organizations_organization_id_invitations_invitation_id_delete_without_preload_content(
-        self,
-        organization_id: StrictInt,
-        invitation_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Delete Invitation
-
-        Delete an invitation by id
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param invitation_id: (required)
-        :type invitation_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._delete_invitation_organizations_organization_id_invitations_invitation_id_delete_serialize(
-            organization_id=organization_id,
-            invitation_id=invitation_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessAndMessageResponse",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _delete_invitation_organizations_organization_id_invitations_invitation_id_delete_serialize(
-        self,
-        organization_id,
-        invitation_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if invitation_id is not None:
-            _path_params['invitation_id'] = invitation_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'OpenIdConnect'
-        ]
-
-        return self.api_client.param_serialize(
-            method='DELETE',
-            resource_path='/organizations/{organization_id}/invitations/{invitation_id}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def delete_issue_type_organizations_organization_id_issue_types_type_id_delete(
-        self,
-        organization_id: StrictInt,
-        type_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessAndMessageResponse:
-        """Delete Issue Type
-
-        Delete an issue type by id
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param type_id: (required)
-        :type type_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._delete_issue_type_organizations_organization_id_issue_types_type_id_delete_serialize(
-            organization_id=organization_id,
-            type_id=type_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessAndMessageResponse",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def delete_issue_type_organizations_organization_id_issue_types_type_id_delete_with_http_info(
-        self,
-        organization_id: StrictInt,
-        type_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessAndMessageResponse]:
-        """Delete Issue Type
-
-        Delete an issue type by id
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param type_id: (required)
-        :type type_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._delete_issue_type_organizations_organization_id_issue_types_type_id_delete_serialize(
-            organization_id=organization_id,
-            type_id=type_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessAndMessageResponse",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def delete_issue_type_organizations_organization_id_issue_types_type_id_delete_without_preload_content(
-        self,
-        organization_id: StrictInt,
-        type_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Delete Issue Type
-
-        Delete an issue type by id
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param type_id: (required)
-        :type type_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._delete_issue_type_organizations_organization_id_issue_types_type_id_delete_serialize(
-            organization_id=organization_id,
-            type_id=type_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessAndMessageResponse",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _delete_issue_type_organizations_organization_id_issue_types_type_id_delete_serialize(
-        self,
-        organization_id,
-        type_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if type_id is not None:
-            _path_params['type_id'] = type_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'OpenIdConnect'
-        ]
-
-        return self.api_client.param_serialize(
-            method='DELETE',
-            resource_path='/organizations/{organization_id}/issue_types/{type_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1703,7 +1166,7 @@ class OrganizationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> object:
+    ) -> SuccessAndMessageResponse:
         """Delete Organization
 
         Permanently delete an organization
@@ -1741,8 +1204,10 @@ class OrganizationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1771,7 +1236,7 @@ class OrganizationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[object]:
+    ) -> ApiResponse[SuccessAndMessageResponse]:
         """Delete Organization
 
         Permanently delete an organization
@@ -1809,8 +1274,10 @@ class OrganizationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1877,8 +1344,10 @@ class OrganizationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1923,7 +1392,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -2011,6 +1481,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2083,6 +1555,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2155,6 +1629,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2202,7 +1678,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -2290,6 +1767,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PackageData",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2362,6 +1841,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PackageData",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2434,6 +1915,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PackageData",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2481,7 +1964,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -2578,6 +2062,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ActiveOrganizationUsers",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2646,6 +2132,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ActiveOrganizationUsers",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2714,6 +2202,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ActiveOrganizationUsers",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2758,7 +2248,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -2842,6 +2333,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Optional[int]]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2910,6 +2403,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Optional[int]]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2978,6 +2473,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Optional[int]]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3022,7 +2519,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -3106,6 +2604,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3174,6 +2674,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3242,6 +2744,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3286,7 +2790,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -3377,6 +2882,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3452,6 +2959,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3527,6 +3036,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3583,7 +3094,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -3671,6 +3183,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3743,6 +3257,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3815,6 +3331,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3864,7 +3382,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -3877,828 +3396,6 @@ class OrganizationsApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/organizations/{organization_id}/github-connect',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def get_invitation_organizations_organization_id_invitations_invitation_id_get(
-        self,
-        organization_id: StrictInt,
-        invitation_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Invitation:
-        """Get Invitation
-
-        Get an invitation by id
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param invitation_id: (required)
-        :type invitation_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_invitation_organizations_organization_id_invitations_invitation_id_get_serialize(
-            organization_id=organization_id,
-            invitation_id=invitation_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Invitation",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def get_invitation_organizations_organization_id_invitations_invitation_id_get_with_http_info(
-        self,
-        organization_id: StrictInt,
-        invitation_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Invitation]:
-        """Get Invitation
-
-        Get an invitation by id
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param invitation_id: (required)
-        :type invitation_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_invitation_organizations_organization_id_invitations_invitation_id_get_serialize(
-            organization_id=organization_id,
-            invitation_id=invitation_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Invitation",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def get_invitation_organizations_organization_id_invitations_invitation_id_get_without_preload_content(
-        self,
-        organization_id: StrictInt,
-        invitation_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Get Invitation
-
-        Get an invitation by id
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param invitation_id: (required)
-        :type invitation_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_invitation_organizations_organization_id_invitations_invitation_id_get_serialize(
-            organization_id=organization_id,
-            invitation_id=invitation_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Invitation",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_invitation_organizations_organization_id_invitations_invitation_id_get_serialize(
-        self,
-        organization_id,
-        invitation_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if invitation_id is not None:
-            _path_params['invitation_id'] = invitation_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'OpenIdConnect'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/organizations/{organization_id}/invitations/{invitation_id}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def get_issue_type_organizations_organization_id_issue_types_type_id_get(
-        self,
-        organization_id: StrictInt,
-        type_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> IssueType:
-        """Get Issue Type
-
-        Get an issue type by id
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param type_id: (required)
-        :type type_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_issue_type_organizations_organization_id_issue_types_type_id_get_serialize(
-            organization_id=organization_id,
-            type_id=type_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "IssueType",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def get_issue_type_organizations_organization_id_issue_types_type_id_get_with_http_info(
-        self,
-        organization_id: StrictInt,
-        type_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[IssueType]:
-        """Get Issue Type
-
-        Get an issue type by id
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param type_id: (required)
-        :type type_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_issue_type_organizations_organization_id_issue_types_type_id_get_serialize(
-            organization_id=organization_id,
-            type_id=type_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "IssueType",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def get_issue_type_organizations_organization_id_issue_types_type_id_get_without_preload_content(
-        self,
-        organization_id: StrictInt,
-        type_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Get Issue Type
-
-        Get an issue type by id
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param type_id: (required)
-        :type type_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_issue_type_organizations_organization_id_issue_types_type_id_get_serialize(
-            organization_id=organization_id,
-            type_id=type_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "IssueType",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_issue_type_organizations_organization_id_issue_types_type_id_get_serialize(
-        self,
-        organization_id,
-        type_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if type_id is not None:
-            _path_params['type_id'] = type_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'OpenIdConnect'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/organizations/{organization_id}/issue_types/{type_id}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def get_organization_issue_types_organizations_organization_id_issue_types_get(
-        self,
-        organization_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[IssueType]:
-        """Get Organization Issue Types
-
-        Get the available issue types for an organization.
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_organization_issue_types_organizations_organization_id_issue_types_get_serialize(
-            organization_id=organization_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[IssueType]",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def get_organization_issue_types_organizations_organization_id_issue_types_get_with_http_info(
-        self,
-        organization_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[IssueType]]:
-        """Get Organization Issue Types
-
-        Get the available issue types for an organization.
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_organization_issue_types_organizations_organization_id_issue_types_get_serialize(
-            organization_id=organization_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[IssueType]",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def get_organization_issue_types_organizations_organization_id_issue_types_get_without_preload_content(
-        self,
-        organization_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Get Organization Issue Types
-
-        Get the available issue types for an organization.
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_organization_issue_types_organizations_organization_id_issue_types_get_serialize(
-            organization_id=organization_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[IssueType]",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_organization_issue_types_organizations_organization_id_issue_types_get_serialize(
-        self,
-        organization_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'OpenIdConnect'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/organizations/{organization_id}/issue_types',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -4770,6 +3467,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Organization",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4838,6 +3537,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Organization",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4906,6 +3607,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Organization",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4950,7 +3653,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -4963,832 +3667,6 @@ class OrganizationsApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/organizations/{organization_id}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def get_organization_quota_organizations_organization_id_quota_get(
-        self,
-        organization_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> OrganizationQuota:
-        """Get Organization Quota
-
-        Get current organization quota
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_organization_quota_organizations_organization_id_quota_get_serialize(
-            organization_id=organization_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OrganizationQuota",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def get_organization_quota_organizations_organization_id_quota_get_with_http_info(
-        self,
-        organization_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[OrganizationQuota]:
-        """Get Organization Quota
-
-        Get current organization quota
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_organization_quota_organizations_organization_id_quota_get_serialize(
-            organization_id=organization_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OrganizationQuota",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def get_organization_quota_organizations_organization_id_quota_get_without_preload_content(
-        self,
-        organization_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Get Organization Quota
-
-        Get current organization quota
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_organization_quota_organizations_organization_id_quota_get_serialize(
-            organization_id=organization_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OrganizationQuota",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_organization_quota_organizations_organization_id_quota_get_serialize(
-        self,
-        organization_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'OpenIdConnect'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/organizations/{organization_id}/quota',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def get_organization_resource_detailed_organizations_organization_id_resource_consumption_detailed_get(
-        self,
-        organization_id: StrictInt,
-        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Fallback date interval in months when the organization has no active subscriptions.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[VersionResources]:
-        """Get Organization Resource Detailed
-
-        consumption
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param months: Fallback date interval in months when the organization has no active subscriptions.
-        :type months: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_organization_resource_detailed_organizations_organization_id_resource_consumption_detailed_get_serialize(
-            organization_id=organization_id,
-            months=months,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[VersionResources]",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def get_organization_resource_detailed_organizations_organization_id_resource_consumption_detailed_get_with_http_info(
-        self,
-        organization_id: StrictInt,
-        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Fallback date interval in months when the organization has no active subscriptions.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[VersionResources]]:
-        """Get Organization Resource Detailed
-
-        consumption
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param months: Fallback date interval in months when the organization has no active subscriptions.
-        :type months: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_organization_resource_detailed_organizations_organization_id_resource_consumption_detailed_get_serialize(
-            organization_id=organization_id,
-            months=months,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[VersionResources]",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def get_organization_resource_detailed_organizations_organization_id_resource_consumption_detailed_get_without_preload_content(
-        self,
-        organization_id: StrictInt,
-        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Fallback date interval in months when the organization has no active subscriptions.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Get Organization Resource Detailed
-
-        consumption
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param months: Fallback date interval in months when the organization has no active subscriptions.
-        :type months: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_organization_resource_detailed_organizations_organization_id_resource_consumption_detailed_get_serialize(
-            organization_id=organization_id,
-            months=months,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[VersionResources]",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_organization_resource_detailed_organizations_organization_id_resource_consumption_detailed_get_serialize(
-        self,
-        organization_id,
-        months,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        # process the query parameters
-        if months is not None:
-            
-            _query_params.append(('months', months))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'OpenIdConnect'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/organizations/{organization_id}/resource-consumption-detailed',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def get_organization_resource_usage_organizations_organization_id_resource_consumption_total_get(
-        self,
-        organization_id: StrictInt,
-        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Fallback date interval in months when the organization has no active subscriptions.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> OrganizationConsumption:
-        """Get Organization Resource Usage
-
-        consumption
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param months: Fallback date interval in months when the organization has no active subscriptions.
-        :type months: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_organization_resource_usage_organizations_organization_id_resource_consumption_total_get_serialize(
-            organization_id=organization_id,
-            months=months,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OrganizationConsumption",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def get_organization_resource_usage_organizations_organization_id_resource_consumption_total_get_with_http_info(
-        self,
-        organization_id: StrictInt,
-        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Fallback date interval in months when the organization has no active subscriptions.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[OrganizationConsumption]:
-        """Get Organization Resource Usage
-
-        consumption
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param months: Fallback date interval in months when the organization has no active subscriptions.
-        :type months: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_organization_resource_usage_organizations_organization_id_resource_consumption_total_get_serialize(
-            organization_id=organization_id,
-            months=months,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OrganizationConsumption",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def get_organization_resource_usage_organizations_organization_id_resource_consumption_total_get_without_preload_content(
-        self,
-        organization_id: StrictInt,
-        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Fallback date interval in months when the organization has no active subscriptions.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Get Organization Resource Usage
-
-        consumption
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param months: Fallback date interval in months when the organization has no active subscriptions.
-        :type months: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_organization_resource_usage_organizations_organization_id_resource_consumption_total_get_serialize(
-            organization_id=organization_id,
-            months=months,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OrganizationConsumption",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_organization_resource_usage_organizations_organization_id_resource_consumption_total_get_serialize(
-        self,
-        organization_id,
-        months,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        # process the query parameters
-        if months is not None:
-            
-            _query_params.append(('months', months))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'OpenIdConnect'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/organizations/{organization_id}/resource-consumption-total',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -5860,6 +3738,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[OrganizationAccessRestriction]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -5928,6 +3808,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[OrganizationAccessRestriction]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -5996,6 +3878,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[OrganizationAccessRestriction]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -6040,7 +3924,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -6053,322 +3938,6 @@ class OrganizationsApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/organizations/{organization_id}/restrictions',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def get_organization_usage_organizations_organization_id_usage_get(
-        self,
-        organization_id: StrictInt,
-        from_date: Optional[datetime] = None,
-        to_date: Optional[datetime] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> object:
-        """Get Organization Usage
-
-        Get organization usage
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param from_date:
-        :type from_date: datetime
-        :param to_date:
-        :type to_date: datetime
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_organization_usage_organizations_organization_id_usage_get_serialize(
-            organization_id=organization_id,
-            from_date=from_date,
-            to_date=to_date,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def get_organization_usage_organizations_organization_id_usage_get_with_http_info(
-        self,
-        organization_id: StrictInt,
-        from_date: Optional[datetime] = None,
-        to_date: Optional[datetime] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[object]:
-        """Get Organization Usage
-
-        Get organization usage
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param from_date:
-        :type from_date: datetime
-        :param to_date:
-        :type to_date: datetime
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_organization_usage_organizations_organization_id_usage_get_serialize(
-            organization_id=organization_id,
-            from_date=from_date,
-            to_date=to_date,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def get_organization_usage_organizations_organization_id_usage_get_without_preload_content(
-        self,
-        organization_id: StrictInt,
-        from_date: Optional[datetime] = None,
-        to_date: Optional[datetime] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Get Organization Usage
-
-        Get organization usage
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param from_date:
-        :type from_date: datetime
-        :param to_date:
-        :type to_date: datetime
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_organization_usage_organizations_organization_id_usage_get_serialize(
-            organization_id=organization_id,
-            from_date=from_date,
-            to_date=to_date,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_organization_usage_organizations_organization_id_usage_get_serialize(
-        self,
-        organization_id,
-        from_date,
-        to_date,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        # process the query parameters
-        if from_date is not None:
-            if isinstance(from_date, datetime):
-                _query_params.append(
-                    (
-                        'from_date',
-                        from_date.strftime(
-                            self.api_client.configuration.datetime_format
-                        )
-                    )
-                )
-            else:
-                _query_params.append(('from_date', from_date))
-            
-        if to_date is not None:
-            if isinstance(to_date, datetime):
-                _query_params.append(
-                    (
-                        'to_date',
-                        to_date.strftime(
-                            self.api_client.configuration.datetime_format
-                        )
-                    )
-                )
-            else:
-                _query_params.append(('to_date', to_date))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'OpenIdConnect'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/organizations/{organization_id}/usage',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -6440,6 +4009,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[UserGroup]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -6508,6 +4079,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[UserGroup]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -6576,6 +4149,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[UserGroup]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -6620,7 +4195,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -6704,6 +4280,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -6772,6 +4350,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -6840,6 +4420,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -6884,7 +4466,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -6980,6 +4563,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[OrganizationAdmin]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -7060,6 +4645,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[OrganizationAdmin]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -7140,6 +4727,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[OrganizationAdmin]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -7219,7 +4808,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -7303,6 +4893,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Invitation]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -7371,6 +4963,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Invitation]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -7439,6 +5033,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Invitation]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -7483,7 +5079,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -7571,6 +5168,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[EffectiveUserAccessRestriction]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -7643,6 +5242,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[EffectiveUserAccessRestriction]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -7715,6 +5316,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[EffectiveUserAccessRestriction]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -7762,7 +5365,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -7846,6 +5450,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "UserOrganizationSetting",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -7914,6 +5520,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "UserOrganizationSetting",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -7982,6 +5590,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "UserOrganizationSetting",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -8026,7 +5636,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -8114,6 +5725,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[OrganizationAccessRestriction]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -8186,6 +5799,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[OrganizationAccessRestriction]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -8258,6 +5873,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[OrganizationAccessRestriction]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -8305,7 +5922,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -8318,313 +5936,6 @@ class OrganizationsApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/organizations/{organization_id}/users/{user_id}/restrictions',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def patch_invitation_organizations_organization_id_invitations_invitation_id_patch(
-        self,
-        organization_id: StrictInt,
-        invitation_id: StrictInt,
-        invitation_patch: InvitationPatch,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessAndMessageResponse:
-        """Patch Invitation
-
-        Patch an invitation
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param invitation_id: (required)
-        :type invitation_id: int
-        :param invitation_patch: (required)
-        :type invitation_patch: InvitationPatch
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._patch_invitation_organizations_organization_id_invitations_invitation_id_patch_serialize(
-            organization_id=organization_id,
-            invitation_id=invitation_id,
-            invitation_patch=invitation_patch,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessAndMessageResponse",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def patch_invitation_organizations_organization_id_invitations_invitation_id_patch_with_http_info(
-        self,
-        organization_id: StrictInt,
-        invitation_id: StrictInt,
-        invitation_patch: InvitationPatch,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessAndMessageResponse]:
-        """Patch Invitation
-
-        Patch an invitation
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param invitation_id: (required)
-        :type invitation_id: int
-        :param invitation_patch: (required)
-        :type invitation_patch: InvitationPatch
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._patch_invitation_organizations_organization_id_invitations_invitation_id_patch_serialize(
-            organization_id=organization_id,
-            invitation_id=invitation_id,
-            invitation_patch=invitation_patch,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessAndMessageResponse",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def patch_invitation_organizations_organization_id_invitations_invitation_id_patch_without_preload_content(
-        self,
-        organization_id: StrictInt,
-        invitation_id: StrictInt,
-        invitation_patch: InvitationPatch,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Patch Invitation
-
-        Patch an invitation
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param invitation_id: (required)
-        :type invitation_id: int
-        :param invitation_patch: (required)
-        :type invitation_patch: InvitationPatch
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._patch_invitation_organizations_organization_id_invitations_invitation_id_patch_serialize(
-            organization_id=organization_id,
-            invitation_id=invitation_id,
-            invitation_patch=invitation_patch,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessAndMessageResponse",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _patch_invitation_organizations_organization_id_invitations_invitation_id_patch_serialize(
-        self,
-        organization_id,
-        invitation_id,
-        invitation_patch,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if invitation_id is not None:
-            _path_params['invitation_id'] = invitation_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if invitation_patch is not None:
-            _body_params = invitation_patch
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'OpenIdConnect'
-        ]
-
-        return self.api_client.param_serialize(
-            method='PATCH',
-            resource_path='/organizations/{organization_id}/invitations/{invitation_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -8700,6 +6011,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -8772,6 +6085,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -8844,6 +6159,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -8891,7 +6208,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -8992,6 +6310,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -9064,6 +6384,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -9136,6 +6458,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -9183,7 +6507,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -9209,590 +6534,6 @@ class OrganizationsApi:
         return self.api_client.param_serialize(
             method='PATCH',
             resource_path='/organizations/{organization_id}/users',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def post_invitation_organizations_organization_id_invitations_post(
-        self,
-        organization_id: StrictInt,
-        new_invitation: NewInvitation,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessAndMessageResponse:
-        """Post Invitation
-
-        Create a user invitation for an organization
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param new_invitation: (required)
-        :type new_invitation: NewInvitation
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._post_invitation_organizations_organization_id_invitations_post_serialize(
-            organization_id=organization_id,
-            new_invitation=new_invitation,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessAndMessageResponse",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def post_invitation_organizations_organization_id_invitations_post_with_http_info(
-        self,
-        organization_id: StrictInt,
-        new_invitation: NewInvitation,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessAndMessageResponse]:
-        """Post Invitation
-
-        Create a user invitation for an organization
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param new_invitation: (required)
-        :type new_invitation: NewInvitation
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._post_invitation_organizations_organization_id_invitations_post_serialize(
-            organization_id=organization_id,
-            new_invitation=new_invitation,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessAndMessageResponse",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def post_invitation_organizations_organization_id_invitations_post_without_preload_content(
-        self,
-        organization_id: StrictInt,
-        new_invitation: NewInvitation,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Post Invitation
-
-        Create a user invitation for an organization
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param new_invitation: (required)
-        :type new_invitation: NewInvitation
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._post_invitation_organizations_organization_id_invitations_post_serialize(
-            organization_id=organization_id,
-            new_invitation=new_invitation,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessAndMessageResponse",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _post_invitation_organizations_organization_id_invitations_post_serialize(
-        self,
-        organization_id,
-        new_invitation,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if new_invitation is not None:
-            _body_params = new_invitation
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'OpenIdConnect'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/invitations',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def post_issue_type_organizations_organization_id_issue_types_post(
-        self,
-        organization_id: StrictInt,
-        issue_type_info: IssueTypeInfo,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> IdAndMessageResponse:
-        """Post Issue Type
-
-        Create new organization issue type
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param issue_type_info: (required)
-        :type issue_type_info: IssueTypeInfo
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._post_issue_type_organizations_organization_id_issue_types_post_serialize(
-            organization_id=organization_id,
-            issue_type_info=issue_type_info,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "IdAndMessageResponse",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def post_issue_type_organizations_organization_id_issue_types_post_with_http_info(
-        self,
-        organization_id: StrictInt,
-        issue_type_info: IssueTypeInfo,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[IdAndMessageResponse]:
-        """Post Issue Type
-
-        Create new organization issue type
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param issue_type_info: (required)
-        :type issue_type_info: IssueTypeInfo
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._post_issue_type_organizations_organization_id_issue_types_post_serialize(
-            organization_id=organization_id,
-            issue_type_info=issue_type_info,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "IdAndMessageResponse",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def post_issue_type_organizations_organization_id_issue_types_post_without_preload_content(
-        self,
-        organization_id: StrictInt,
-        issue_type_info: IssueTypeInfo,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Post Issue Type
-
-        Create new organization issue type
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param issue_type_info: (required)
-        :type issue_type_info: IssueTypeInfo
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._post_issue_type_organizations_organization_id_issue_types_post_serialize(
-            organization_id=organization_id,
-            issue_type_info=issue_type_info,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "IdAndMessageResponse",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _post_issue_type_organizations_organization_id_issue_types_post_serialize(
-        self,
-        organization_id,
-        issue_type_info,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if issue_type_info is not None:
-            _body_params = issue_type_info
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'OpenIdConnect'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/organizations/{organization_id}/issue_types',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -9864,6 +6605,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -9932,6 +6675,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -10000,6 +6745,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -10044,7 +6791,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -10145,6 +6893,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -10217,6 +6967,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -10289,6 +7041,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -10336,7 +7090,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -10362,313 +7117,6 @@ class OrganizationsApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/organizations/{organization_id}/users',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def put_issue_type_organizations_organization_id_issue_types_type_id_put(
-        self,
-        organization_id: StrictInt,
-        type_id: StrictInt,
-        issue_type_info: IssueTypeInfo,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessAndMessageResponse:
-        """Put Issue Type
-
-        Put an issue type by id
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param type_id: (required)
-        :type type_id: int
-        :param issue_type_info: (required)
-        :type issue_type_info: IssueTypeInfo
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._put_issue_type_organizations_organization_id_issue_types_type_id_put_serialize(
-            organization_id=organization_id,
-            type_id=type_id,
-            issue_type_info=issue_type_info,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessAndMessageResponse",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def put_issue_type_organizations_organization_id_issue_types_type_id_put_with_http_info(
-        self,
-        organization_id: StrictInt,
-        type_id: StrictInt,
-        issue_type_info: IssueTypeInfo,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessAndMessageResponse]:
-        """Put Issue Type
-
-        Put an issue type by id
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param type_id: (required)
-        :type type_id: int
-        :param issue_type_info: (required)
-        :type issue_type_info: IssueTypeInfo
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._put_issue_type_organizations_organization_id_issue_types_type_id_put_serialize(
-            organization_id=organization_id,
-            type_id=type_id,
-            issue_type_info=issue_type_info,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessAndMessageResponse",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def put_issue_type_organizations_organization_id_issue_types_type_id_put_without_preload_content(
-        self,
-        organization_id: StrictInt,
-        type_id: StrictInt,
-        issue_type_info: IssueTypeInfo,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Put Issue Type
-
-        Put an issue type by id
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param type_id: (required)
-        :type type_id: int
-        :param issue_type_info: (required)
-        :type issue_type_info: IssueTypeInfo
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._put_issue_type_organizations_organization_id_issue_types_type_id_put_serialize(
-            organization_id=organization_id,
-            type_id=type_id,
-            issue_type_info=issue_type_info,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessAndMessageResponse",
-            '422': "HTTPValidationError",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _put_issue_type_organizations_organization_id_issue_types_type_id_put_serialize(
-        self,
-        organization_id,
-        type_id,
-        issue_type_info,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if type_id is not None:
-            _path_params['type_id'] = type_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if issue_type_info is not None:
-            _body_params = issue_type_info
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'OpenIdConnect'
-        ]
-
-        return self.api_client.param_serialize(
-            method='PUT',
-            resource_path='/organizations/{organization_id}/issue_types/{type_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -10744,6 +7192,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -10816,6 +7266,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -10888,6 +7340,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -10935,7 +7389,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -11036,6 +7491,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -11108,6 +7565,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -11180,6 +7639,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -11228,7 +7689,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -11329,6 +7791,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -11401,6 +7865,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -11473,6 +7939,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -11520,7 +7988,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -11625,6 +8094,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -11701,6 +8172,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -11777,6 +8250,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -11828,7 +8303,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -11929,6 +8405,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -12001,6 +8479,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -12073,6 +8553,8 @@ class OrganizationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -12120,7 +8602,8 @@ class OrganizationsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 

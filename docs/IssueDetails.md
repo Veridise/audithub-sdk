@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **kind** | **str** | Clarifies the type of model returned in data. &#39;complete&#39; is the complete data model, while &#39;public&#39; is only its public part | 
-**data** | [**Data**](Data.md) |  | 
+**data** | [**Data1**](Data1.md) |  | 
 **functions** | [**List[IssueStateTransitionFunction]**](IssueStateTransitionFunction.md) | A list of transition functions that are available based on the current status for the issue | [optional] 
 
 ## Example

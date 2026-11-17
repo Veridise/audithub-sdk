@@ -17,23 +17,23 @@ import unittest
 from audithub_sdk.api.custom_detectors_std_lib_api import CustomDetectorsStdLibApi
 
 
-class TestCustomDetectorsStdLibApi(unittest.TestCase):
+class TestCustomDetectorsStdLibApi(unittest.IsolatedAsyncioTestCase):
     """CustomDetectorsStdLibApi unit test stubs"""
 
-    def setUp(self) -> None:
+    async def asyncSetUp(self) -> None:
         self.api = CustomDetectorsStdLibApi()
 
-    def tearDown(self) -> None:
-        pass
+    async def asyncTearDown(self) -> None:
+        await self.api.api_client.close()
 
-    def test_get_custom_detectors_library_custom_detectors_library_get(self) -> None:
+    async def test_get_custom_detectors_library_custom_detectors_library_get(self) -> None:
         """Test case for get_custom_detectors_library_custom_detectors_library_get
 
         Get Custom Detectors Library
         """
         pass
 
-    def test_get_custom_detectors_library_version_custom_detectors_library_version_id_get(self) -> None:
+    async def test_get_custom_detectors_library_version_custom_detectors_library_version_id_get(self) -> None:
         """Test case for get_custom_detectors_library_version_custom_detectors_library_version_id_get
 
         Get Custom Detectors Library Version

@@ -35,100 +35,16 @@ class TestData(unittest.TestCase):
         model = Data()
         if include_optional:
             return Data(
-                id = 56,
-                gh_issue_url = '',
-                gh_security_advisory_url = '',
-                status = '',
-                revision_id = 56,
-                resolutions = [
-                    audithub_sdk.models.issue_resolution.IssueResolution(
-                        resolution_pr = '0', 
-                        resolution_commit = '', )
-                    ],
-                description = '',
-                affected_files = [
-                    audithub_sdk.models.source_reference.SourceReference(
-                        version_id = 56, 
-                        relative_path = '', 
-                        line_from = 56, 
-                        line_to = 56, )
-                    ],
-                type = [
-                    56
-                    ],
-                title = '',
-                likelihood = 56,
-                impact = 56,
-                severity = 56,
-                created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                last_updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                created_by = '',
-                last_updated_by = '',
-                externally_shared = True,
-                promoted_findings = [
-                    audithub_sdk.models.finding_reference.FindingReference(
-                        task_id = 56, 
-                        analysis_result_id = 56, 
-                        finding_id = '', )
-                    ],
-                candidate_for_tool = [
-                    56
-                    ],
-                raised_by = [
-                    ''
-                    ],
-                poc_author = [
-                    ''
-                    ],
-                document_authors = [
-                    ''
-                    ]
+                action = 'delete',
+                start_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                end_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                monthly_credits = None
             )
         else:
             return Data(
-                id = 56,
-                gh_issue_url = '',
-                gh_security_advisory_url = '',
-                status = '',
-                revision_id = 56,
-                description = '',
-                affected_files = [
-                    audithub_sdk.models.source_reference.SourceReference(
-                        version_id = 56, 
-                        relative_path = '', 
-                        line_from = 56, 
-                        line_to = 56, )
-                    ],
-                type = [
-                    56
-                    ],
-                title = '',
-                likelihood = 56,
-                impact = 56,
-                severity = 56,
-                created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                last_updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                created_by = '',
-                last_updated_by = '',
-                externally_shared = True,
-                promoted_findings = [
-                    audithub_sdk.models.finding_reference.FindingReference(
-                        task_id = 56, 
-                        analysis_result_id = 56, 
-                        finding_id = '', )
-                    ],
-                candidate_for_tool = [
-                    56
-                    ],
-                raised_by = [
-                    ''
-                    ],
-                poc_author = [
-                    ''
-                    ],
-                document_authors = [
-                    ''
-                    ],
+                action = 'delete',
+                start_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                monthly_credits = None,
         )
         """
 

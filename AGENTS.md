@@ -12,13 +12,13 @@ It is intended to be the shared/core dependency for other Python repositories th
 - Generator target: `python`
 - Distribution name: `audithub-sdk`
 - Import package: `audithub_sdk`
-- Package version currently used during generation: `0.1.0`
+- Package version currently used during generation: `0.2.0`
 - Transport template: `httpx`
 
 Preferred regeneration command:
 
 ```sh
-scripts/regenerate-sdk.sh 0.1.0
+scripts/regenerate-sdk.sh 0.2.0
 ```
 
 The script runs the equivalent of:
@@ -28,7 +28,7 @@ openapi-generator generate \
   -i https://audithub.dev.veridise.tools/api/v1/openapi.json \
   -g python \
   -o . \
-  --additional-properties=packageName=audithub_sdk,projectName=audithub-sdk,packageVersion=0.1.0,hideGenerationTimestamp=true,library=httpx
+  --additional-properties=packageName=audithub_sdk,projectName=audithub-sdk,packageVersion=0.2.0,hideGenerationTimestamp=true,library=httpx
 ```
 
 ## Important Decisions From Prior Sessions
@@ -42,6 +42,7 @@ openapi-generator generate \
 - `AGENTS.md`
 - `pyproject.toml`
 - `setup.py`
+- `requirements.txt`
 - `.openapi-generator-ignore`
 - `scripts/regenerate-sdk.sh`
 - `audithub_sdk_ext/`
@@ -59,7 +60,7 @@ Common commands:
 
 ```sh
 bump-my-version bump patch
-bump-my-version bump --new-version 0.1.1
+bump-my-version bump --new-version 0.2.0
 ```
 
 The configured bump is for release-only version bumps. For API schema changes, use `scripts/regenerate-sdk.sh VERSION` instead. The configured bump creates a commit and `v{new_version}` tag. It updates `pyproject.toml`, `setup.py`, and runtime package-version strings in generated source. It intentionally does not update `README.md` or `AGENTS.md`; those generation-contract versions are updated by `scripts/regenerate-sdk.sh`.

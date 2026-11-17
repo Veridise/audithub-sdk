@@ -32,8 +32,8 @@ class ResourcePatch(BaseModel):
     @field_validator('action')
     def action_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['delete']):
-            raise ValueError("must be one of enum values ('delete')")
+        if value not in set(['delete', 'recompute-credits']):
+            raise ValueError("must be one of enum values ('delete', 'recompute-credits')")
         return value
 
     model_config = ConfigDict(

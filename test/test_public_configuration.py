@@ -35,6 +35,9 @@ class TestPublicConfiguration(unittest.TestCase):
         model = PublicConfiguration()
         if include_optional:
             return PublicConfiguration(
+                agent_allowed_organization_name_prefixes = [
+                    ''
+                    ],
                 fork_networks = [
                     audithub_sdk.models.fork_network_public.ForkNetworkPublic(
                         code = '', 
@@ -115,11 +118,21 @@ class TestPublicConfiguration(unittest.TestCase):
                         per_project = True, 
                         per_detector = True, )
                     ],
+                ai_budgets = [
+                    audithub_sdk.models.ai_budget.AIBudget(
+                        name = '', 
+                        description = '', )
+                    ],
                 version_archive_size_limit = 56,
-                onboarding_package = ''
+                onboarding_package = '',
+                subscription_error_msg_suffix = '',
+                disable_stripe = True
             )
         else:
             return PublicConfiguration(
+                agent_allowed_organization_name_prefixes = [
+                    ''
+                    ],
                 fork_networks = [
                     audithub_sdk.models.fork_network_public.ForkNetworkPublic(
                         code = '', 
@@ -200,7 +213,14 @@ class TestPublicConfiguration(unittest.TestCase):
                         per_project = True, 
                         per_detector = True, )
                     ],
+                ai_budgets = [
+                    audithub_sdk.models.ai_budget.AIBudget(
+                        name = '', 
+                        description = '', )
+                    ],
                 onboarding_package = '',
+                subscription_error_msg_suffix = '',
+                disable_stripe = True,
         )
         """
 

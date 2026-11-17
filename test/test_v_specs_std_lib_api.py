@@ -17,23 +17,23 @@ import unittest
 from audithub_sdk.api.v_specs_std_lib_api import VSpecsStdLibApi
 
 
-class TestVSpecsStdLibApi(unittest.TestCase):
+class TestVSpecsStdLibApi(unittest.IsolatedAsyncioTestCase):
     """VSpecsStdLibApi unit test stubs"""
 
-    def setUp(self) -> None:
+    async def asyncSetUp(self) -> None:
         self.api = VSpecsStdLibApi()
 
-    def tearDown(self) -> None:
-        pass
+    async def asyncTearDown(self) -> None:
+        await self.api.api_client.close()
 
-    def test_get_v_specifications_library_v_spec_library_get(self) -> None:
+    async def test_get_v_specifications_library_v_spec_library_get(self) -> None:
         """Test case for get_v_specifications_library_v_spec_library_get
 
         Get V Specifications Library
         """
         pass
 
-    def test_get_v_specifications_library_version_v_spec_library_version_id_get(self) -> None:
+    async def test_get_v_specifications_library_version_v_spec_library_version_id_get(self) -> None:
         """Test case for get_v_specifications_library_version_v_spec_library_version_id_get
 
         Get V Specifications Library Version

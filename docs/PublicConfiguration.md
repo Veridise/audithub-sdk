@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**agent_allowed_organization_name_prefixes** | **List[str]** |  | 
 **fork_networks** | [**List[ForkNetworkPublic]**](ForkNetworkPublic.md) |  | 
 **vanguard_solc_versions** | **List[str]** |  | 
 **vanguard_defi_detectors** | [**List[VanguardDetector]**](VanguardDetector.md) |  | 
@@ -17,8 +18,11 @@ Name | Type | Description | Notes
 **issue_configuration_options** | [**IssueConfigurationOptions**](IssueConfigurationOptions.md) |  | 
 **available_tools** | [**List[SecurityTool]**](SecurityTool.md) |  | 
 **application_functions** | [**List[ApplicationFunction]**](ApplicationFunction.md) |  | 
+**ai_budgets** | [**List[AIBudget]**](AIBudget.md) |  | 
 **version_archive_size_limit** | **int** | Max allowed size of version archive in bytes | [optional] [default to 200000000]
 **onboarding_package** | **str** |  | 
+**subscription_error_msg_suffix** | **str** |  | 
+**disable_stripe** | **bool** |  | 
 
 ## Example
 

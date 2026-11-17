@@ -6,6 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | 
+**org_id** | **int** |  | 
+**project_id** | **int** |  | 
 **name** | **str** |  | [optional] 
 **tool_name** | **str** |  | 
 **tool_version** | **str** |  | 

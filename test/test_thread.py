@@ -48,7 +48,8 @@ class TestThread(unittest.TestCase):
                     ],
                 resolved = True,
                 resolved_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                resolved_by = ''
+                resolved_by = '',
+                message_count = 56
             )
         else:
             return Thread(

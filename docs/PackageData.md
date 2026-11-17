@@ -6,11 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **organization_name** | **str** |  | 
-**user_limit** | **int** |  | 
 **projects** | [**List[ProjectData]**](ProjectData.md) |  | 
-**org_restrictions** | [**List[OrganizationAccessRestriction]**](OrganizationAccessRestriction.md) |  | 
-**user_restrictions** | [**List[UserAccessRestriction]**](UserAccessRestriction.md) |  | 
-**subscription** | [**PackageSubscription**](PackageSubscription.md) |  | 
+**extra_credits** | [**PackageExtraCredits**](PackageExtraCredits.md) |  | [optional] 
+**tools_only** | **bool** |  | [optional] [default to True]
 
 ## Example
 

@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **name** | **str** |  | 
 **support_channel** | **str** |  | [optional] 
 **user_limit** | **int** |  | [optional] 
+**project_limit** | **int** |  | [optional] 
+**tools_only** | **bool** | Indicates if this organization is a tools-only organization. Tools-only organizations have no access to auditing features. | [optional] [default to False]
 
 ## Example
 
