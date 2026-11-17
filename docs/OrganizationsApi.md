@@ -8,7 +8,6 @@ Method | HTTP request | Description
 [**create_missing_environment_organizations_organization_id_environment_get**](OrganizationsApi.md#create_missing_environment_organizations_organization_id_environment_get) | **GET** /organizations/{organization_id}/environment | Create Missing Environment
 [**create_missing_organization_namespaces_organizations_namespace_get**](OrganizationsApi.md#create_missing_organization_namespaces_organizations_namespace_get) | **GET** /organizations/namespace | Create Missing Organization Namespaces
 [**delete_github_connect_organizations_organization_id_github_connect_delete**](OrganizationsApi.md#delete_github_connect_organizations_organization_id_github_connect_delete) | **DELETE** /organizations/{organization_id}/github-connect | Delete Github Connect
-[**delete_issue_type_organizations_organization_id_issue_types_type_id_delete**](OrganizationsApi.md#delete_issue_type_organizations_organization_id_issue_types_type_id_delete) | **DELETE** /organizations/{organization_id}/issue_types/{type_id} | Delete Issue Type
 [**delete_organization_organizations_organization_id_delete**](OrganizationsApi.md#delete_organization_organizations_organization_id_delete) | **DELETE** /organizations/{organization_id} | Delete Organization
 [**delete_organization_user_organizations_organization_id_users_user_id_delete**](OrganizationsApi.md#delete_organization_user_organizations_organization_id_users_user_id_delete) | **DELETE** /organizations/{organization_id}/users/{user_id} | Delete Organization User
 [**export_onboarding_package_organizations_organization_id_create_package_post**](OrganizationsApi.md#export_onboarding_package_organizations_organization_id_create_package_post) | **POST** /organizations/{organization_id}/create-package | Export Onboarding Package
@@ -17,14 +16,8 @@ Method | HTTP request | Description
 [**get_gh_repos_organizations_organization_id_gh_repos_get**](OrganizationsApi.md#get_gh_repos_organizations_organization_id_gh_repos_get) | **GET** /organizations/{organization_id}/gh-repos | Get Gh Repos
 [**get_github_connect_info_organizations_github_connect_commit_get**](OrganizationsApi.md#get_github_connect_info_organizations_github_connect_commit_get) | **GET** /organizations/github-connect-commit | Get Github Connect Info
 [**get_github_connect_url_organizations_organization_id_github_connect_get**](OrganizationsApi.md#get_github_connect_url_organizations_organization_id_github_connect_get) | **GET** /organizations/{organization_id}/github-connect | Get Github Connect Url
-[**get_issue_type_organizations_organization_id_issue_types_type_id_get**](OrganizationsApi.md#get_issue_type_organizations_organization_id_issue_types_type_id_get) | **GET** /organizations/{organization_id}/issue_types/{type_id} | Get Issue Type
-[**get_organization_issue_types_organizations_organization_id_issue_types_get**](OrganizationsApi.md#get_organization_issue_types_organizations_organization_id_issue_types_get) | **GET** /organizations/{organization_id}/issue_types | Get Organization Issue Types
 [**get_organization_organizations_organization_id_get**](OrganizationsApi.md#get_organization_organizations_organization_id_get) | **GET** /organizations/{organization_id} | Get Organization
-[**get_organization_quota_organizations_organization_id_quota_get**](OrganizationsApi.md#get_organization_quota_organizations_organization_id_quota_get) | **GET** /organizations/{organization_id}/quota | Get Organization Quota
-[**get_organization_resource_detailed_organizations_organization_id_resource_consumption_detailed_get**](OrganizationsApi.md#get_organization_resource_detailed_organizations_organization_id_resource_consumption_detailed_get) | **GET** /organizations/{organization_id}/resource-consumption-detailed | Get Organization Resource Detailed
-[**get_organization_resource_usage_organizations_organization_id_resource_consumption_total_get**](OrganizationsApi.md#get_organization_resource_usage_organizations_organization_id_resource_consumption_total_get) | **GET** /organizations/{organization_id}/resource-consumption-total | Get Organization Resource Usage
 [**get_organization_restrictions_organizations_organization_id_restrictions_get**](OrganizationsApi.md#get_organization_restrictions_organizations_organization_id_restrictions_get) | **GET** /organizations/{organization_id}/restrictions | Get Organization Restrictions
-[**get_organization_usage_organizations_organization_id_usage_get**](OrganizationsApi.md#get_organization_usage_organizations_organization_id_usage_get) | **GET** /organizations/{organization_id}/usage | Get Organization Usage
 [**get_organization_user_groups_organizations_organization_id_user_groups_get**](OrganizationsApi.md#get_organization_user_groups_organizations_organization_id_user_groups_get) | **GET** /organizations/{organization_id}/user-groups | Get Organization User Groups
 [**get_organization_users_organizations_organization_id_users_get**](OrganizationsApi.md#get_organization_users_organizations_organization_id_users_get) | **GET** /organizations/{organization_id}/users | Get Organization Users
 [**get_organizations_organizations_get**](OrganizationsApi.md#get_organizations_organizations_get) | **GET** /organizations | Get Organizations
@@ -34,10 +27,8 @@ Method | HTTP request | Description
 [**get_user_restrictions_organizations_organization_id_users_user_id_restrictions_get**](OrganizationsApi.md#get_user_restrictions_organizations_organization_id_users_user_id_restrictions_get) | **GET** /organizations/{organization_id}/users/{user_id}/restrictions | Get User Restrictions
 [**patch_organization_organizations_organization_id_patch**](OrganizationsApi.md#patch_organization_organizations_organization_id_patch) | **PATCH** /organizations/{organization_id} | Patch Organization
 [**patch_user_organizations_organization_id_users_patch**](OrganizationsApi.md#patch_user_organizations_organization_id_users_patch) | **PATCH** /organizations/{organization_id}/users | Patch User
-[**post_issue_type_organizations_organization_id_issue_types_post**](OrganizationsApi.md#post_issue_type_organizations_organization_id_issue_types_post) | **POST** /organizations/{organization_id}/issue_types | Post Issue Type
 [**post_organization_organizations_post**](OrganizationsApi.md#post_organization_organizations_post) | **POST** /organizations | Post Organization
 [**post_organization_user_organizations_organization_id_users_post**](OrganizationsApi.md#post_organization_user_organizations_organization_id_users_post) | **POST** /organizations/{organization_id}/users | Post Organization User
-[**put_issue_type_organizations_organization_id_issue_types_type_id_put**](OrganizationsApi.md#put_issue_type_organizations_organization_id_issue_types_type_id_put) | **PUT** /organizations/{organization_id}/issue_types/{type_id} | Put Issue Type
 [**put_organization_organizations_organization_id_put**](OrganizationsApi.md#put_organization_organizations_organization_id_put) | **PUT** /organizations/{organization_id} | Put Organization
 [**put_organization_restrictions_organizations_organization_id_restrictions_put**](OrganizationsApi.md#put_organization_restrictions_organizations_organization_id_restrictions_put) | **PUT** /organizations/{organization_id}/restrictions | Put Organization Restrictions
 [**put_user_organization_settings_organizations_organization_id_user_settings_put**](OrganizationsApi.md#put_user_organization_settings_organizations_organization_id_user_settings_put) | **PUT** /organizations/{organization_id}/user-settings | Put User Organization Settings
@@ -343,85 +334,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_issue_type_organizations_organization_id_issue_types_type_id_delete**
-> SuccessAndMessageResponse delete_issue_type_organizations_organization_id_issue_types_type_id_delete(organization_id, type_id)
-
-Delete Issue Type
-
-Delete an issue type by id
-
-### Example
-
-
-```python
-import audithub_sdk
-from audithub_sdk.models.success_and_message_response import SuccessAndMessageResponse
-from audithub_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://audithub.dev.veridise.tools/api/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = audithub_sdk.Configuration(
-    host = "https://audithub.dev.veridise.tools/api/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Enter a context with an instance of the API client
-async with audithub_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = audithub_sdk.OrganizationsApi(api_client)
-    organization_id = 56 # int | 
-    type_id = 56 # int | 
-
-    try:
-        # Delete Issue Type
-        api_response = await api_instance.delete_issue_type_organizations_organization_id_issue_types_type_id_delete(organization_id, type_id)
-        print("The response of OrganizationsApi->delete_issue_type_organizations_organization_id_issue_types_type_id_delete:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling OrganizationsApi->delete_issue_type_organizations_organization_id_issue_types_type_id_delete: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **int**|  | 
- **type_id** | **int**|  | 
-
-### Return type
-
-[**SuccessAndMessageResponse**](SuccessAndMessageResponse.md)
-
-### Authorization
-
-[OpenIdConnect](../README.md#OpenIdConnect)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/problem+json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
-**4XX** | Client Error |  -  |
-**5XX** | Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **delete_organization_organizations_organization_id_delete**
-> object delete_organization_organizations_organization_id_delete(organization_id)
+> SuccessAndMessageResponse delete_organization_organizations_organization_id_delete(organization_id)
 
 Delete Organization
 
@@ -432,6 +346,7 @@ Permanently delete an organization
 
 ```python
 import audithub_sdk
+from audithub_sdk.models.success_and_message_response import SuccessAndMessageResponse
 from audithub_sdk.rest import ApiException
 from pprint import pprint
 
@@ -472,7 +387,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**SuccessAndMessageResponse**](SuccessAndMessageResponse.md)
 
 ### Authorization
 
@@ -1024,158 +939,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_issue_type_organizations_organization_id_issue_types_type_id_get**
-> IssueType get_issue_type_organizations_organization_id_issue_types_type_id_get(organization_id, type_id)
-
-Get Issue Type
-
-Get an issue type by id
-
-### Example
-
-
-```python
-import audithub_sdk
-from audithub_sdk.models.issue_type import IssueType
-from audithub_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://audithub.dev.veridise.tools/api/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = audithub_sdk.Configuration(
-    host = "https://audithub.dev.veridise.tools/api/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Enter a context with an instance of the API client
-async with audithub_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = audithub_sdk.OrganizationsApi(api_client)
-    organization_id = 56 # int | 
-    type_id = 56 # int | 
-
-    try:
-        # Get Issue Type
-        api_response = await api_instance.get_issue_type_organizations_organization_id_issue_types_type_id_get(organization_id, type_id)
-        print("The response of OrganizationsApi->get_issue_type_organizations_organization_id_issue_types_type_id_get:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling OrganizationsApi->get_issue_type_organizations_organization_id_issue_types_type_id_get: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **int**|  | 
- **type_id** | **int**|  | 
-
-### Return type
-
-[**IssueType**](IssueType.md)
-
-### Authorization
-
-[OpenIdConnect](../README.md#OpenIdConnect)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/problem+json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
-**4XX** | Client Error |  -  |
-**5XX** | Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_organization_issue_types_organizations_organization_id_issue_types_get**
-> List[IssueType] get_organization_issue_types_organizations_organization_id_issue_types_get(organization_id)
-
-Get Organization Issue Types
-
-Get the available issue types for an organization.
-
-### Example
-
-
-```python
-import audithub_sdk
-from audithub_sdk.models.issue_type import IssueType
-from audithub_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://audithub.dev.veridise.tools/api/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = audithub_sdk.Configuration(
-    host = "https://audithub.dev.veridise.tools/api/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Enter a context with an instance of the API client
-async with audithub_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = audithub_sdk.OrganizationsApi(api_client)
-    organization_id = 56 # int | 
-
-    try:
-        # Get Organization Issue Types
-        api_response = await api_instance.get_organization_issue_types_organizations_organization_id_issue_types_get(organization_id)
-        print("The response of OrganizationsApi->get_organization_issue_types_organizations_organization_id_issue_types_get:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling OrganizationsApi->get_organization_issue_types_organizations_organization_id_issue_types_get: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **int**|  | 
-
-### Return type
-
-[**List[IssueType]**](IssueType.md)
-
-### Authorization
-
-[OpenIdConnect](../README.md#OpenIdConnect)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/problem+json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
-**4XX** | Client Error |  -  |
-**5XX** | Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_organization_organizations_organization_id_get**
 > Organization get_organization_organizations_organization_id_get(organization_id)
 
@@ -1251,235 +1014,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_organization_quota_organizations_organization_id_quota_get**
-> OrganizationQuota get_organization_quota_organizations_organization_id_quota_get(organization_id)
-
-Get Organization Quota
-
-Get current organization quota
-
-### Example
-
-
-```python
-import audithub_sdk
-from audithub_sdk.models.organization_quota import OrganizationQuota
-from audithub_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://audithub.dev.veridise.tools/api/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = audithub_sdk.Configuration(
-    host = "https://audithub.dev.veridise.tools/api/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Enter a context with an instance of the API client
-async with audithub_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = audithub_sdk.OrganizationsApi(api_client)
-    organization_id = 56 # int | 
-
-    try:
-        # Get Organization Quota
-        api_response = await api_instance.get_organization_quota_organizations_organization_id_quota_get(organization_id)
-        print("The response of OrganizationsApi->get_organization_quota_organizations_organization_id_quota_get:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling OrganizationsApi->get_organization_quota_organizations_organization_id_quota_get: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **int**|  | 
-
-### Return type
-
-[**OrganizationQuota**](OrganizationQuota.md)
-
-### Authorization
-
-[OpenIdConnect](../README.md#OpenIdConnect)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/problem+json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
-**4XX** | Client Error |  -  |
-**5XX** | Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_organization_resource_detailed_organizations_organization_id_resource_consumption_detailed_get**
-> OrganizationConsumptionDetailed get_organization_resource_detailed_organizations_organization_id_resource_consumption_detailed_get(organization_id, months=months)
-
-Get Organization Resource Detailed
-
-consumption
-
-### Example
-
-
-```python
-import audithub_sdk
-from audithub_sdk.models.organization_consumption_detailed import OrganizationConsumptionDetailed
-from audithub_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://audithub.dev.veridise.tools/api/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = audithub_sdk.Configuration(
-    host = "https://audithub.dev.veridise.tools/api/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Enter a context with an instance of the API client
-async with audithub_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = audithub_sdk.OrganizationsApi(api_client)
-    organization_id = 56 # int | 
-    months = 56 # int | Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used. (optional)
-
-    try:
-        # Get Organization Resource Detailed
-        api_response = await api_instance.get_organization_resource_detailed_organizations_organization_id_resource_consumption_detailed_get(organization_id, months=months)
-        print("The response of OrganizationsApi->get_organization_resource_detailed_organizations_organization_id_resource_consumption_detailed_get:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling OrganizationsApi->get_organization_resource_detailed_organizations_organization_id_resource_consumption_detailed_get: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **int**|  | 
- **months** | **int**| Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used. | [optional] 
-
-### Return type
-
-[**OrganizationConsumptionDetailed**](OrganizationConsumptionDetailed.md)
-
-### Authorization
-
-[OpenIdConnect](../README.md#OpenIdConnect)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/problem+json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
-**4XX** | Client Error |  -  |
-**5XX** | Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_organization_resource_usage_organizations_organization_id_resource_consumption_total_get**
-> OrganizationConsumption get_organization_resource_usage_organizations_organization_id_resource_consumption_total_get(organization_id, months=months)
-
-Get Organization Resource Usage
-
-consumption
-
-### Example
-
-
-```python
-import audithub_sdk
-from audithub_sdk.models.organization_consumption import OrganizationConsumption
-from audithub_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://audithub.dev.veridise.tools/api/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = audithub_sdk.Configuration(
-    host = "https://audithub.dev.veridise.tools/api/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Enter a context with an instance of the API client
-async with audithub_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = audithub_sdk.OrganizationsApi(api_client)
-    organization_id = 56 # int | 
-    months = 56 # int | Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used. (optional)
-
-    try:
-        # Get Organization Resource Usage
-        api_response = await api_instance.get_organization_resource_usage_organizations_organization_id_resource_consumption_total_get(organization_id, months=months)
-        print("The response of OrganizationsApi->get_organization_resource_usage_organizations_organization_id_resource_consumption_total_get:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling OrganizationsApi->get_organization_resource_usage_organizations_organization_id_resource_consumption_total_get: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **int**|  | 
- **months** | **int**| Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used. | [optional] 
-
-### Return type
-
-[**OrganizationConsumption**](OrganizationConsumption.md)
-
-### Authorization
-
-[OpenIdConnect](../README.md#OpenIdConnect)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/problem+json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
-**4XX** | Client Error |  -  |
-**5XX** | Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_organization_restrictions_organizations_organization_id_restrictions_get**
 > List[OrganizationAccessRestriction] get_organization_restrictions_organizations_organization_id_restrictions_get(organization_id)
 
@@ -1534,84 +1068,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**List[OrganizationAccessRestriction]**](OrganizationAccessRestriction.md)
-
-### Authorization
-
-[OpenIdConnect](../README.md#OpenIdConnect)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/problem+json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
-**4XX** | Client Error |  -  |
-**5XX** | Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_organization_usage_organizations_organization_id_usage_get**
-> object get_organization_usage_organizations_organization_id_usage_get(organization_id, from_date=from_date, to_date=to_date)
-
-Get Organization Usage
-
-Get organization usage
-
-### Example
-
-
-```python
-import audithub_sdk
-from audithub_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://audithub.dev.veridise.tools/api/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = audithub_sdk.Configuration(
-    host = "https://audithub.dev.veridise.tools/api/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Enter a context with an instance of the API client
-async with audithub_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = audithub_sdk.OrganizationsApi(api_client)
-    organization_id = 56 # int | 
-    from_date = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
-    to_date = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
-
-    try:
-        # Get Organization Usage
-        api_response = await api_instance.get_organization_usage_organizations_organization_id_usage_get(organization_id, from_date=from_date, to_date=to_date)
-        print("The response of OrganizationsApi->get_organization_usage_organizations_organization_id_usage_get:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling OrganizationsApi->get_organization_usage_organizations_organization_id_usage_get: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **int**|  | 
- **from_date** | **datetime**|  | [optional] 
- **to_date** | **datetime**|  | [optional] 
-
-### Return type
-
-**object**
 
 ### Authorization
 
@@ -2323,84 +1779,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **post_issue_type_organizations_organization_id_issue_types_post**
-> IdAndMessageResponse post_issue_type_organizations_organization_id_issue_types_post(organization_id, issue_type_info)
-
-Post Issue Type
-
-Create new organization issue type
-
-### Example
-
-
-```python
-import audithub_sdk
-from audithub_sdk.models.id_and_message_response import IdAndMessageResponse
-from audithub_sdk.models.issue_type_info import IssueTypeInfo
-from audithub_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://audithub.dev.veridise.tools/api/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = audithub_sdk.Configuration(
-    host = "https://audithub.dev.veridise.tools/api/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Enter a context with an instance of the API client
-async with audithub_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = audithub_sdk.OrganizationsApi(api_client)
-    organization_id = 56 # int | 
-    issue_type_info = audithub_sdk.IssueTypeInfo() # IssueTypeInfo | 
-
-    try:
-        # Post Issue Type
-        api_response = await api_instance.post_issue_type_organizations_organization_id_issue_types_post(organization_id, issue_type_info)
-        print("The response of OrganizationsApi->post_issue_type_organizations_organization_id_issue_types_post:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling OrganizationsApi->post_issue_type_organizations_organization_id_issue_types_post: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **int**|  | 
- **issue_type_info** | [**IssueTypeInfo**](IssueTypeInfo.md)|  | 
-
-### Return type
-
-[**IdAndMessageResponse**](IdAndMessageResponse.md)
-
-### Authorization
-
-[OpenIdConnect](../README.md#OpenIdConnect)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json, application/problem+json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
-**4XX** | Client Error |  -  |
-**5XX** | Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **post_organization_organizations_post**
 > IdAndMessageResponse post_organization_organizations_post(new_organization)
 
@@ -2530,86 +1908,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **int**|  | 
  **user_to_organization_assignment** | [**UserToOrganizationAssignment**](UserToOrganizationAssignment.md)|  | 
-
-### Return type
-
-[**SuccessAndMessageResponse**](SuccessAndMessageResponse.md)
-
-### Authorization
-
-[OpenIdConnect](../README.md#OpenIdConnect)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json, application/problem+json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
-**4XX** | Client Error |  -  |
-**5XX** | Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **put_issue_type_organizations_organization_id_issue_types_type_id_put**
-> SuccessAndMessageResponse put_issue_type_organizations_organization_id_issue_types_type_id_put(organization_id, type_id, issue_type_info)
-
-Put Issue Type
-
-Put an issue type by id
-
-### Example
-
-
-```python
-import audithub_sdk
-from audithub_sdk.models.issue_type_info import IssueTypeInfo
-from audithub_sdk.models.success_and_message_response import SuccessAndMessageResponse
-from audithub_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://audithub.dev.veridise.tools/api/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = audithub_sdk.Configuration(
-    host = "https://audithub.dev.veridise.tools/api/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Enter a context with an instance of the API client
-async with audithub_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = audithub_sdk.OrganizationsApi(api_client)
-    organization_id = 56 # int | 
-    type_id = 56 # int | 
-    issue_type_info = audithub_sdk.IssueTypeInfo() # IssueTypeInfo | 
-
-    try:
-        # Put Issue Type
-        api_response = await api_instance.put_issue_type_organizations_organization_id_issue_types_type_id_put(organization_id, type_id, issue_type_info)
-        print("The response of OrganizationsApi->put_issue_type_organizations_organization_id_issue_types_type_id_put:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling OrganizationsApi->put_issue_type_organizations_organization_id_issue_types_type_id_put: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **int**|  | 
- **type_id** | **int**|  | 
- **issue_type_info** | [**IssueTypeInfo**](IssueTypeInfo.md)|  | 
 
 ### Return type
 

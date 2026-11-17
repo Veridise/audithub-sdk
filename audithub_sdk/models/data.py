@@ -13,38 +13,39 @@
 
 
 from __future__ import annotations
-from inspect import getfullargspec
 import json
 import pprint
-import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
-from typing import Optional
-from audithub_sdk.models.issue import Issue
-from audithub_sdk.models.issue_complete import IssueComplete
-from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
+from typing import Any, List, Optional
+from audithub_sdk.models.subscription_credits_patch import SubscriptionCreditsPatch
+from audithub_sdk.models.subscription_delete_patch import SubscriptionDeletePatch
+from audithub_sdk.models.subscription_duration_patch import SubscriptionDurationPatch
+from pydantic import StrictStr, Field
+from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
-from pydantic import Field
 
-DATA_ANY_OF_SCHEMAS = ["Issue", "IssueComplete"]
+DATA_ONE_OF_SCHEMAS = ["SubscriptionCreditsPatch", "SubscriptionDeletePatch", "SubscriptionDurationPatch"]
 
 class Data(BaseModel):
     """
     Data
     """
+    # data type: SubscriptionDurationPatch
+    oneof_schema_1_validator: Optional[SubscriptionDurationPatch] = None
+    # data type: SubscriptionCreditsPatch
+    oneof_schema_2_validator: Optional[SubscriptionCreditsPatch] = None
+    # data type: SubscriptionDeletePatch
+    oneof_schema_3_validator: Optional[SubscriptionDeletePatch] = None
+    actual_instance: Optional[Union[SubscriptionCreditsPatch, SubscriptionDeletePatch, SubscriptionDurationPatch]] = None
+    one_of_schemas: Set[str] = { "SubscriptionCreditsPatch", "SubscriptionDeletePatch", "SubscriptionDurationPatch" }
 
-    # data type: Issue
-    anyof_schema_1_validator: Optional[Issue] = None
-    # data type: IssueComplete
-    anyof_schema_2_validator: Optional[IssueComplete] = None
-    if TYPE_CHECKING:
-        actual_instance: Optional[Union[Issue, IssueComplete]] = None
-    else:
-        actual_instance: Any = None
-    any_of_schemas: Set[str] = { "Issue", "IssueComplete" }
+    model_config = ConfigDict(
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
-    model_config = {
-        "validate_assignment": True,
-        "protected_namespaces": (),
+
+    discriminator_value_class_map: Dict[str, str] = {
     }
 
     def __init__(self, *args, **kwargs) -> None:
@@ -58,29 +59,36 @@ class Data(BaseModel):
             super().__init__(**kwargs)
 
     @field_validator('actual_instance')
-    def actual_instance_must_validate_anyof(cls, v):
+    def actual_instance_must_validate_oneof(cls, v):
         instance = Data.model_construct()
         error_messages = []
-        # validate data type: Issue
-        if not isinstance(v, Issue):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Issue`")
+        match = 0
+        # validate data type: SubscriptionDurationPatch
+        if not isinstance(v, SubscriptionDurationPatch):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `SubscriptionDurationPatch`")
         else:
-            return v
-
-        # validate data type: IssueComplete
-        if not isinstance(v, IssueComplete):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `IssueComplete`")
+            match += 1
+        # validate data type: SubscriptionCreditsPatch
+        if not isinstance(v, SubscriptionCreditsPatch):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `SubscriptionCreditsPatch`")
         else:
-            return v
-
-        if error_messages:
+            match += 1
+        # validate data type: SubscriptionDeletePatch
+        if not isinstance(v, SubscriptionDeletePatch):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `SubscriptionDeletePatch`")
+        else:
+            match += 1
+        if match > 1:
+            # more than 1 match
+            raise ValueError("Multiple matches found when setting `actual_instance` in Data with oneOf schemas: SubscriptionCreditsPatch, SubscriptionDeletePatch, SubscriptionDurationPatch. Details: " + ", ".join(error_messages))
+        elif match == 0:
             # no match
-            raise ValueError("No match found when setting the actual_instance in Data with anyOf schemas: Issue, IssueComplete. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in Data with oneOf schemas: SubscriptionCreditsPatch, SubscriptionDeletePatch, SubscriptionDurationPatch. Details: " + ", ".join(error_messages))
         else:
             return v
 
     @classmethod
-    def from_dict(cls, obj: Dict[str, Any]) -> Self:
+    def from_dict(cls, obj: Union[str, Dict[str, Any]]) -> Self:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
@@ -88,22 +96,33 @@ class Data(BaseModel):
         """Returns the object represented by the json string"""
         instance = cls.model_construct()
         error_messages = []
-        # anyof_schema_1_validator: Optional[Issue] = None
-        try:
-            instance.actual_instance = Issue.from_json(json_str)
-            return instance
-        except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_2_validator: Optional[IssueComplete] = None
-        try:
-            instance.actual_instance = IssueComplete.from_json(json_str)
-            return instance
-        except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
+        match = 0
 
-        if error_messages:
+        # deserialize data into SubscriptionDurationPatch
+        try:
+            instance.actual_instance = SubscriptionDurationPatch.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        # deserialize data into SubscriptionCreditsPatch
+        try:
+            instance.actual_instance = SubscriptionCreditsPatch.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        # deserialize data into SubscriptionDeletePatch
+        try:
+            instance.actual_instance = SubscriptionDeletePatch.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+
+        if match > 1:
+            # more than 1 match
+            raise ValueError("Multiple matches found when deserializing the JSON string into Data with oneOf schemas: SubscriptionCreditsPatch, SubscriptionDeletePatch, SubscriptionDurationPatch. Details: " + ", ".join(error_messages))
+        elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into Data with anyOf schemas: Issue, IssueComplete. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into Data with oneOf schemas: SubscriptionCreditsPatch, SubscriptionDeletePatch, SubscriptionDurationPatch. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -117,7 +136,7 @@ class Data(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], Issue, IssueComplete]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], SubscriptionCreditsPatch, SubscriptionDeletePatch, SubscriptionDurationPatch]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None
@@ -125,6 +144,7 @@ class Data(BaseModel):
         if hasattr(self.actual_instance, "to_dict") and callable(self.actual_instance.to_dict):
             return self.actual_instance.to_dict()
         else:
+            # primitive type
             return self.actual_instance
 
     def to_str(self) -> str:

@@ -17,11 +17,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from audithub_sdk.models.organization_access_restriction import OrganizationAccessRestriction
-from audithub_sdk.models.package_subscription import PackageSubscription
-from audithub_sdk.models.user_access_restriction import UserAccessRestriction
+from audithub_sdk.models.package_extra_credits import PackageExtraCredits
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,13 +27,11 @@ class NewOrganizationPackage(BaseModel):
     """
     NewOrganizationPackage
     """ # noqa: E501
-    org_restrictions: Optional[List[OrganizationAccessRestriction]] = None
-    user_restrictions: Optional[List[UserAccessRestriction]] = None
-    user_limit: Optional[StrictInt] = None
-    subscription: PackageSubscription
+    extra_credits: Optional[PackageExtraCredits] = None
     org_name: Optional[StrictStr] = Field(default='demo-organization-{email}', description="Template name for creating new organization. Available keywords to be replaced are user attributes 'name', 'email', 'id' and 'timestamp' that the organization gets created")
     name: StrictStr
-    __properties: ClassVar[List[str]] = ["org_restrictions", "user_restrictions", "user_limit", "subscription", "org_name", "name"]
+    tools_only: Optional[StrictBool] = True
+    __properties: ClassVar[List[str]] = ["extra_credits", "org_name", "name", "tools_only"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -76,37 +72,13 @@ class NewOrganizationPackage(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in org_restrictions (list)
-        _items = []
-        if self.org_restrictions:
-            for _item_org_restrictions in self.org_restrictions:
-                if _item_org_restrictions:
-                    _items.append(_item_org_restrictions.to_dict())
-            _dict['org_restrictions'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in user_restrictions (list)
-        _items = []
-        if self.user_restrictions:
-            for _item_user_restrictions in self.user_restrictions:
-                if _item_user_restrictions:
-                    _items.append(_item_user_restrictions.to_dict())
-            _dict['user_restrictions'] = _items
-        # override the default output from pydantic by calling `to_dict()` of subscription
-        if self.subscription:
-            _dict['subscription'] = self.subscription.to_dict()
-        # set to None if org_restrictions (nullable) is None
+        # override the default output from pydantic by calling `to_dict()` of extra_credits
+        if self.extra_credits:
+            _dict['extra_credits'] = self.extra_credits.to_dict()
+        # set to None if extra_credits (nullable) is None
         # and model_fields_set contains the field
-        if self.org_restrictions is None and "org_restrictions" in self.model_fields_set:
-            _dict['org_restrictions'] = None
-
-        # set to None if user_restrictions (nullable) is None
-        # and model_fields_set contains the field
-        if self.user_restrictions is None and "user_restrictions" in self.model_fields_set:
-            _dict['user_restrictions'] = None
-
-        # set to None if user_limit (nullable) is None
-        # and model_fields_set contains the field
-        if self.user_limit is None and "user_limit" in self.model_fields_set:
-            _dict['user_limit'] = None
+        if self.extra_credits is None and "extra_credits" in self.model_fields_set:
+            _dict['extra_credits'] = None
 
         return _dict
 
@@ -120,12 +92,10 @@ class NewOrganizationPackage(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "org_restrictions": [OrganizationAccessRestriction.from_dict(_item) for _item in obj["org_restrictions"]] if obj.get("org_restrictions") is not None else None,
-            "user_restrictions": [UserAccessRestriction.from_dict(_item) for _item in obj["user_restrictions"]] if obj.get("user_restrictions") is not None else None,
-            "user_limit": obj.get("user_limit"),
-            "subscription": PackageSubscription.from_dict(obj["subscription"]) if obj.get("subscription") is not None else None,
+            "extra_credits": PackageExtraCredits.from_dict(obj["extra_credits"]) if obj.get("extra_credits") is not None else None,
             "org_name": obj.get("org_name") if obj.get("org_name") is not None else 'demo-organization-{email}',
-            "name": obj.get("name")
+            "name": obj.get("name"),
+            "tools_only": obj.get("tools_only") if obj.get("tools_only") is not None else True
         })
         return _obj
 

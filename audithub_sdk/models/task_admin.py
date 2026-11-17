@@ -28,6 +28,8 @@ class TaskAdmin(BaseModel):
     TaskAdmin
     """ # noqa: E501
     id: StrictInt
+    org_id: StrictInt
+    project_id: StrictInt
     name: Optional[StrictStr] = None
     tool_name: StrictStr
     tool_version: StrictStr
@@ -40,7 +42,7 @@ class TaskAdmin(BaseModel):
     created_by: StrictStr
     deleted: StrictBool = Field(description="If true, then the task has been soft-deleted.")
     findings_counters: Optional[Dict[str, StrictInt]] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "tool_name", "tool_version", "status", "info_text", "version_id", "created_at", "started_at", "finished_at", "created_by", "deleted", "findings_counters"]
+    __properties: ClassVar[List[str]] = ["id", "org_id", "project_id", "name", "tool_name", "tool_version", "status", "info_text", "version_id", "created_at", "started_at", "finished_at", "created_by", "deleted", "findings_counters"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -126,6 +128,8 @@ class TaskAdmin(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
+            "org_id": obj.get("org_id"),
+            "project_id": obj.get("project_id"),
             "name": obj.get("name"),
             "tool_name": obj.get("tool_name"),
             "tool_version": obj.get("tool_version"),

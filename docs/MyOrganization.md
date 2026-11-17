@@ -8,7 +8,12 @@ Name | Type | Description | Notes
 **name** | **str** |  | 
 **support_channel** | **str** |  | [optional] 
 **user_limit** | **int** |  | [optional] 
+**project_limit** | **int** |  | [optional] 
+**tools_only** | **bool** | Indicates if this organization is a tools-only organization. Tools-only organizations have no access to auditing features. | [optional] [default to False]
 **id** | **int** |  | 
+**plan_seats** | **int** |  | 
+**extra_seats** | **int** |  | 
+**manual_user_limit** | **int** |  | 
 **gh_connected** | **bool** |  | 
 **created_at** | **datetime** |  | 
 **is_favorite** | **bool** |  | [optional] [default to False]

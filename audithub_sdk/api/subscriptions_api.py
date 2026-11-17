@@ -16,12 +16,14 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import StrictInt
-from typing import Any
+from typing import List
+from audithub_sdk.models.data import Data
 from audithub_sdk.models.id_and_message_response import IdAndMessageResponse
+from audithub_sdk.models.new_organization_extra import NewOrganizationExtra
 from audithub_sdk.models.new_organization_subscription import NewOrganizationSubscription
+from audithub_sdk.models.organization_extras import OrganizationExtras
 from audithub_sdk.models.organization_subscription import OrganizationSubscription
-from audithub_sdk.models.resource_patch import ResourcePatch
-from audithub_sdk.models.success_and_message_response import SuccessAndMessageResponse
+from audithub_sdk.models.response_patch_subscription_organizations_organization_id_subscriptions_subscription_id_patch import ResponsePatchSubscriptionOrganizationsOrganizationIdSubscriptionsSubscriptionIdPatch
 
 from audithub_sdk.api_client import ApiClient, RequestSerialized
 from audithub_sdk.api_response import ApiResponse
@@ -42,7 +44,7 @@ class SubscriptionsApi:
 
 
     @validate_call
-    async def get_current_organization_subscriptions_organizations_organization_id_subscriptions_get(
+    async def get_extras_organizations_organization_id_extras_get(
         self,
         organization_id: StrictInt,
         _request_timeout: Union[
@@ -57,10 +59,10 @@ class SubscriptionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> object:
-        """Get Current Organization Subscriptions
+    ) -> OrganizationExtras:
+        """List organization extra credits
 
-        Get currently active organization subscriptions
+        Returns all extras, including expired grants and grants from previous subscriptions, ordered by purchase time descending. Expiry is exclusive.
 
         :param organization_id: (required)
         :type organization_id: int
@@ -86,7 +88,7 @@ class SubscriptionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_current_organization_subscriptions_organizations_organization_id_subscriptions_get_serialize(
+        _param = self._get_extras_organizations_organization_id_extras_get_serialize(
             organization_id=organization_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -95,7 +97,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "OrganizationExtras",
             '422': "HTTPValidationError",
             '4XX': "Problem",
             '5XX': "Problem",
@@ -112,7 +114,7 @@ class SubscriptionsApi:
 
 
     @validate_call
-    async def get_current_organization_subscriptions_organizations_organization_id_subscriptions_get_with_http_info(
+    async def get_extras_organizations_organization_id_extras_get_with_http_info(
         self,
         organization_id: StrictInt,
         _request_timeout: Union[
@@ -127,10 +129,10 @@ class SubscriptionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[object]:
-        """Get Current Organization Subscriptions
+    ) -> ApiResponse[OrganizationExtras]:
+        """List organization extra credits
 
-        Get currently active organization subscriptions
+        Returns all extras, including expired grants and grants from previous subscriptions, ordered by purchase time descending. Expiry is exclusive.
 
         :param organization_id: (required)
         :type organization_id: int
@@ -156,7 +158,7 @@ class SubscriptionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_current_organization_subscriptions_organizations_organization_id_subscriptions_get_serialize(
+        _param = self._get_extras_organizations_organization_id_extras_get_serialize(
             organization_id=organization_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -165,7 +167,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "OrganizationExtras",
             '422': "HTTPValidationError",
             '4XX': "Problem",
             '5XX': "Problem",
@@ -182,7 +184,7 @@ class SubscriptionsApi:
 
 
     @validate_call
-    async def get_current_organization_subscriptions_organizations_organization_id_subscriptions_get_without_preload_content(
+    async def get_extras_organizations_organization_id_extras_get_without_preload_content(
         self,
         organization_id: StrictInt,
         _request_timeout: Union[
@@ -198,9 +200,9 @@ class SubscriptionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Current Organization Subscriptions
+        """List organization extra credits
 
-        Get currently active organization subscriptions
+        Returns all extras, including expired grants and grants from previous subscriptions, ordered by purchase time descending. Expiry is exclusive.
 
         :param organization_id: (required)
         :type organization_id: int
@@ -226,7 +228,7 @@ class SubscriptionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_current_organization_subscriptions_organizations_organization_id_subscriptions_get_serialize(
+        _param = self._get_extras_organizations_organization_id_extras_get_serialize(
             organization_id=organization_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -235,7 +237,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "OrganizationExtras",
             '422': "HTTPValidationError",
             '4XX': "Problem",
             '5XX': "Problem",
@@ -247,7 +249,564 @@ class SubscriptionsApi:
         return response_data.response
 
 
-    def _get_current_organization_subscriptions_organizations_organization_id_subscriptions_get_serialize(
+    def _get_extras_organizations_organization_id_extras_get_serialize(
+        self,
+        organization_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'OpenIdConnect'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/organizations/{organization_id}/extras',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def get_subscription_organizations_organization_id_subscriptions_subscription_id_get(
+        self,
+        organization_id: StrictInt,
+        subscription_id: StrictInt,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> OrganizationSubscription:
+        """Get an organization subscription
+
+        Return a subscription belonging to the specified organization.
+
+        :param organization_id: (required)
+        :type organization_id: int
+        :param subscription_id: (required)
+        :type subscription_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_subscription_organizations_organization_id_subscriptions_subscription_id_get_serialize(
+            organization_id=organization_id,
+            subscription_id=subscription_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "OrganizationSubscription",
+            '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_subscription_organizations_organization_id_subscriptions_subscription_id_get_with_http_info(
+        self,
+        organization_id: StrictInt,
+        subscription_id: StrictInt,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[OrganizationSubscription]:
+        """Get an organization subscription
+
+        Return a subscription belonging to the specified organization.
+
+        :param organization_id: (required)
+        :type organization_id: int
+        :param subscription_id: (required)
+        :type subscription_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_subscription_organizations_organization_id_subscriptions_subscription_id_get_serialize(
+            organization_id=organization_id,
+            subscription_id=subscription_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "OrganizationSubscription",
+            '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_subscription_organizations_organization_id_subscriptions_subscription_id_get_without_preload_content(
+        self,
+        organization_id: StrictInt,
+        subscription_id: StrictInt,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Get an organization subscription
+
+        Return a subscription belonging to the specified organization.
+
+        :param organization_id: (required)
+        :type organization_id: int
+        :param subscription_id: (required)
+        :type subscription_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_subscription_organizations_organization_id_subscriptions_subscription_id_get_serialize(
+            organization_id=organization_id,
+            subscription_id=subscription_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "OrganizationSubscription",
+            '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_subscription_organizations_organization_id_subscriptions_subscription_id_get_serialize(
+        self,
+        organization_id,
+        subscription_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        if subscription_id is not None:
+            _path_params['subscription_id'] = subscription_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'OpenIdConnect'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/organizations/{organization_id}/subscriptions/{subscription_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def get_subscriptions_organizations_organization_id_subscriptions_get(
+        self,
+        organization_id: StrictInt,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[OrganizationSubscription]:
+        """List organization subscriptions
+
+        Return all the organization's subscriptions, ordered by start time descending.
+
+        :param organization_id: (required)
+        :type organization_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_subscriptions_organizations_organization_id_subscriptions_get_serialize(
+            organization_id=organization_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[OrganizationSubscription]",
+            '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def get_subscriptions_organizations_organization_id_subscriptions_get_with_http_info(
+        self,
+        organization_id: StrictInt,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[OrganizationSubscription]]:
+        """List organization subscriptions
+
+        Return all the organization's subscriptions, ordered by start time descending.
+
+        :param organization_id: (required)
+        :type organization_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_subscriptions_organizations_organization_id_subscriptions_get_serialize(
+            organization_id=organization_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[OrganizationSubscription]",
+            '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def get_subscriptions_organizations_organization_id_subscriptions_get_without_preload_content(
+        self,
+        organization_id: StrictInt,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """List organization subscriptions
+
+        Return all the organization's subscriptions, ordered by start time descending.
+
+        :param organization_id: (required)
+        :type organization_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_subscriptions_organizations_organization_id_subscriptions_get_serialize(
+            organization_id=organization_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[OrganizationSubscription]",
+            '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_subscriptions_organizations_organization_id_subscriptions_get_serialize(
         self,
         organization_id,
         _request_auth,
@@ -313,297 +872,11 @@ class SubscriptionsApi:
 
 
     @validate_call
-    async def get_organization_subscription_organizations_organization_id_subscriptions_subscription_id_get(
-        self,
-        organization_id: StrictInt,
-        subscription_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> OrganizationSubscription:
-        """Get Organization Subscription
-
-        Get organization subscription
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param subscription_id: (required)
-        :type subscription_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_organization_subscription_organizations_organization_id_subscriptions_subscription_id_get_serialize(
-            organization_id=organization_id,
-            subscription_id=subscription_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OrganizationSubscription",
-            '422': "HTTPValidationError",
-            '4XX': "Problem",
-            '5XX': "Problem",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def get_organization_subscription_organizations_organization_id_subscriptions_subscription_id_get_with_http_info(
-        self,
-        organization_id: StrictInt,
-        subscription_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[OrganizationSubscription]:
-        """Get Organization Subscription
-
-        Get organization subscription
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param subscription_id: (required)
-        :type subscription_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_organization_subscription_organizations_organization_id_subscriptions_subscription_id_get_serialize(
-            organization_id=organization_id,
-            subscription_id=subscription_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OrganizationSubscription",
-            '422': "HTTPValidationError",
-            '4XX': "Problem",
-            '5XX': "Problem",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def get_organization_subscription_organizations_organization_id_subscriptions_subscription_id_get_without_preload_content(
-        self,
-        organization_id: StrictInt,
-        subscription_id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Get Organization Subscription
-
-        Get organization subscription
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param subscription_id: (required)
-        :type subscription_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_organization_subscription_organizations_organization_id_subscriptions_subscription_id_get_serialize(
-            organization_id=organization_id,
-            subscription_id=subscription_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OrganizationSubscription",
-            '422': "HTTPValidationError",
-            '4XX': "Problem",
-            '5XX': "Problem",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_organization_subscription_organizations_organization_id_subscriptions_subscription_id_get_serialize(
-        self,
-        organization_id,
-        subscription_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if subscription_id is not None:
-            _path_params['subscription_id'] = subscription_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json', 
-                    'application/problem+json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'OpenIdConnect'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/organizations/{organization_id}/subscriptions/{subscription_id}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     async def patch_subscription_organizations_organization_id_subscriptions_subscription_id_patch(
         self,
         organization_id: StrictInt,
         subscription_id: StrictInt,
-        resource_patch: ResourcePatch,
+        data: Data,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -616,17 +889,17 @@ class SubscriptionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessAndMessageResponse:
-        """Patch Subscription
+    ) -> ResponsePatchSubscriptionOrganizationsOrganizationIdSubscriptionsSubscriptionIdPatch:
+        """Update or soft delete an organization subscription
 
-        Patch subscription
+        Update a subscription belonging to the organization. Returns the updated subscription for duration or credit changes, or a success message for deletion. Select the change using `action`:  - `duration`: provide the new `start_time` and `end_time`. Both may change, even after the subscription starts. Free subscriptions must remain open-ended when changing dates through PATCH. Funding periods include the start and exclude the end. - `credits`: provide `monthly_credits` to override the plan's monthly grant. For either action, any task allocation associated with this subscription causes HTTP 409. - `delete`: soft delete the subscription, preserving its database row and credit records.
 
         :param organization_id: (required)
         :type organization_id: int
         :param subscription_id: (required)
         :type subscription_id: int
-        :param resource_patch: (required)
-        :type resource_patch: ResourcePatch
+        :param data: (required)
+        :type data: Data
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -652,7 +925,7 @@ class SubscriptionsApi:
         _param = self._patch_subscription_organizations_organization_id_subscriptions_subscription_id_patch_serialize(
             organization_id=organization_id,
             subscription_id=subscription_id,
-            resource_patch=resource_patch,
+            data=data,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -660,7 +933,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessAndMessageResponse",
+            '200': "ResponsePatchSubscriptionOrganizationsOrganizationIdSubscriptionsSubscriptionIdPatch",
             '422': "HTTPValidationError",
             '4XX': "Problem",
             '5XX': "Problem",
@@ -681,7 +954,7 @@ class SubscriptionsApi:
         self,
         organization_id: StrictInt,
         subscription_id: StrictInt,
-        resource_patch: ResourcePatch,
+        data: Data,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -694,17 +967,17 @@ class SubscriptionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessAndMessageResponse]:
-        """Patch Subscription
+    ) -> ApiResponse[ResponsePatchSubscriptionOrganizationsOrganizationIdSubscriptionsSubscriptionIdPatch]:
+        """Update or soft delete an organization subscription
 
-        Patch subscription
+        Update a subscription belonging to the organization. Returns the updated subscription for duration or credit changes, or a success message for deletion. Select the change using `action`:  - `duration`: provide the new `start_time` and `end_time`. Both may change, even after the subscription starts. Free subscriptions must remain open-ended when changing dates through PATCH. Funding periods include the start and exclude the end. - `credits`: provide `monthly_credits` to override the plan's monthly grant. For either action, any task allocation associated with this subscription causes HTTP 409. - `delete`: soft delete the subscription, preserving its database row and credit records.
 
         :param organization_id: (required)
         :type organization_id: int
         :param subscription_id: (required)
         :type subscription_id: int
-        :param resource_patch: (required)
-        :type resource_patch: ResourcePatch
+        :param data: (required)
+        :type data: Data
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -730,7 +1003,7 @@ class SubscriptionsApi:
         _param = self._patch_subscription_organizations_organization_id_subscriptions_subscription_id_patch_serialize(
             organization_id=organization_id,
             subscription_id=subscription_id,
-            resource_patch=resource_patch,
+            data=data,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -738,7 +1011,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessAndMessageResponse",
+            '200': "ResponsePatchSubscriptionOrganizationsOrganizationIdSubscriptionsSubscriptionIdPatch",
             '422': "HTTPValidationError",
             '4XX': "Problem",
             '5XX': "Problem",
@@ -759,7 +1032,7 @@ class SubscriptionsApi:
         self,
         organization_id: StrictInt,
         subscription_id: StrictInt,
-        resource_patch: ResourcePatch,
+        data: Data,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -773,16 +1046,16 @@ class SubscriptionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch Subscription
+        """Update or soft delete an organization subscription
 
-        Patch subscription
+        Update a subscription belonging to the organization. Returns the updated subscription for duration or credit changes, or a success message for deletion. Select the change using `action`:  - `duration`: provide the new `start_time` and `end_time`. Both may change, even after the subscription starts. Free subscriptions must remain open-ended when changing dates through PATCH. Funding periods include the start and exclude the end. - `credits`: provide `monthly_credits` to override the plan's monthly grant. For either action, any task allocation associated with this subscription causes HTTP 409. - `delete`: soft delete the subscription, preserving its database row and credit records.
 
         :param organization_id: (required)
         :type organization_id: int
         :param subscription_id: (required)
         :type subscription_id: int
-        :param resource_patch: (required)
-        :type resource_patch: ResourcePatch
+        :param data: (required)
+        :type data: Data
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -808,7 +1081,7 @@ class SubscriptionsApi:
         _param = self._patch_subscription_organizations_organization_id_subscriptions_subscription_id_patch_serialize(
             organization_id=organization_id,
             subscription_id=subscription_id,
-            resource_patch=resource_patch,
+            data=data,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -816,7 +1089,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessAndMessageResponse",
+            '200': "ResponsePatchSubscriptionOrganizationsOrganizationIdSubscriptionsSubscriptionIdPatch",
             '422': "HTTPValidationError",
             '4XX': "Problem",
             '5XX': "Problem",
@@ -832,7 +1105,7 @@ class SubscriptionsApi:
         self,
         organization_id,
         subscription_id,
-        resource_patch,
+        data,
         _request_auth,
         _content_type,
         _headers,
@@ -862,8 +1135,8 @@ class SubscriptionsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if resource_patch is not None:
-            _body_params = resource_patch
+        if data is not None:
+            _body_params = data
 
 
         # set the HTTP header `Accept`
@@ -913,10 +1186,10 @@ class SubscriptionsApi:
 
 
     @validate_call
-    async def post_organization_subscription_organizations_organization_id_subscriptions_post(
+    async def post_extra_organizations_organization_id_extras_post(
         self,
         organization_id: StrictInt,
-        new_organization_subscription: NewOrganizationSubscription,
+        new_organization_extra: NewOrganizationExtra,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -930,14 +1203,14 @@ class SubscriptionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdAndMessageResponse:
-        """Post Organization Subscription
+        """Create organization extra credits
 
-        Create new organization subscription
+        Requires an active subscription. Creates extra credits and a funding period atomically, expiring based on extra credit config. The supplied credits override the option's credit amount.
 
         :param organization_id: (required)
         :type organization_id: int
-        :param new_organization_subscription: (required)
-        :type new_organization_subscription: NewOrganizationSubscription
+        :param new_organization_extra: (required)
+        :type new_organization_extra: NewOrganizationExtra
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -960,9 +1233,9 @@ class SubscriptionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._post_organization_subscription_organizations_organization_id_subscriptions_post_serialize(
+        _param = self._post_extra_organizations_organization_id_extras_post_serialize(
             organization_id=organization_id,
-            new_organization_subscription=new_organization_subscription,
+            new_organization_extra=new_organization_extra,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -970,7 +1243,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "IdAndMessageResponse",
+            '201': "IdAndMessageResponse",
             '422': "HTTPValidationError",
             '4XX': "Problem",
             '5XX': "Problem",
@@ -987,10 +1260,10 @@ class SubscriptionsApi:
 
 
     @validate_call
-    async def post_organization_subscription_organizations_organization_id_subscriptions_post_with_http_info(
+    async def post_extra_organizations_organization_id_extras_post_with_http_info(
         self,
         organization_id: StrictInt,
-        new_organization_subscription: NewOrganizationSubscription,
+        new_organization_extra: NewOrganizationExtra,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1004,14 +1277,14 @@ class SubscriptionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdAndMessageResponse]:
-        """Post Organization Subscription
+        """Create organization extra credits
 
-        Create new organization subscription
+        Requires an active subscription. Creates extra credits and a funding period atomically, expiring based on extra credit config. The supplied credits override the option's credit amount.
 
         :param organization_id: (required)
         :type organization_id: int
-        :param new_organization_subscription: (required)
-        :type new_organization_subscription: NewOrganizationSubscription
+        :param new_organization_extra: (required)
+        :type new_organization_extra: NewOrganizationExtra
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1034,9 +1307,9 @@ class SubscriptionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._post_organization_subscription_organizations_organization_id_subscriptions_post_serialize(
+        _param = self._post_extra_organizations_organization_id_extras_post_serialize(
             organization_id=organization_id,
-            new_organization_subscription=new_organization_subscription,
+            new_organization_extra=new_organization_extra,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1044,7 +1317,7 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "IdAndMessageResponse",
+            '201': "IdAndMessageResponse",
             '422': "HTTPValidationError",
             '4XX': "Problem",
             '5XX': "Problem",
@@ -1061,7 +1334,158 @@ class SubscriptionsApi:
 
 
     @validate_call
-    async def post_organization_subscription_organizations_organization_id_subscriptions_post_without_preload_content(
+    async def post_extra_organizations_organization_id_extras_post_without_preload_content(
+        self,
+        organization_id: StrictInt,
+        new_organization_extra: NewOrganizationExtra,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Create organization extra credits
+
+        Requires an active subscription. Creates extra credits and a funding period atomically, expiring based on extra credit config. The supplied credits override the option's credit amount.
+
+        :param organization_id: (required)
+        :type organization_id: int
+        :param new_organization_extra: (required)
+        :type new_organization_extra: NewOrganizationExtra
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._post_extra_organizations_organization_id_extras_post_serialize(
+            organization_id=organization_id,
+            new_organization_extra=new_organization_extra,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "IdAndMessageResponse",
+            '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _post_extra_organizations_organization_id_extras_post_serialize(
+        self,
+        organization_id,
+        new_organization_extra,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if organization_id is not None:
+            _path_params['organization_id'] = organization_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if new_organization_extra is not None:
+            _body_params = new_organization_extra
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'OpenIdConnect'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/organizations/{organization_id}/extras',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def post_subscription_organizations_organization_id_subscriptions_post(
         self,
         organization_id: StrictInt,
         new_organization_subscription: NewOrganizationSubscription,
@@ -1077,10 +1501,10 @@ class SubscriptionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Post Organization Subscription
+    ) -> IdAndMessageResponse:
+        """Create an organization subscription
 
-        Create new organization subscription
+        Create a subscription for an existing organization and generate its credit periods. Apply the plan's organization access restrictions. When a free subscription is active at the new start time, its end and its credit period's end are set to that start time. Other overlapping subscriptions are rejected with HTTP 409..
 
         :param organization_id: (required)
         :type organization_id: int
@@ -1108,7 +1532,7 @@ class SubscriptionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._post_organization_subscription_organizations_organization_id_subscriptions_post_serialize(
+        _param = self._post_subscription_organizations_organization_id_subscriptions_post_serialize(
             organization_id=organization_id,
             new_organization_subscription=new_organization_subscription,
             _request_auth=_request_auth,
@@ -1118,7 +1542,155 @@ class SubscriptionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "IdAndMessageResponse",
+            '201': "IdAndMessageResponse",
+            '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def post_subscription_organizations_organization_id_subscriptions_post_with_http_info(
+        self,
+        organization_id: StrictInt,
+        new_organization_subscription: NewOrganizationSubscription,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[IdAndMessageResponse]:
+        """Create an organization subscription
+
+        Create a subscription for an existing organization and generate its credit periods. Apply the plan's organization access restrictions. When a free subscription is active at the new start time, its end and its credit period's end are set to that start time. Other overlapping subscriptions are rejected with HTTP 409..
+
+        :param organization_id: (required)
+        :type organization_id: int
+        :param new_organization_subscription: (required)
+        :type new_organization_subscription: NewOrganizationSubscription
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._post_subscription_organizations_organization_id_subscriptions_post_serialize(
+            organization_id=organization_id,
+            new_organization_subscription=new_organization_subscription,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "IdAndMessageResponse",
+            '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def post_subscription_organizations_organization_id_subscriptions_post_without_preload_content(
+        self,
+        organization_id: StrictInt,
+        new_organization_subscription: NewOrganizationSubscription,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Create an organization subscription
+
+        Create a subscription for an existing organization and generate its credit periods. Apply the plan's organization access restrictions. When a free subscription is active at the new start time, its end and its credit period's end are set to that start time. Other overlapping subscriptions are rejected with HTTP 409..
+
+        :param organization_id: (required)
+        :type organization_id: int
+        :param new_organization_subscription: (required)
+        :type new_organization_subscription: NewOrganizationSubscription
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._post_subscription_organizations_organization_id_subscriptions_post_serialize(
+            organization_id=organization_id,
+            new_organization_subscription=new_organization_subscription,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "IdAndMessageResponse",
             '422': "HTTPValidationError",
             '4XX': "Problem",
             '5XX': "Problem",
@@ -1130,7 +1702,7 @@ class SubscriptionsApi:
         return response_data.response
 
 
-    def _post_organization_subscription_organizations_organization_id_subscriptions_post_serialize(
+    def _post_subscription_organizations_organization_id_subscriptions_post_serialize(
         self,
         organization_id,
         new_organization_subscription,
@@ -1196,320 +1768,6 @@ class SubscriptionsApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/organizations/{organization_id}/subscriptions',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def put_organization_subscription_organizations_organization_id_subscriptions_subscription_id_put(
-        self,
-        organization_id: StrictInt,
-        subscription_id: StrictInt,
-        new_organization_subscription: NewOrganizationSubscription,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SuccessAndMessageResponse:
-        """Put Organization Subscription
-
-        Update active organization subscription
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param subscription_id: (required)
-        :type subscription_id: int
-        :param new_organization_subscription: (required)
-        :type new_organization_subscription: NewOrganizationSubscription
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._put_organization_subscription_organizations_organization_id_subscriptions_subscription_id_put_serialize(
-            organization_id=organization_id,
-            subscription_id=subscription_id,
-            new_organization_subscription=new_organization_subscription,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessAndMessageResponse",
-            '422': "HTTPValidationError",
-            '4XX': "Problem",
-            '5XX': "Problem",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def put_organization_subscription_organizations_organization_id_subscriptions_subscription_id_put_with_http_info(
-        self,
-        organization_id: StrictInt,
-        subscription_id: StrictInt,
-        new_organization_subscription: NewOrganizationSubscription,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SuccessAndMessageResponse]:
-        """Put Organization Subscription
-
-        Update active organization subscription
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param subscription_id: (required)
-        :type subscription_id: int
-        :param new_organization_subscription: (required)
-        :type new_organization_subscription: NewOrganizationSubscription
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._put_organization_subscription_organizations_organization_id_subscriptions_subscription_id_put_serialize(
-            organization_id=organization_id,
-            subscription_id=subscription_id,
-            new_organization_subscription=new_organization_subscription,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessAndMessageResponse",
-            '422': "HTTPValidationError",
-            '4XX': "Problem",
-            '5XX': "Problem",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def put_organization_subscription_organizations_organization_id_subscriptions_subscription_id_put_without_preload_content(
-        self,
-        organization_id: StrictInt,
-        subscription_id: StrictInt,
-        new_organization_subscription: NewOrganizationSubscription,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Put Organization Subscription
-
-        Update active organization subscription
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param subscription_id: (required)
-        :type subscription_id: int
-        :param new_organization_subscription: (required)
-        :type new_organization_subscription: NewOrganizationSubscription
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._put_organization_subscription_organizations_organization_id_subscriptions_subscription_id_put_serialize(
-            organization_id=organization_id,
-            subscription_id=subscription_id,
-            new_organization_subscription=new_organization_subscription,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SuccessAndMessageResponse",
-            '422': "HTTPValidationError",
-            '4XX': "Problem",
-            '5XX': "Problem",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _put_organization_subscription_organizations_organization_id_subscriptions_subscription_id_put_serialize(
-        self,
-        organization_id,
-        subscription_id,
-        new_organization_subscription,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if subscription_id is not None:
-            _path_params['subscription_id'] = subscription_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if new_organization_subscription is not None:
-            _body_params = new_organization_subscription
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json', 
-                    'application/problem+json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'OpenIdConnect'
-        ]
-
-        return self.api_client.param_serialize(
-            method='PUT',
-            resource_path='/organizations/{organization_id}/subscriptions/{subscription_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

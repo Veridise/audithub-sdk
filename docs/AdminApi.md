@@ -17,9 +17,14 @@ Method | HTTP request | Description
 [**get_user_profile_admin_users_user_id_profile_get**](AdminApi.md#get_user_profile_admin_users_user_id_profile_get) | **GET** /admin/users/{user_id}/profile | Get User Profile
 [**get_users_admin_users_get**](AdminApi.md#get_users_admin_users_get) | **GET** /admin/users | Get Users
 [**get_versions_admin_versions_get**](AdminApi.md#get_versions_admin_versions_get) | **GET** /admin/versions | Get Versions
+[**list_extra_credits_configs_admin_extra_credits_config_get**](AdminApi.md#list_extra_credits_configs_admin_extra_credits_config_get) | **GET** /admin/extra-credits-config | List extra credits configurations
+[**list_stripe_events_admin_stripe_events_get**](AdminApi.md#list_stripe_events_admin_stripe_events_get) | **GET** /admin/stripe/events | List stored Stripe events
+[**list_subscription_plans_admin_subscription_plans_get**](AdminApi.md#list_subscription_plans_admin_subscription_plans_get) | **GET** /admin/subscription-plans | List Subscription Plans
 [**onboard_requests_admin_onboard_requests_get**](AdminApi.md#onboard_requests_admin_onboard_requests_get) | **GET** /admin/onboard/requests | Onboard Requests
 [**onboard_user_admin_onboard_get**](AdminApi.md#onboard_user_admin_onboard_get) | **GET** /admin/onboard | Onboard User
 [**patch_project_admin_projects_patch**](AdminApi.md#patch_project_admin_projects_patch) | **PATCH** /admin/projects | Patch Project
+[**post_extra_credits_config_admin_extra_credits_config_post**](AdminApi.md#post_extra_credits_config_admin_extra_credits_config_post) | **POST** /admin/extra-credits-config | Create an extra credits configuration
+[**post_subscription_plan_admin_subscription_plans_post**](AdminApi.md#post_subscription_plan_admin_subscription_plans_post) | **POST** /admin/subscription-plans | Create a subscription plan
 [**put_user_profile_admin_users_user_id_profile_put**](AdminApi.md#put_user_profile_admin_users_user_id_profile_put) | **PUT** /admin/users/{user_id}/profile | Put User Profile
 [**qa_cleanup_admin_qa_cleanup_get**](AdminApi.md#qa_cleanup_admin_qa_cleanup_get) | **GET** /admin/qa-cleanup | Qa Cleanup
 [**remove_user_assignment_or_invitation_admin_organizations_organization_id_users_email_delete**](AdminApi.md#remove_user_assignment_or_invitation_admin_organizations_organization_id_users_email_delete) | **DELETE** /admin/organizations/{organization_id}/users/{email} | Remove User Assignment Or Invitation
@@ -1051,6 +1056,223 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **list_extra_credits_configs_admin_extra_credits_config_get**
+> List[ExtraCreditsConfigAdmin] list_extra_credits_configs_admin_extra_credits_config_get()
+
+List extra credits configurations
+
+Return all extra credit options, ordered by ID.
+
+### Example
+
+
+```python
+import audithub_sdk
+from audithub_sdk.models.extra_credits_config_admin import ExtraCreditsConfigAdmin
+from audithub_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://audithub.dev.veridise.tools/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = audithub_sdk.Configuration(
+    host = "https://audithub.dev.veridise.tools/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Enter a context with an instance of the API client
+async with audithub_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = audithub_sdk.AdminApi(api_client)
+
+    try:
+        # List extra credits configurations
+        api_response = await api_instance.list_extra_credits_configs_admin_extra_credits_config_get()
+        print("The response of AdminApi->list_extra_credits_configs_admin_extra_credits_config_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->list_extra_credits_configs_admin_extra_credits_config_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List[ExtraCreditsConfigAdmin]**](ExtraCreditsConfigAdmin.md)
+
+### Authorization
+
+[OpenIdConnect](../README.md#OpenIdConnect)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_stripe_events_admin_stripe_events_get**
+> List[StripeEvent] list_stripe_events_admin_stripe_events_get(from_created_at=from_created_at, to_created_at=to_created_at)
+
+List stored Stripe events
+
+Return all stored Stripe events ordered by time ascending
+
+### Example
+
+
+```python
+import audithub_sdk
+from audithub_sdk.models.stripe_event import StripeEvent
+from audithub_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://audithub.dev.veridise.tools/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = audithub_sdk.Configuration(
+    host = "https://audithub.dev.veridise.tools/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Enter a context with an instance of the API client
+async with audithub_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = audithub_sdk.AdminApi(api_client)
+    from_created_at = '2013-10-20T19:20:30+01:00' # datetime | Timestamp in UTC. Include events received on or after (>=) this time. (optional)
+    to_created_at = '2013-10-20T19:20:30+01:00' # datetime | Timestamp in UTC. Include events received before (<) this time. (optional)
+
+    try:
+        # List stored Stripe events
+        api_response = await api_instance.list_stripe_events_admin_stripe_events_get(from_created_at=from_created_at, to_created_at=to_created_at)
+        print("The response of AdminApi->list_stripe_events_admin_stripe_events_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->list_stripe_events_admin_stripe_events_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **from_created_at** | **datetime**| Timestamp in UTC. Include events received on or after (&gt;&#x3D;) this time. | [optional] 
+ **to_created_at** | **datetime**| Timestamp in UTC. Include events received before (&lt;) this time. | [optional] 
+
+### Return type
+
+[**List[StripeEvent]**](StripeEvent.md)
+
+### Authorization
+
+[OpenIdConnect](../README.md#OpenIdConnect)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_subscription_plans_admin_subscription_plans_get**
+> List[SubscriptionPlanAdmin] list_subscription_plans_admin_subscription_plans_get()
+
+List Subscription Plans
+
+Get subscription plans
+
+### Example
+
+
+```python
+import audithub_sdk
+from audithub_sdk.models.subscription_plan_admin import SubscriptionPlanAdmin
+from audithub_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://audithub.dev.veridise.tools/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = audithub_sdk.Configuration(
+    host = "https://audithub.dev.veridise.tools/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Enter a context with an instance of the API client
+async with audithub_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = audithub_sdk.AdminApi(api_client)
+
+    try:
+        # List Subscription Plans
+        api_response = await api_instance.list_subscription_plans_admin_subscription_plans_get()
+        print("The response of AdminApi->list_subscription_plans_admin_subscription_plans_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->list_subscription_plans_admin_subscription_plans_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List[SubscriptionPlanAdmin]**](SubscriptionPlanAdmin.md)
+
+### Authorization
+
+[OpenIdConnect](../README.md#OpenIdConnect)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **onboard_requests_admin_onboard_requests_get**
 > List[OnboardingRequest] onboard_requests_admin_onboard_requests_get(request_status=request_status)
 
@@ -1282,6 +1504,158 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_extra_credits_config_admin_extra_credits_config_post**
+> IdAndMessageResponse post_extra_credits_config_admin_extra_credits_config_post(new_extra_credits_config)
+
+Create an extra credits configuration
+
+Create an extra credit option with a name, description, nonnegative decimal credit amount and optional unique stripe_price_id. expiry_timeframe must be positive and defaults to 365 days (one year).
+
+### Example
+
+
+```python
+import audithub_sdk
+from audithub_sdk.models.id_and_message_response import IdAndMessageResponse
+from audithub_sdk.models.new_extra_credits_config import NewExtraCreditsConfig
+from audithub_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://audithub.dev.veridise.tools/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = audithub_sdk.Configuration(
+    host = "https://audithub.dev.veridise.tools/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Enter a context with an instance of the API client
+async with audithub_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = audithub_sdk.AdminApi(api_client)
+    new_extra_credits_config = audithub_sdk.NewExtraCreditsConfig() # NewExtraCreditsConfig | 
+
+    try:
+        # Create an extra credits configuration
+        api_response = await api_instance.post_extra_credits_config_admin_extra_credits_config_post(new_extra_credits_config)
+        print("The response of AdminApi->post_extra_credits_config_admin_extra_credits_config_post:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->post_extra_credits_config_admin_extra_credits_config_post: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **new_extra_credits_config** | [**NewExtraCreditsConfig**](NewExtraCreditsConfig.md)|  | 
+
+### Return type
+
+[**IdAndMessageResponse**](IdAndMessageResponse.md)
+
+### Authorization
+
+[OpenIdConnect](../README.md#OpenIdConnect)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+**4XX** | Client Error |  -  |
+**5XX** | Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_subscription_plan_admin_subscription_plans_post**
+> IdAndMessageResponse post_subscription_plan_admin_subscription_plans_post(new_subscription_plan)
+
+Create a subscription plan
+
+Create a new subscription plan. Name should be unique. Optional user_limit and project_limit are nonnegative; null means unlimited. org_restrictions is a list of organization access restrictions. `is_free` identifies the free plan; Only one free plan is allowed. `is_enterprise` identifies an enterprise plan and defaults to false.
+
+### Example
+
+
+```python
+import audithub_sdk
+from audithub_sdk.models.id_and_message_response import IdAndMessageResponse
+from audithub_sdk.models.new_subscription_plan import NewSubscriptionPlan
+from audithub_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://audithub.dev.veridise.tools/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = audithub_sdk.Configuration(
+    host = "https://audithub.dev.veridise.tools/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Enter a context with an instance of the API client
+async with audithub_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = audithub_sdk.AdminApi(api_client)
+    new_subscription_plan = audithub_sdk.NewSubscriptionPlan() # NewSubscriptionPlan | 
+
+    try:
+        # Create a subscription plan
+        api_response = await api_instance.post_subscription_plan_admin_subscription_plans_post(new_subscription_plan)
+        print("The response of AdminApi->post_subscription_plan_admin_subscription_plans_post:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->post_subscription_plan_admin_subscription_plans_post: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **new_subscription_plan** | [**NewSubscriptionPlan**](NewSubscriptionPlan.md)|  | 
+
+### Return type
+
+[**IdAndMessageResponse**](IdAndMessageResponse.md)
+
+### Authorization
+
+[OpenIdConnect](../README.md#OpenIdConnect)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Successful Response |  -  |
 **422** | Validation Error |  -  |
 **4XX** | Client Error |  -  |
 **5XX** | Server Error |  -  |

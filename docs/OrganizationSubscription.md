@@ -5,18 +5,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**subscription_type** | **str** | Subscription type can be S for subscription and E for extension. | [optional] [default to 'S']
-**from_date** | **datetime** |  | 
-**to_date** | **datetime** |  | 
-**monthly_cpu_minutes** | **int** |  | [optional] 
-**storage_mb** | **int** |  | [optional] 
-**package_name** | **str** |  | [optional] 
-**enforce_monthly_resource_consumption** | **bool** | It indicates how to enforce quotas: a) when True, monthly quotas can only be consumed within the specific month, and b) when False, quota are freely consumed any time within the subscription time window | [optional] [default to False]
+**plan_id** | **int** |  | 
+**start_time** | **datetime** | Inclusive start in UTC. A task starting exactly at this timestamp may be funded by this subscription.  | 
+**end_time** | **datetime** |  | [optional] 
+**duration_months** | **int** |  | [optional] 
+**purchase_time** | **datetime** |  | 
+**purchase_price** | **str** |  | 
+**monthly_credits** | **str** |  | [optional] 
+**total_credits** | **str** |  | [optional] 
 **id** | **int** |  | 
-**created_at** | **datetime** |  | 
-**created_by** | **str** |  | 
-**last_updated_at** | **datetime** |  | 
-**last_updated_by** | **str** |  | 
+**organization_id** | **int** |  | 
+**user_id** | **str** |  | 
+**canceled_time** | **datetime** |  | [optional] 
+**stripe_subscription_id** | **str** |  | [optional] 
+**stripe_latest_invoice_id** | **str** |  | [optional] 
 
 ## Example
 

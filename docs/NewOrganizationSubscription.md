@@ -5,13 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**subscription_type** | **str** | Subscription type can be S for subscription and E for extension. | [optional] [default to 'S']
-**from_date** | **datetime** |  | 
-**to_date** | **datetime** |  | 
-**monthly_cpu_minutes** | **int** |  | [optional] 
-**storage_mb** | **int** |  | [optional] 
-**package_name** | **str** |  | [optional] 
-**enforce_monthly_resource_consumption** | **bool** | It indicates how to enforce quotas: a) when True, monthly quotas can only be consumed within the specific month, and b) when False, quota are freely consumed any time within the subscription time window | [optional] [default to False]
+**plan_id** | **int** |  | 
+**start_time** | **datetime** | Inclusive start in UTC. A task starting exactly at this timestamp may be funded by this subscription.  | 
+**end_time** | **datetime** |  | [optional] 
+**duration_months** | **int** |  | [optional] 
+**purchase_time** | **datetime** |  | 
+**purchase_price** | [**PurchasePrice**](PurchasePrice.md) |  | 
+**monthly_credits** | [**MonthlyCredits**](MonthlyCredits.md) |  | [optional] 
+**total_credits** | [**TotalCredits**](TotalCredits.md) |  | [optional] 
 
 ## Example
 

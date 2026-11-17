@@ -22,12 +22,9 @@ from typing_extensions import Annotated
 from audithub_sdk.models.comment import Comment
 from audithub_sdk.models.id_and_message_response import IdAndMessageResponse
 from audithub_sdk.models.issue_status_transition import IssueStatusTransition
-from audithub_sdk.models.organization_consumption import OrganizationConsumption
-from audithub_sdk.models.organization_consumption_detailed import OrganizationConsumptionDetailed
 from audithub_sdk.models.project import Project
 from audithub_sdk.models.project_git_hub_link import ProjectGitHubLink
-from audithub_sdk.models.project_info_input import ProjectInfoInput
-from audithub_sdk.models.project_info_output import ProjectInfoOutput
+from audithub_sdk.models.project_info import ProjectInfo
 from audithub_sdk.models.project_update_response import ProjectUpdateResponse
 from audithub_sdk.models.put_user import PutUser
 from audithub_sdk.models.resource_patch import ResourcePatch
@@ -2352,612 +2349,6 @@ class ProjectsApi:
 
 
     @validate_call
-    async def get_project_resource_detailed_organizations_organization_id_projects_project_id_resource_consumption_detailed_get(
-        self,
-        organization_id: StrictInt,
-        project_id: StrictInt,
-        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> OrganizationConsumptionDetailed:
-        """Get Project Resource Detailed
-
-        Returns project detailed consumption
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param project_id: (required)
-        :type project_id: int
-        :param months: Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.
-        :type months: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_project_resource_detailed_organizations_organization_id_projects_project_id_resource_consumption_detailed_get_serialize(
-            organization_id=organization_id,
-            project_id=project_id,
-            months=months,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OrganizationConsumptionDetailed",
-            '422': "HTTPValidationError",
-            '4XX': "Problem",
-            '5XX': "Problem",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def get_project_resource_detailed_organizations_organization_id_projects_project_id_resource_consumption_detailed_get_with_http_info(
-        self,
-        organization_id: StrictInt,
-        project_id: StrictInt,
-        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[OrganizationConsumptionDetailed]:
-        """Get Project Resource Detailed
-
-        Returns project detailed consumption
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param project_id: (required)
-        :type project_id: int
-        :param months: Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.
-        :type months: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_project_resource_detailed_organizations_organization_id_projects_project_id_resource_consumption_detailed_get_serialize(
-            organization_id=organization_id,
-            project_id=project_id,
-            months=months,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OrganizationConsumptionDetailed",
-            '422': "HTTPValidationError",
-            '4XX': "Problem",
-            '5XX': "Problem",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def get_project_resource_detailed_organizations_organization_id_projects_project_id_resource_consumption_detailed_get_without_preload_content(
-        self,
-        organization_id: StrictInt,
-        project_id: StrictInt,
-        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Get Project Resource Detailed
-
-        Returns project detailed consumption
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param project_id: (required)
-        :type project_id: int
-        :param months: Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.
-        :type months: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_project_resource_detailed_organizations_organization_id_projects_project_id_resource_consumption_detailed_get_serialize(
-            organization_id=organization_id,
-            project_id=project_id,
-            months=months,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OrganizationConsumptionDetailed",
-            '422': "HTTPValidationError",
-            '4XX': "Problem",
-            '5XX': "Problem",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_project_resource_detailed_organizations_organization_id_projects_project_id_resource_consumption_detailed_get_serialize(
-        self,
-        organization_id,
-        project_id,
-        months,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if project_id is not None:
-            _path_params['project_id'] = project_id
-        # process the query parameters
-        if months is not None:
-            
-            _query_params.append(('months', months))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json', 
-                    'application/problem+json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'OpenIdConnect'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/organizations/{organization_id}/projects/{project_id}/resource-consumption-detailed',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    async def get_project_resource_usage_organizations_organization_id_projects_project_id_resource_consumption_total_get(
-        self,
-        organization_id: StrictInt,
-        project_id: StrictInt,
-        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> OrganizationConsumption:
-        """Get Project Resource Usage
-
-        Returns project consumption
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param project_id: (required)
-        :type project_id: int
-        :param months: Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.
-        :type months: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_project_resource_usage_organizations_organization_id_projects_project_id_resource_consumption_total_get_serialize(
-            organization_id=organization_id,
-            project_id=project_id,
-            months=months,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OrganizationConsumption",
-            '422': "HTTPValidationError",
-            '4XX': "Problem",
-            '5XX': "Problem",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    async def get_project_resource_usage_organizations_organization_id_projects_project_id_resource_consumption_total_get_with_http_info(
-        self,
-        organization_id: StrictInt,
-        project_id: StrictInt,
-        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[OrganizationConsumption]:
-        """Get Project Resource Usage
-
-        Returns project consumption
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param project_id: (required)
-        :type project_id: int
-        :param months: Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.
-        :type months: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_project_resource_usage_organizations_organization_id_projects_project_id_resource_consumption_total_get_serialize(
-            organization_id=organization_id,
-            project_id=project_id,
-            months=months,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OrganizationConsumption",
-            '422': "HTTPValidationError",
-            '4XX': "Problem",
-            '5XX': "Problem",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        await response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    async def get_project_resource_usage_organizations_organization_id_projects_project_id_resource_consumption_total_get_without_preload_content(
-        self,
-        organization_id: StrictInt,
-        project_id: StrictInt,
-        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Get Project Resource Usage
-
-        Returns project consumption
-
-        :param organization_id: (required)
-        :type organization_id: int
-        :param project_id: (required)
-        :type project_id: int
-        :param months: Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.
-        :type months: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_project_resource_usage_organizations_organization_id_projects_project_id_resource_consumption_total_get_serialize(
-            organization_id=organization_id,
-            project_id=project_id,
-            months=months,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "OrganizationConsumption",
-            '422': "HTTPValidationError",
-            '4XX': "Problem",
-            '5XX': "Problem",
-        }
-        response_data = await self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_project_resource_usage_organizations_organization_id_projects_project_id_resource_consumption_total_get_serialize(
-        self,
-        organization_id,
-        project_id,
-        months,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if organization_id is not None:
-            _path_params['organization_id'] = organization_id
-        if project_id is not None:
-            _path_params['project_id'] = project_id
-        # process the query parameters
-        if months is not None:
-            
-            _query_params.append(('months', months))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json', 
-                    'application/problem+json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'OpenIdConnect'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/organizations/{organization_id}/projects/{project_id}/resource-consumption-total',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     async def get_project_revision_organizations_organization_id_projects_project_id_revision_revision_get(
         self,
         organization_id: StrictInt,
@@ -2975,7 +2366,7 @@ class ProjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ProjectInfoOutput:
+    ) -> ProjectInfo:
         """Get Project Revision
 
         Returns project attributes for a specific revision
@@ -3019,7 +2410,7 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ProjectInfoOutput",
+            '200': "ProjectInfo",
             '422': "HTTPValidationError",
             '4XX': "Problem",
             '5XX': "Problem",
@@ -3053,7 +2444,7 @@ class ProjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ProjectInfoOutput]:
+    ) -> ApiResponse[ProjectInfo]:
         """Get Project Revision
 
         Returns project attributes for a specific revision
@@ -3097,7 +2488,7 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ProjectInfoOutput",
+            '200': "ProjectInfo",
             '422': "HTTPValidationError",
             '4XX': "Problem",
             '5XX': "Problem",
@@ -3175,7 +2566,7 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ProjectInfoOutput",
+            '200': "ProjectInfo",
             '422': "HTTPValidationError",
             '4XX': "Problem",
             '5XX': "Problem",
@@ -5664,7 +5055,7 @@ class ProjectsApi:
     async def post_project_organizations_organization_id_projects_post(
         self,
         organization_id: StrictInt,
-        project_info_input: ProjectInfoInput,
+        project_info: ProjectInfo,
         temp_version_id: Optional[StrictStr] = None,
         version_name: Optional[StrictStr] = None,
         _request_timeout: Union[
@@ -5686,8 +5077,8 @@ class ProjectsApi:
 
         :param organization_id: (required)
         :type organization_id: int
-        :param project_info_input: (required)
-        :type project_info_input: ProjectInfoInput
+        :param project_info: (required)
+        :type project_info: ProjectInfo
         :param temp_version_id:
         :type temp_version_id: str
         :param version_name:
@@ -5716,7 +5107,7 @@ class ProjectsApi:
 
         _param = self._post_project_organizations_organization_id_projects_post_serialize(
             organization_id=organization_id,
-            project_info_input=project_info_input,
+            project_info=project_info,
             temp_version_id=temp_version_id,
             version_name=version_name,
             _request_auth=_request_auth,
@@ -5746,7 +5137,7 @@ class ProjectsApi:
     async def post_project_organizations_organization_id_projects_post_with_http_info(
         self,
         organization_id: StrictInt,
-        project_info_input: ProjectInfoInput,
+        project_info: ProjectInfo,
         temp_version_id: Optional[StrictStr] = None,
         version_name: Optional[StrictStr] = None,
         _request_timeout: Union[
@@ -5768,8 +5159,8 @@ class ProjectsApi:
 
         :param organization_id: (required)
         :type organization_id: int
-        :param project_info_input: (required)
-        :type project_info_input: ProjectInfoInput
+        :param project_info: (required)
+        :type project_info: ProjectInfo
         :param temp_version_id:
         :type temp_version_id: str
         :param version_name:
@@ -5798,7 +5189,7 @@ class ProjectsApi:
 
         _param = self._post_project_organizations_organization_id_projects_post_serialize(
             organization_id=organization_id,
-            project_info_input=project_info_input,
+            project_info=project_info,
             temp_version_id=temp_version_id,
             version_name=version_name,
             _request_auth=_request_auth,
@@ -5828,7 +5219,7 @@ class ProjectsApi:
     async def post_project_organizations_organization_id_projects_post_without_preload_content(
         self,
         organization_id: StrictInt,
-        project_info_input: ProjectInfoInput,
+        project_info: ProjectInfo,
         temp_version_id: Optional[StrictStr] = None,
         version_name: Optional[StrictStr] = None,
         _request_timeout: Union[
@@ -5850,8 +5241,8 @@ class ProjectsApi:
 
         :param organization_id: (required)
         :type organization_id: int
-        :param project_info_input: (required)
-        :type project_info_input: ProjectInfoInput
+        :param project_info: (required)
+        :type project_info: ProjectInfo
         :param temp_version_id:
         :type temp_version_id: str
         :param version_name:
@@ -5880,7 +5271,7 @@ class ProjectsApi:
 
         _param = self._post_project_organizations_organization_id_projects_post_serialize(
             organization_id=organization_id,
-            project_info_input=project_info_input,
+            project_info=project_info,
             temp_version_id=temp_version_id,
             version_name=version_name,
             _request_auth=_request_auth,
@@ -5905,7 +5296,7 @@ class ProjectsApi:
     def _post_project_organizations_organization_id_projects_post_serialize(
         self,
         organization_id,
-        project_info_input,
+        project_info,
         temp_version_id,
         version_name,
         _request_auth,
@@ -5943,8 +5334,8 @@ class ProjectsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if project_info_input is not None:
-            _body_params = project_info_input
+        if project_info is not None:
+            _body_params = project_info
 
 
         # set the HTTP header `Accept`
@@ -6312,7 +5703,7 @@ class ProjectsApi:
         self,
         organization_id: StrictInt,
         project_id: StrictInt,
-        project_info_input: ProjectInfoInput,
+        project_info: ProjectInfo,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6334,8 +5725,8 @@ class ProjectsApi:
         :type organization_id: int
         :param project_id: (required)
         :type project_id: int
-        :param project_info_input: (required)
-        :type project_info_input: ProjectInfoInput
+        :param project_info: (required)
+        :type project_info: ProjectInfo
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6361,7 +5752,7 @@ class ProjectsApi:
         _param = self._put_project_organizations_organization_id_projects_project_id_put_serialize(
             organization_id=organization_id,
             project_id=project_id,
-            project_info_input=project_info_input,
+            project_info=project_info,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6390,7 +5781,7 @@ class ProjectsApi:
         self,
         organization_id: StrictInt,
         project_id: StrictInt,
-        project_info_input: ProjectInfoInput,
+        project_info: ProjectInfo,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6412,8 +5803,8 @@ class ProjectsApi:
         :type organization_id: int
         :param project_id: (required)
         :type project_id: int
-        :param project_info_input: (required)
-        :type project_info_input: ProjectInfoInput
+        :param project_info: (required)
+        :type project_info: ProjectInfo
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6439,7 +5830,7 @@ class ProjectsApi:
         _param = self._put_project_organizations_organization_id_projects_project_id_put_serialize(
             organization_id=organization_id,
             project_id=project_id,
-            project_info_input=project_info_input,
+            project_info=project_info,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6468,7 +5859,7 @@ class ProjectsApi:
         self,
         organization_id: StrictInt,
         project_id: StrictInt,
-        project_info_input: ProjectInfoInput,
+        project_info: ProjectInfo,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6490,8 +5881,8 @@ class ProjectsApi:
         :type organization_id: int
         :param project_id: (required)
         :type project_id: int
-        :param project_info_input: (required)
-        :type project_info_input: ProjectInfoInput
+        :param project_info: (required)
+        :type project_info: ProjectInfo
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6517,7 +5908,7 @@ class ProjectsApi:
         _param = self._put_project_organizations_organization_id_projects_project_id_put_serialize(
             organization_id=organization_id,
             project_id=project_id,
-            project_info_input=project_info_input,
+            project_info=project_info,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6541,7 +5932,7 @@ class ProjectsApi:
         self,
         organization_id,
         project_id,
-        project_info_input,
+        project_info,
         _request_auth,
         _content_type,
         _headers,
@@ -6571,8 +5962,8 @@ class ProjectsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if project_info_input is not None:
-            _body_params = project_info_input
+        if project_info is not None:
+            _body_params = project_info
 
 
         # set the HTTP header `Accept`

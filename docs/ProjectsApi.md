@@ -11,8 +11,6 @@ Method | HTTP request | Description
 [**get_project_comments_organizations_organization_id_projects_project_id_comments_get**](ProjectsApi.md#get_project_comments_organizations_organization_id_projects_project_id_comments_get) | **GET** /organizations/{organization_id}/projects/{project_id}/comments | Get Project Comments
 [**get_project_findings_organizations_organization_id_projects_project_id_findings_get**](ProjectsApi.md#get_project_findings_organizations_organization_id_projects_project_id_findings_get) | **GET** /organizations/{organization_id}/projects/{project_id}/findings | Get Project Findings
 [**get_project_organizations_organization_id_projects_project_id_get**](ProjectsApi.md#get_project_organizations_organization_id_projects_project_id_get) | **GET** /organizations/{organization_id}/projects/{project_id} | Get Project
-[**get_project_resource_detailed_organizations_organization_id_projects_project_id_resource_consumption_detailed_get**](ProjectsApi.md#get_project_resource_detailed_organizations_organization_id_projects_project_id_resource_consumption_detailed_get) | **GET** /organizations/{organization_id}/projects/{project_id}/resource-consumption-detailed | Get Project Resource Detailed
-[**get_project_resource_usage_organizations_organization_id_projects_project_id_resource_consumption_total_get**](ProjectsApi.md#get_project_resource_usage_organizations_organization_id_projects_project_id_resource_consumption_total_get) | **GET** /organizations/{organization_id}/projects/{project_id}/resource-consumption-total | Get Project Resource Usage
 [**get_project_revision_organizations_organization_id_projects_project_id_revision_revision_get**](ProjectsApi.md#get_project_revision_organizations_organization_id_projects_project_id_revision_revision_get) | **GET** /organizations/{organization_id}/projects/{project_id}/revision/{revision} | Get Project Revision
 [**get_projects_organizations_organization_id_projects_get**](ProjectsApi.md#get_projects_organizations_organization_id_projects_get) | **GET** /organizations/{organization_id}/projects | Get Projects
 [**get_projects_revisions_organizations_organization_id_projects_project_id_revisions_get**](ProjectsApi.md#get_projects_revisions_organizations_organization_id_projects_project_id_revisions_get) | **GET** /organizations/{organization_id}/projects/{project_id}/revisions | Get Projects Revisions
@@ -598,166 +596,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_project_resource_detailed_organizations_organization_id_projects_project_id_resource_consumption_detailed_get**
-> OrganizationConsumptionDetailed get_project_resource_detailed_organizations_organization_id_projects_project_id_resource_consumption_detailed_get(organization_id, project_id, months=months)
-
-Get Project Resource Detailed
-
-Returns project detailed consumption
-
-### Example
-
-
-```python
-import audithub_sdk
-from audithub_sdk.models.organization_consumption_detailed import OrganizationConsumptionDetailed
-from audithub_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://audithub.dev.veridise.tools/api/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = audithub_sdk.Configuration(
-    host = "https://audithub.dev.veridise.tools/api/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Enter a context with an instance of the API client
-async with audithub_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = audithub_sdk.ProjectsApi(api_client)
-    organization_id = 56 # int | 
-    project_id = 56 # int | 
-    months = 56 # int | Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used. (optional)
-
-    try:
-        # Get Project Resource Detailed
-        api_response = await api_instance.get_project_resource_detailed_organizations_organization_id_projects_project_id_resource_consumption_detailed_get(organization_id, project_id, months=months)
-        print("The response of ProjectsApi->get_project_resource_detailed_organizations_organization_id_projects_project_id_resource_consumption_detailed_get:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling ProjectsApi->get_project_resource_detailed_organizations_organization_id_projects_project_id_resource_consumption_detailed_get: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **int**|  | 
- **project_id** | **int**|  | 
- **months** | **int**| Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used. | [optional] 
-
-### Return type
-
-[**OrganizationConsumptionDetailed**](OrganizationConsumptionDetailed.md)
-
-### Authorization
-
-[OpenIdConnect](../README.md#OpenIdConnect)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/problem+json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
-**4XX** | Client Error |  -  |
-**5XX** | Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_project_resource_usage_organizations_organization_id_projects_project_id_resource_consumption_total_get**
-> OrganizationConsumption get_project_resource_usage_organizations_organization_id_projects_project_id_resource_consumption_total_get(organization_id, project_id, months=months)
-
-Get Project Resource Usage
-
-Returns project consumption
-
-### Example
-
-
-```python
-import audithub_sdk
-from audithub_sdk.models.organization_consumption import OrganizationConsumption
-from audithub_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://audithub.dev.veridise.tools/api/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = audithub_sdk.Configuration(
-    host = "https://audithub.dev.veridise.tools/api/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Enter a context with an instance of the API client
-async with audithub_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = audithub_sdk.ProjectsApi(api_client)
-    organization_id = 56 # int | 
-    project_id = 56 # int | 
-    months = 56 # int | Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used. (optional)
-
-    try:
-        # Get Project Resource Usage
-        api_response = await api_instance.get_project_resource_usage_organizations_organization_id_projects_project_id_resource_consumption_total_get(organization_id, project_id, months=months)
-        print("The response of ProjectsApi->get_project_resource_usage_organizations_organization_id_projects_project_id_resource_consumption_total_get:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling ProjectsApi->get_project_resource_usage_organizations_organization_id_projects_project_id_resource_consumption_total_get: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_id** | **int**|  | 
- **project_id** | **int**|  | 
- **months** | **int**| Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used. | [optional] 
-
-### Return type
-
-[**OrganizationConsumption**](OrganizationConsumption.md)
-
-### Authorization
-
-[OpenIdConnect](../README.md#OpenIdConnect)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/problem+json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
-**4XX** | Client Error |  -  |
-**5XX** | Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_project_revision_organizations_organization_id_projects_project_id_revision_revision_get**
-> ProjectInfoOutput get_project_revision_organizations_organization_id_projects_project_id_revision_revision_get(organization_id, project_id, revision)
+> ProjectInfo get_project_revision_organizations_organization_id_projects_project_id_revision_revision_get(organization_id, project_id, revision)
 
 Get Project Revision
 
@@ -768,7 +608,7 @@ Returns project attributes for a specific revision
 
 ```python
 import audithub_sdk
-from audithub_sdk.models.project_info_output import ProjectInfoOutput
+from audithub_sdk.models.project_info import ProjectInfo
 from audithub_sdk.rest import ApiException
 from pprint import pprint
 
@@ -813,7 +653,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectInfoOutput**](ProjectInfoOutput.md)
+[**ProjectInfo**](ProjectInfo.md)
 
 ### Authorization
 
@@ -1464,7 +1304,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_project_organizations_organization_id_projects_post**
-> IdAndMessageResponse post_project_organizations_organization_id_projects_post(organization_id, project_info_input, temp_version_id=temp_version_id, version_name=version_name)
+> IdAndMessageResponse post_project_organizations_organization_id_projects_post(organization_id, project_info, temp_version_id=temp_version_id, version_name=version_name)
 
 Post Project
 
@@ -1476,7 +1316,7 @@ Post initial data and its first source version
 ```python
 import audithub_sdk
 from audithub_sdk.models.id_and_message_response import IdAndMessageResponse
-from audithub_sdk.models.project_info_input import ProjectInfoInput
+from audithub_sdk.models.project_info import ProjectInfo
 from audithub_sdk.rest import ApiException
 from pprint import pprint
 
@@ -1496,13 +1336,13 @@ async with audithub_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = audithub_sdk.ProjectsApi(api_client)
     organization_id = 56 # int | 
-    project_info_input = audithub_sdk.ProjectInfoInput() # ProjectInfoInput | 
+    project_info = audithub_sdk.ProjectInfo() # ProjectInfo | 
     temp_version_id = 'temp_version_id_example' # str |  (optional)
     version_name = 'version_name_example' # str |  (optional)
 
     try:
         # Post Project
-        api_response = await api_instance.post_project_organizations_organization_id_projects_post(organization_id, project_info_input, temp_version_id=temp_version_id, version_name=version_name)
+        api_response = await api_instance.post_project_organizations_organization_id_projects_post(organization_id, project_info, temp_version_id=temp_version_id, version_name=version_name)
         print("The response of ProjectsApi->post_project_organizations_organization_id_projects_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -1517,7 +1357,7 @@ async with audithub_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **int**|  | 
- **project_info_input** | [**ProjectInfoInput**](ProjectInfoInput.md)|  | 
+ **project_info** | [**ProjectInfo**](ProjectInfo.md)|  | 
  **temp_version_id** | **str**|  | [optional] 
  **version_name** | **str**|  | [optional] 
 
@@ -1626,7 +1466,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_project_organizations_organization_id_projects_project_id_put**
-> ProjectUpdateResponse put_project_organizations_organization_id_projects_project_id_put(organization_id, project_id, project_info_input)
+> ProjectUpdateResponse put_project_organizations_organization_id_projects_project_id_put(organization_id, project_id, project_info)
 
 Put Project
 
@@ -1637,7 +1477,7 @@ Update project attributes
 
 ```python
 import audithub_sdk
-from audithub_sdk.models.project_info_input import ProjectInfoInput
+from audithub_sdk.models.project_info import ProjectInfo
 from audithub_sdk.models.project_update_response import ProjectUpdateResponse
 from audithub_sdk.rest import ApiException
 from pprint import pprint
@@ -1659,11 +1499,11 @@ async with audithub_sdk.ApiClient(configuration) as api_client:
     api_instance = audithub_sdk.ProjectsApi(api_client)
     organization_id = 56 # int | 
     project_id = 56 # int | 
-    project_info_input = audithub_sdk.ProjectInfoInput() # ProjectInfoInput | 
+    project_info = audithub_sdk.ProjectInfo() # ProjectInfo | 
 
     try:
         # Put Project
-        api_response = await api_instance.put_project_organizations_organization_id_projects_project_id_put(organization_id, project_id, project_info_input)
+        api_response = await api_instance.put_project_organizations_organization_id_projects_project_id_put(organization_id, project_id, project_info)
         print("The response of ProjectsApi->put_project_organizations_organization_id_projects_project_id_put:\n")
         pprint(api_response)
     except Exception as e:
@@ -1679,7 +1519,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_id** | **int**|  | 
  **project_id** | **int**|  | 
- **project_info_input** | [**ProjectInfoInput**](ProjectInfoInput.md)|  | 
+ **project_info** | [**ProjectInfo**](ProjectInfo.md)|  | 
 
 ### Return type
 

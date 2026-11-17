@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**definition** | [**ProjectInfoOutput**](ProjectInfoOutput.md) |  | 
+**definition** | [**ProjectInfo**](ProjectInfo.md) |  | 
 **version** | [**VersionData**](VersionData.md) |  | 
 
 ## Example
