@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **deployment_script_path_override** | **str** |  | [optional] 
 **on_chain** | **bool** | Specifies whether to enable on chain fuzzing | [optional] [default to False]
 **deployment_info_file** | **str** |  | [optional] 
+**auxiliary_deployment_script** | **str** |  | [optional] 
 **name** | **str** | An optional name for this task. If not specified, the current time in UTC will be used. | [optional] 
 **parameters** | [**OrCaParameters**](OrCaParameters.md) | The parameters to pass to OrCa | 
 

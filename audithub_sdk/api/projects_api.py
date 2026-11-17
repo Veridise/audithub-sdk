@@ -23,6 +23,7 @@ from audithub_sdk.models.comment import Comment
 from audithub_sdk.models.id_and_message_response import IdAndMessageResponse
 from audithub_sdk.models.issue_status_transition import IssueStatusTransition
 from audithub_sdk.models.organization_consumption import OrganizationConsumption
+from audithub_sdk.models.organization_consumption_detailed import OrganizationConsumptionDetailed
 from audithub_sdk.models.project import Project
 from audithub_sdk.models.project_git_hub_link import ProjectGitHubLink
 from audithub_sdk.models.project_info_input import ProjectInfoInput
@@ -38,7 +39,6 @@ from audithub_sdk.models.thread_patch import ThreadPatch
 from audithub_sdk.models.user_information import UserInformation
 from audithub_sdk.models.user_project_setting import UserProjectSetting
 from audithub_sdk.models.user_thread_setting import UserThreadSetting
-from audithub_sdk.models.version_resources import VersionResources
 
 from audithub_sdk.api_client import ApiClient, RequestSerialized
 from audithub_sdk.api_response import ApiResponse
@@ -118,6 +118,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -190,6 +192,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -262,6 +266,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -309,7 +315,8 @@ class ProjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -397,6 +404,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -469,6 +478,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -541,6 +552,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -588,7 +601,8 @@ class ProjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -704,6 +718,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[IssueStatusTransition]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -804,6 +820,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[IssueStatusTransition]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -904,6 +922,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[IssueStatusTransition]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1004,7 +1024,8 @@ class ProjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -1038,6 +1059,7 @@ class ProjectsApi:
         organization_id: StrictInt,
         project_id: StrictInt,
         include_commenter_ids: Annotated[Optional[StrictBool], Field(description="Include distinct user ids of users who created comments in each thread.")] = None,
+        include_message_count: Annotated[Optional[StrictBool], Field(description="Include the count of messages in each thread.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1061,6 +1083,8 @@ class ProjectsApi:
         :type project_id: int
         :param include_commenter_ids: Include distinct user ids of users who created comments in each thread.
         :type include_commenter_ids: bool
+        :param include_message_count: Include the count of messages in each thread.
+        :type include_message_count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1087,6 +1111,7 @@ class ProjectsApi:
             organization_id=organization_id,
             project_id=project_id,
             include_commenter_ids=include_commenter_ids,
+            include_message_count=include_message_count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1096,6 +1121,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Thread]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1114,6 +1141,7 @@ class ProjectsApi:
         organization_id: StrictInt,
         project_id: StrictInt,
         include_commenter_ids: Annotated[Optional[StrictBool], Field(description="Include distinct user ids of users who created comments in each thread.")] = None,
+        include_message_count: Annotated[Optional[StrictBool], Field(description="Include the count of messages in each thread.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1137,6 +1165,8 @@ class ProjectsApi:
         :type project_id: int
         :param include_commenter_ids: Include distinct user ids of users who created comments in each thread.
         :type include_commenter_ids: bool
+        :param include_message_count: Include the count of messages in each thread.
+        :type include_message_count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1163,6 +1193,7 @@ class ProjectsApi:
             organization_id=organization_id,
             project_id=project_id,
             include_commenter_ids=include_commenter_ids,
+            include_message_count=include_message_count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1172,6 +1203,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Thread]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1190,6 +1223,7 @@ class ProjectsApi:
         organization_id: StrictInt,
         project_id: StrictInt,
         include_commenter_ids: Annotated[Optional[StrictBool], Field(description="Include distinct user ids of users who created comments in each thread.")] = None,
+        include_message_count: Annotated[Optional[StrictBool], Field(description="Include the count of messages in each thread.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1213,6 +1247,8 @@ class ProjectsApi:
         :type project_id: int
         :param include_commenter_ids: Include distinct user ids of users who created comments in each thread.
         :type include_commenter_ids: bool
+        :param include_message_count: Include the count of messages in each thread.
+        :type include_message_count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1239,6 +1275,7 @@ class ProjectsApi:
             organization_id=organization_id,
             project_id=project_id,
             include_commenter_ids=include_commenter_ids,
+            include_message_count=include_message_count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1248,6 +1285,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Thread]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1261,6 +1300,7 @@ class ProjectsApi:
         organization_id,
         project_id,
         include_commenter_ids,
+        include_message_count,
         _request_auth,
         _content_type,
         _headers,
@@ -1291,6 +1331,10 @@ class ProjectsApi:
             
             _query_params.append(('include_commenter_ids', include_commenter_ids))
             
+        if include_message_count is not None:
+            
+            _query_params.append(('include_message_count', include_message_count))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -1300,7 +1344,8 @@ class ProjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -1335,6 +1380,7 @@ class ProjectsApi:
         project_id: StrictInt,
         limit: StrictInt,
         offset: StrictInt,
+        thread_id: Optional[StrictInt] = None,
         from_date: Optional[datetime] = None,
         to_date: Optional[datetime] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Order of results, as a comma-separated list of columns and, optionally, a direction.     Column values are: thread_id, comment_id, created_by, created_at     If direction in specified for any column, separate it with a space from the column name and provide ASC or DESC for ascending or descending order.     e.g., \"created_by, created_at DESC\" orders the results per user, with the most recent task first for each user.     ")] = None,
@@ -1363,6 +1409,8 @@ class ProjectsApi:
         :type limit: int
         :param offset: (required)
         :type offset: int
+        :param thread_id:
+        :type thread_id: int
         :param from_date:
         :type from_date: datetime
         :param to_date:
@@ -1396,6 +1444,7 @@ class ProjectsApi:
             project_id=project_id,
             limit=limit,
             offset=offset,
+            thread_id=thread_id,
             from_date=from_date,
             to_date=to_date,
             order_by=order_by,
@@ -1408,6 +1457,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Comment]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1427,6 +1478,7 @@ class ProjectsApi:
         project_id: StrictInt,
         limit: StrictInt,
         offset: StrictInt,
+        thread_id: Optional[StrictInt] = None,
         from_date: Optional[datetime] = None,
         to_date: Optional[datetime] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Order of results, as a comma-separated list of columns and, optionally, a direction.     Column values are: thread_id, comment_id, created_by, created_at     If direction in specified for any column, separate it with a space from the column name and provide ASC or DESC for ascending or descending order.     e.g., \"created_by, created_at DESC\" orders the results per user, with the most recent task first for each user.     ")] = None,
@@ -1455,6 +1507,8 @@ class ProjectsApi:
         :type limit: int
         :param offset: (required)
         :type offset: int
+        :param thread_id:
+        :type thread_id: int
         :param from_date:
         :type from_date: datetime
         :param to_date:
@@ -1488,6 +1542,7 @@ class ProjectsApi:
             project_id=project_id,
             limit=limit,
             offset=offset,
+            thread_id=thread_id,
             from_date=from_date,
             to_date=to_date,
             order_by=order_by,
@@ -1500,6 +1555,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Comment]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1519,6 +1576,7 @@ class ProjectsApi:
         project_id: StrictInt,
         limit: StrictInt,
         offset: StrictInt,
+        thread_id: Optional[StrictInt] = None,
         from_date: Optional[datetime] = None,
         to_date: Optional[datetime] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Order of results, as a comma-separated list of columns and, optionally, a direction.     Column values are: thread_id, comment_id, created_by, created_at     If direction in specified for any column, separate it with a space from the column name and provide ASC or DESC for ascending or descending order.     e.g., \"created_by, created_at DESC\" orders the results per user, with the most recent task first for each user.     ")] = None,
@@ -1547,6 +1605,8 @@ class ProjectsApi:
         :type limit: int
         :param offset: (required)
         :type offset: int
+        :param thread_id:
+        :type thread_id: int
         :param from_date:
         :type from_date: datetime
         :param to_date:
@@ -1580,6 +1640,7 @@ class ProjectsApi:
             project_id=project_id,
             limit=limit,
             offset=offset,
+            thread_id=thread_id,
             from_date=from_date,
             to_date=to_date,
             order_by=order_by,
@@ -1592,6 +1653,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Comment]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1606,6 +1669,7 @@ class ProjectsApi:
         project_id,
         limit,
         offset,
+        thread_id,
         from_date,
         to_date,
         order_by,
@@ -1642,6 +1706,10 @@ class ProjectsApi:
         if offset is not None:
             
             _query_params.append(('offset', offset))
+            
+        if thread_id is not None:
+            
+            _query_params.append(('thread_id', thread_id))
             
         if from_date is not None:
             if isinstance(from_date, datetime):
@@ -1682,7 +1750,8 @@ class ProjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -1770,6 +1839,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[TaskFIOData]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1842,6 +1913,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[TaskFIOData]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1914,6 +1987,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[TaskFIOData]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1961,7 +2036,8 @@ class ProjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -2049,6 +2125,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Project",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2121,6 +2199,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Project",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2193,6 +2273,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Project",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2240,7 +2322,8 @@ class ProjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -2273,7 +2356,7 @@ class ProjectsApi:
         self,
         organization_id: StrictInt,
         project_id: StrictInt,
-        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Fallback date interval in months when the organization has no active subscriptions.")] = None,
+        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2286,7 +2369,7 @@ class ProjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[VersionResources]:
+    ) -> OrganizationConsumptionDetailed:
         """Get Project Resource Detailed
 
         Returns project detailed consumption
@@ -2295,7 +2378,7 @@ class ProjectsApi:
         :type organization_id: int
         :param project_id: (required)
         :type project_id: int
-        :param months: Fallback date interval in months when the organization has no active subscriptions.
+        :param months: Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.
         :type months: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2330,8 +2413,10 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[VersionResources]",
+            '200': "OrganizationConsumptionDetailed",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2349,7 +2434,7 @@ class ProjectsApi:
         self,
         organization_id: StrictInt,
         project_id: StrictInt,
-        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Fallback date interval in months when the organization has no active subscriptions.")] = None,
+        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2362,7 +2447,7 @@ class ProjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[VersionResources]]:
+    ) -> ApiResponse[OrganizationConsumptionDetailed]:
         """Get Project Resource Detailed
 
         Returns project detailed consumption
@@ -2371,7 +2456,7 @@ class ProjectsApi:
         :type organization_id: int
         :param project_id: (required)
         :type project_id: int
-        :param months: Fallback date interval in months when the organization has no active subscriptions.
+        :param months: Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.
         :type months: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2406,8 +2491,10 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[VersionResources]",
+            '200': "OrganizationConsumptionDetailed",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2425,7 +2512,7 @@ class ProjectsApi:
         self,
         organization_id: StrictInt,
         project_id: StrictInt,
-        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Fallback date interval in months when the organization has no active subscriptions.")] = None,
+        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2447,7 +2534,7 @@ class ProjectsApi:
         :type organization_id: int
         :param project_id: (required)
         :type project_id: int
-        :param months: Fallback date interval in months when the organization has no active subscriptions.
+        :param months: Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.
         :type months: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2482,8 +2569,10 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[VersionResources]",
+            '200': "OrganizationConsumptionDetailed",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2536,7 +2625,8 @@ class ProjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -2569,7 +2659,7 @@ class ProjectsApi:
         self,
         organization_id: StrictInt,
         project_id: StrictInt,
-        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Fallback date interval in months when the organization has no active subscriptions.")] = None,
+        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2591,7 +2681,7 @@ class ProjectsApi:
         :type organization_id: int
         :param project_id: (required)
         :type project_id: int
-        :param months: Fallback date interval in months when the organization has no active subscriptions.
+        :param months: Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.
         :type months: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2628,6 +2718,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "OrganizationConsumption",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2645,7 +2737,7 @@ class ProjectsApi:
         self,
         organization_id: StrictInt,
         project_id: StrictInt,
-        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Fallback date interval in months when the organization has no active subscriptions.")] = None,
+        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2667,7 +2759,7 @@ class ProjectsApi:
         :type organization_id: int
         :param project_id: (required)
         :type project_id: int
-        :param months: Fallback date interval in months when the organization has no active subscriptions.
+        :param months: Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.
         :type months: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2704,6 +2796,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "OrganizationConsumption",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2721,7 +2815,7 @@ class ProjectsApi:
         self,
         organization_id: StrictInt,
         project_id: StrictInt,
-        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Fallback date interval in months when the organization has no active subscriptions.")] = None,
+        months: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2743,7 +2837,7 @@ class ProjectsApi:
         :type organization_id: int
         :param project_id: (required)
         :type project_id: int
-        :param months: Fallback date interval in months when the organization has no active subscriptions.
+        :param months: Number of months, since today, to report on. When not defined, active subscription period will be used, if any. Otherwise a default period of 3 months will be used.
         :type months: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2780,6 +2874,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "OrganizationConsumption",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2832,7 +2928,8 @@ class ProjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -2924,6 +3021,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ProjectInfoOutput",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3000,6 +3099,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ProjectInfoOutput",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3076,6 +3177,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ProjectInfoOutput",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3126,7 +3229,8 @@ class ProjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -3210,6 +3314,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Project]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3278,6 +3384,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Project]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3346,6 +3454,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Project]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3390,7 +3500,8 @@ class ProjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -3478,6 +3589,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3550,6 +3663,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3622,6 +3737,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3669,7 +3786,8 @@ class ProjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -3757,6 +3875,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "UserProjectSetting",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3829,6 +3949,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "UserProjectSetting",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3901,6 +4023,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "UserProjectSetting",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3948,7 +4072,8 @@ class ProjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -4040,6 +4165,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "UserThreadSetting",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4116,6 +4243,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "UserThreadSetting",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4192,6 +4321,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "UserThreadSetting",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4242,7 +4373,8 @@ class ProjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -4330,6 +4462,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[UserInformation]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4402,6 +4536,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[UserInformation]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4474,6 +4610,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[UserInformation]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4521,7 +4659,8 @@ class ProjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -4613,6 +4752,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4689,6 +4830,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4765,6 +4908,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4815,7 +4960,8 @@ class ProjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -4924,6 +5070,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -5004,6 +5152,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -5084,6 +5234,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -5137,7 +5289,8 @@ class ProjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -5246,6 +5399,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -5326,6 +5481,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -5406,6 +5563,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -5459,7 +5618,8 @@ class ProjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -5568,6 +5728,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -5648,6 +5810,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -5728,6 +5892,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -5785,7 +5951,8 @@ class ProjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -5890,6 +6057,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -5966,6 +6135,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -6042,6 +6213,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -6092,7 +6265,8 @@ class ProjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -6197,6 +6371,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ProjectUpdateResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -6273,6 +6449,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ProjectUpdateResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -6349,6 +6527,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ProjectUpdateResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -6399,7 +6579,8 @@ class ProjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -6504,6 +6685,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -6580,6 +6763,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -6656,6 +6841,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -6706,7 +6893,8 @@ class ProjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -6815,6 +7003,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -6895,6 +7085,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -6975,6 +7167,8 @@ class ProjectsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -7028,7 +7222,8 @@ class ProjectsApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 

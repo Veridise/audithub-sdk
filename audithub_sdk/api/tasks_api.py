@@ -106,6 +106,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -178,6 +180,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -250,6 +254,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -297,7 +303,8 @@ class TasksApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -389,6 +396,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -465,6 +474,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -541,6 +552,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -591,7 +604,7 @@ class TasksApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/problem+json'
                 ]
             )
 
@@ -679,6 +692,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Task",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -751,6 +766,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Task",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -823,6 +840,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Task",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -870,7 +889,8 @@ class TasksApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -969,6 +989,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1052,6 +1074,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1135,6 +1159,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1196,7 +1222,8 @@ class TasksApi:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
                     'application/json', 
-                    'text/plain'
+                    'text/plain', 
+                    'application/problem+json'
                 ]
             )
 
@@ -1284,6 +1311,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TaskStatus",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1356,6 +1385,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TaskStatus",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1428,6 +1459,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TaskStatus",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1475,7 +1508,8 @@ class TasksApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -1571,6 +1605,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[AccountingData]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1651,6 +1687,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[AccountingData]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1731,6 +1769,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[AccountingData]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1788,7 +1828,8 @@ class TasksApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -1876,6 +1917,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -1948,6 +1991,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2020,6 +2065,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2068,7 +2115,7 @@ class TasksApi:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
                     'application/zip', 
-                    'application/json'
+                    'application/problem+json'
                 ]
             )
 
@@ -2156,6 +2203,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Directory",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2228,6 +2277,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Directory",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2300,6 +2351,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Directory",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2347,7 +2400,8 @@ class TasksApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -2439,6 +2493,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2515,6 +2571,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2591,6 +2649,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2643,7 +2703,7 @@ class TasksApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/problem+json'
                 ]
             )
 
@@ -2739,6 +2799,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[FIOData]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2819,6 +2881,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[FIOData]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2899,6 +2963,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[FIOData]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -2954,7 +3020,8 @@ class TasksApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -3042,6 +3109,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[FIOData]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3114,6 +3183,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[FIOData]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3186,6 +3257,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[FIOData]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3233,7 +3306,8 @@ class TasksApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -3345,6 +3419,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Task]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3441,6 +3517,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Task]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3537,6 +3615,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Task]",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3634,7 +3714,8 @@ class TasksApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -3726,6 +3807,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3802,6 +3885,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3878,6 +3963,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessAndMessageResponse",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -3928,7 +4015,8 @@ class TasksApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 
@@ -4033,6 +4121,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4109,6 +4199,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4185,6 +4277,8 @@ class TasksApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '422': "HTTPValidationError",
+            '4XX': "Problem",
+            '5XX': "Problem",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -4235,7 +4329,8 @@ class TasksApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/problem+json'
                 ]
             )
 

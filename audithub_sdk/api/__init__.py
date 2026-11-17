@@ -9,6 +9,7 @@ from audithub_sdk.api.editor_languages_api import EditorLanguagesApi
 from audithub_sdk.api.generic_api import GenericApi
 from audithub_sdk.api.hints_org_lib_api import HintsOrgLibApi
 from audithub_sdk.api.hints_std_lib_api import HintsStdLibApi
+from audithub_sdk.api.invitations_api import InvitationsApi
 from audithub_sdk.api.issues_api import IssuesApi
 from audithub_sdk.api.organizations_api import OrganizationsApi
 from audithub_sdk.api.projects_api import ProjectsApi

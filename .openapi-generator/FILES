@@ -1,8 +1,6 @@
-.github/workflows/python.yml
 .gitignore
 .gitlab-ci.yml
 .travis.yml
-README.md
 audithub_sdk/__init__.py
 audithub_sdk/api/__init__.py
 audithub_sdk/api/admin_api.py
@@ -13,6 +11,7 @@ audithub_sdk/api/editor_languages_api.py
 audithub_sdk/api/generic_api.py
 audithub_sdk/api/hints_org_lib_api.py
 audithub_sdk/api/hints_std_lib_api.py
+audithub_sdk/api/invitations_api.py
 audithub_sdk/api/issues_api.py
 audithub_sdk/api/organizations_api.py
 audithub_sdk/api/projects_api.py
@@ -56,6 +55,7 @@ audithub_sdk/models/editor_language_with_id.py
 audithub_sdk/models/effective_user_access_restriction.py
 audithub_sdk/models/env_var.py
 audithub_sdk/models/extra_function_arguments.py
+audithub_sdk/models/favorite_organization_assignment.py
 audithub_sdk/models/favorite_project_assignment.py
 audithub_sdk/models/file.py
 audithub_sdk/models/file_thread_subject.py
@@ -103,6 +103,7 @@ audithub_sdk/models/issue_type_info.py
 audithub_sdk/models/machine_info.py
 audithub_sdk/models/model_tool_input.py
 audithub_sdk/models/model_tool_phase_parameters.py
+audithub_sdk/models/my_organization.py
 audithub_sdk/models/new_invitation.py
 audithub_sdk/models/new_organization.py
 audithub_sdk/models/new_organization_package.py
@@ -117,6 +118,7 @@ audithub_sdk/models/organization_access_restriction.py
 audithub_sdk/models/organization_active_quota.py
 audithub_sdk/models/organization_admin.py
 audithub_sdk/models/organization_consumption.py
+audithub_sdk/models/organization_consumption_detailed.py
 audithub_sdk/models/organization_quota.py
 audithub_sdk/models/organization_subscription.py
 audithub_sdk/models/package_data.py
@@ -127,6 +129,7 @@ audithub_sdk/models/picus_input.py
 audithub_sdk/models/picus_parameters.py
 audithub_sdk/models/picus_v2_input.py
 audithub_sdk/models/picus_v2_parameters.py
+audithub_sdk/models/problem.py
 audithub_sdk/models/project.py
 audithub_sdk/models/project_admin.py
 audithub_sdk/models/project_data.py
@@ -167,6 +170,7 @@ audithub_sdk/models/thread_comment.py
 audithub_sdk/models/thread_patch.py
 audithub_sdk/models/user.py
 audithub_sdk/models/user_access_restriction.py
+audithub_sdk/models/user_admin.py
 audithub_sdk/models/user_for_admin.py
 audithub_sdk/models/user_group.py
 audithub_sdk/models/user_information.py
@@ -228,6 +232,7 @@ docs/EffectiveUserAccessRestriction.md
 docs/EnvVar.md
 docs/ExtraFunctionArguments.md
 docs/FIOData.md
+docs/FavoriteOrganizationAssignment.md
 docs/FavoriteProjectAssignment.md
 docs/File.md
 docs/FileThreadSubject.md
@@ -253,6 +258,7 @@ docs/IncludedUserInfo.md
 docs/InputInfo.md
 docs/Invitation.md
 docs/InvitationPatch.md
+docs/InvitationsApi.md
 docs/InvitedUser.md
 docs/Issue.md
 docs/IssueAction.md
@@ -278,6 +284,7 @@ docs/IssuesApi.md
 docs/MachineInfo.md
 docs/ModelToolInput.md
 docs/ModelToolPhaseParameters.md
+docs/MyOrganization.md
 docs/NPMProjectDependency.md
 docs/NewInvitation.md
 docs/NewOrganization.md
@@ -292,6 +299,7 @@ docs/OrganizationAccessRestriction.md
 docs/OrganizationActiveQuota.md
 docs/OrganizationAdmin.md
 docs/OrganizationConsumption.md
+docs/OrganizationConsumptionDetailed.md
 docs/OrganizationQuota.md
 docs/OrganizationSubscription.md
 docs/OrganizationsApi.md
@@ -305,6 +313,7 @@ docs/PicusInput.md
 docs/PicusParameters.md
 docs/PicusV2Input.md
 docs/PicusV2Parameters.md
+docs/Problem.md
 docs/Project.md
 docs/ProjectAdmin.md
 docs/ProjectData.md
@@ -347,6 +356,7 @@ docs/ThreadPatch.md
 docs/ToolsApi.md
 docs/User.md
 docs/UserAccessRestriction.md
+docs/UserAdmin.md
 docs/UserForAdmin.md
 docs/UserGroup.md
 docs/UserInformation.md
@@ -377,10 +387,14 @@ docs/ZKVanguardParameters.md
 docs/ZKVanguardV2Input.md
 docs/ZKVanguardV2Parameters.md
 git_push.sh
-pyproject.toml
 requirements.txt
 setup.cfg
-setup.py
 test-requirements.txt
 test/__init__.py
+test/test_favorite_organization_assignment.py
+test/test_invitations_api.py
+test/test_my_organization.py
+test/test_organization_consumption_detailed.py
+test/test_problem.py
+test/test_user_admin.py
 tox.ini

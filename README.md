@@ -18,7 +18,7 @@ openapi-generator generate \
   -i https://audithub.dev.veridise.tools/api/v1/openapi.json \
   -g python \
   -o . \
-  --additional-properties=packageName=audithub_sdk,projectName=audithub-sdk,packageVersion=0.1.0,hideGenerationTimestamp=true,library=httpx
+  --additional-properties=packageName=audithub_sdk,projectName=audithub-sdk,packageVersion=1.0.2,hideGenerationTimestamp=true,library=httpx
 ```
 
 ## Regenerating
