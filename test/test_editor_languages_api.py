@@ -17,44 +17,44 @@ import unittest
 from audithub_sdk.api.editor_languages_api import EditorLanguagesApi
 
 
-class TestEditorLanguagesApi(unittest.TestCase):
+class TestEditorLanguagesApi(unittest.IsolatedAsyncioTestCase):
     """EditorLanguagesApi unit test stubs"""
 
-    def setUp(self) -> None:
+    async def asyncSetUp(self) -> None:
         self.api = EditorLanguagesApi()
 
-    def tearDown(self) -> None:
-        pass
+    async def asyncTearDown(self) -> None:
+        await self.api.api_client.close()
 
-    def test_delete_language_editor_languages_language_id_delete(self) -> None:
+    async def test_delete_language_editor_languages_language_id_delete(self) -> None:
         """Test case for delete_language_editor_languages_language_id_delete
 
         Delete Language
         """
         pass
 
-    def test_get_language_editor_languages_language_id_get(self) -> None:
+    async def test_get_language_editor_languages_language_id_get(self) -> None:
         """Test case for get_language_editor_languages_language_id_get
 
         Get Language
         """
         pass
 
-    def test_get_languages_editor_languages_get(self) -> None:
+    async def test_get_languages_editor_languages_get(self) -> None:
         """Test case for get_languages_editor_languages_get
 
         Get Languages
         """
         pass
 
-    def test_post_language_editor_languages_post(self) -> None:
+    async def test_post_language_editor_languages_post(self) -> None:
         """Test case for post_language_editor_languages_post
 
         Post Language
         """
         pass
 
-    def test_put_language_editor_languages_language_id_put(self) -> None:
+    async def test_put_language_editor_languages_language_id_put(self) -> None:
         """Test case for put_language_editor_languages_language_id_put
 
         Put Language

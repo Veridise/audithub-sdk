@@ -12,23 +12,23 @@ It is intended to be the shared/core dependency for other Python repositories th
 - Generator target: `python`
 - Distribution name: `audithub-sdk`
 - Import package: `audithub_sdk`
-- Package version currently used during generation: `1.0.3`
+- Package version currently used during generation: `1.1.0`
 - Transport template: `httpx`
 
 Preferred regeneration command:
 
 ```sh
-scripts/regenerate-sdk.sh 0.1.0
+scripts/regenerate-sdk.sh 1.1.0
 ```
 
-The script runs the equivalent of:
+The script downloads the schema, resolves relative server URLs against the document URL, then runs the equivalent of:
 
 ```sh
 openapi-generator generate \
-  -i https://audithub.dev.veridise.tools/api/v1/openapi.json \
+  -i "$SCHEMA_FILE" \
   -g python \
   -o . \
-  --additional-properties=packageName=audithub_sdk,projectName=audithub-sdk,packageVersion=1.0.3,hideGenerationTimestamp=true,library=httpx
+  --additional-properties=packageName=audithub_sdk,projectName=audithub-sdk,packageVersion=1.1.0,hideGenerationTimestamp=true,library=httpx
 ```
 
 ## Important Decisions From Prior Sessions

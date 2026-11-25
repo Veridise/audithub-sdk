@@ -35,28 +35,30 @@ class TestOrganizationSubscription(unittest.TestCase):
         model = OrganizationSubscription()
         if include_optional:
             return OrganizationSubscription(
-                subscription_type = 'S',
-                from_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                to_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                monthly_cpu_minutes = 56,
-                storage_mb = 56,
-                package_name = '',
-                enforce_monthly_resource_consumption = True,
+                plan_id = 0.0,
+                start_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                end_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                duration_months = 0.0,
+                purchase_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                purchase_price = '',
+                monthly_credits = '',
+                total_credits = '',
                 id = 56,
-                created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                created_by = '',
-                last_updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                last_updated_by = ''
+                organization_id = 56,
+                user_id = '',
+                canceled_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                stripe_subscription_id = '',
+                stripe_latest_invoice_id = ''
             )
         else:
             return OrganizationSubscription(
-                from_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                to_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                plan_id = 0.0,
+                start_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                purchase_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                purchase_price = '',
                 id = 56,
-                created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                created_by = '',
-                last_updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                last_updated_by = '',
+                organization_id = 56,
+                user_id = '',
         )
         """
 

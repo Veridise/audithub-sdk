@@ -8,7 +8,7 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "audithub-sdk"
-VERSION = "1.0.3"
+VERSION = "1.1.0"
 PYTHON_REQUIRES = ">= 3.9"
 DESCRIPTION = "Generated Python SDK for the AuditHub API."
 REQUIRES = [

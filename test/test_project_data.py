@@ -37,7 +37,7 @@ class TestProjectData(unittest.TestCase):
             return ProjectData(
                 definition = audithub_sdk.models.project_info.ProjectInfo(
                     name = '', 
-                    project_root = '', 
+                    project_root = '.', 
                     env_vars = null, 
                     dependencies = null, 
                     build_system = 'hardhat', 
@@ -60,7 +60,7 @@ class TestProjectData(unittest.TestCase):
             return ProjectData(
                 definition = audithub_sdk.models.project_info.ProjectInfo(
                     name = '', 
-                    project_root = '', 
+                    project_root = '.', 
                     env_vars = null, 
                     dependencies = null, 
                     build_system = 'hardhat', 

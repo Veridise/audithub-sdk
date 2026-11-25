@@ -35,7 +35,10 @@ class TestHTTPValidationError(unittest.TestCase):
         model = HTTPValidationError()
         if include_optional:
             return HTTPValidationError(
-                detail = [
+                title = '',
+                type = '',
+                status = 56,
+                errors = [
                     audithub_sdk.models.validation_error.ValidationError(
                         loc = [
                             null
@@ -48,6 +51,19 @@ class TestHTTPValidationError(unittest.TestCase):
             )
         else:
             return HTTPValidationError(
+                title = '',
+                type = '',
+                status = 56,
+                errors = [
+                    audithub_sdk.models.validation_error.ValidationError(
+                        loc = [
+                            null
+                            ], 
+                        msg = '', 
+                        type = '', 
+                        input = null, 
+                        ctx = audithub_sdk.models.context.Context(), )
+                    ],
         )
         """
 

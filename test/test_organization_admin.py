@@ -37,8 +37,13 @@ class TestOrganizationAdmin(unittest.TestCase):
             return OrganizationAdmin(
                 name = '',
                 support_channel = '',
-                user_limit = 56,
+                user_limit = 0.0,
+                project_limit = 56,
+                tools_only = True,
                 id = 56,
+                plan_seats = 56,
+                extra_seats = 56,
+                manual_user_limit = 56,
                 gh_connected = True,
                 created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 deleted = True
@@ -47,6 +52,9 @@ class TestOrganizationAdmin(unittest.TestCase):
             return OrganizationAdmin(
                 name = '',
                 id = 56,
+                plan_seats = 56,
+                extra_seats = 56,
+                manual_user_limit = 56,
                 gh_connected = True,
                 created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 deleted = True,

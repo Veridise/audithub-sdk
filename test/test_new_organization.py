@@ -37,7 +37,9 @@ class TestNewOrganization(unittest.TestCase):
             return NewOrganization(
                 name = '',
                 support_channel = '',
-                user_limit = 56
+                user_limit = 0.0,
+                project_limit = 56,
+                tools_only = True
             )
         else:
             return NewOrganization(

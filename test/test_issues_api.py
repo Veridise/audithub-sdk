@@ -17,72 +17,72 @@ import unittest
 from audithub_sdk.api.issues_api import IssuesApi
 
 
-class TestIssuesApi(unittest.TestCase):
+class TestIssuesApi(unittest.IsolatedAsyncioTestCase):
     """IssuesApi unit test stubs"""
 
-    def setUp(self) -> None:
+    async def asyncSetUp(self) -> None:
         self.api = IssuesApi()
 
-    def tearDown(self) -> None:
-        pass
+    async def asyncTearDown(self) -> None:
+        await self.api.api_client.close()
 
-    def test_batch_announce_organizations_organization_id_projects_project_id_issues_patch(self) -> None:
+    async def test_batch_announce_organizations_organization_id_projects_project_id_issues_patch(self) -> None:
         """Test case for batch_announce_organizations_organization_id_projects_project_id_issues_patch
 
         Batch Announce
         """
         pass
 
-    def test_export_issues_organizations_organization_id_projects_project_id_issues_export_get(self) -> None:
+    async def test_export_issues_organizations_organization_id_projects_project_id_issues_export_get(self) -> None:
         """Test case for export_issues_organizations_organization_id_projects_project_id_issues_export_get
 
         Export Issues
         """
         pass
 
-    def test_get_issue_organizations_organization_id_projects_project_id_issues_issue_id_get(self) -> None:
+    async def test_get_issue_organizations_organization_id_projects_project_id_issues_issue_id_get(self) -> None:
         """Test case for get_issue_organizations_organization_id_projects_project_id_issues_issue_id_get
 
         Get Issue
         """
         pass
 
-    def test_get_issues_organizations_organization_id_projects_project_id_issues_get(self) -> None:
+    async def test_get_issues_organizations_organization_id_projects_project_id_issues_get(self) -> None:
         """Test case for get_issues_organizations_organization_id_projects_project_id_issues_get
 
         Get Issues
         """
         pass
 
-    def test_patch_issue_organizations_organization_id_projects_project_id_issues_issue_id_patch(self) -> None:
+    async def test_patch_issue_organizations_organization_id_projects_project_id_issues_issue_id_patch(self) -> None:
         """Test case for patch_issue_organizations_organization_id_projects_project_id_issues_issue_id_patch
 
         Patch Issue
         """
         pass
 
-    def test_post_issue_organizations_organization_id_projects_project_id_issues_post(self) -> None:
+    async def test_post_issue_organizations_organization_id_projects_project_id_issues_post(self) -> None:
         """Test case for post_issue_organizations_organization_id_projects_project_id_issues_post
 
         Post Issue
         """
         pass
 
-    def test_post_issue_to_github_organizations_organization_id_projects_project_id_issues_issue_id_gh_issue_post(self) -> None:
+    async def test_post_issue_to_github_organizations_organization_id_projects_project_id_issues_issue_id_gh_issue_post(self) -> None:
         """Test case for post_issue_to_github_organizations_organization_id_projects_project_id_issues_issue_id_gh_issue_post
 
         Post Issue To Github
         """
         pass
 
-    def test_post_security_advisory_to_github_organizations_organization_id_projects_project_id_issues_issue_id_gh_security_advisory_post(self) -> None:
+    async def test_post_security_advisory_to_github_organizations_organization_id_projects_project_id_issues_issue_id_gh_security_advisory_post(self) -> None:
         """Test case for post_security_advisory_to_github_organizations_organization_id_projects_project_id_issues_issue_id_gh_security_advisory_post
 
         Post Security Advisory To Github
         """
         pass
 
-    def test_put_issue_organizations_organization_id_projects_project_id_issues_issue_id_put(self) -> None:
+    async def test_put_issue_organizations_organization_id_projects_project_id_issues_issue_id_put(self) -> None:
         """Test case for put_issue_organizations_organization_id_projects_project_id_issues_issue_id_put
 
         Put Issue

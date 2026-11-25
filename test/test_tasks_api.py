@@ -17,107 +17,114 @@ import unittest
 from audithub_sdk.api.tasks_api import TasksApi
 
 
-class TestTasksApi(unittest.TestCase):
+class TestTasksApi(unittest.IsolatedAsyncioTestCase):
     """TasksApi unit test stubs"""
 
-    def setUp(self) -> None:
+    async def asyncSetUp(self) -> None:
         self.api = TasksApi()
 
-    def tearDown(self) -> None:
-        pass
+    async def asyncTearDown(self) -> None:
+        await self.api.api_client.close()
 
-    def test_delete_task_organizations_organization_id_tasks_task_id_delete(self) -> None:
+    async def test_delete_task_organizations_organization_id_tasks_task_id_delete(self) -> None:
         """Test case for delete_task_organizations_organization_id_tasks_task_id_delete
 
         Delete Task
         """
         pass
 
-    def test_get_artifact_organizations_organization_id_tasks_task_id_artifacts_artifact_id_get(self) -> None:
+    async def test_get_artifact_organizations_organization_id_tasks_task_id_artifacts_artifact_id_get(self) -> None:
         """Test case for get_artifact_organizations_organization_id_tasks_task_id_artifacts_artifact_id_get
 
         Get Artifact
         """
         pass
 
-    def test_get_info_organizations_organization_id_tasks_task_id_get(self) -> None:
+    async def test_get_info_organizations_organization_id_tasks_task_id_get(self) -> None:
         """Test case for get_info_organizations_organization_id_tasks_task_id_get
 
         Get Info
         """
         pass
 
-    def test_get_output_organizations_organization_id_tasks_task_id_step_code_output_get(self) -> None:
+    async def test_get_output_organizations_organization_id_tasks_task_id_step_code_output_get(self) -> None:
         """Test case for get_output_organizations_organization_id_tasks_task_id_step_code_output_get
 
         Get Output
         """
         pass
 
-    def test_get_status_organizations_organization_id_tasks_task_id_status_get(self) -> None:
+    async def test_get_status_organizations_organization_id_tasks_task_id_status_get(self) -> None:
         """Test case for get_status_organizations_organization_id_tasks_task_id_status_get
 
         Get Status
         """
         pass
 
-    def test_get_task_accounting_organizations_organization_id_tasks_task_id_accounting_get(self) -> None:
+    async def test_get_task_accounting_organizations_organization_id_tasks_task_id_accounting_get(self) -> None:
         """Test case for get_task_accounting_organizations_organization_id_tasks_task_id_accounting_get
 
         Get Task Accounting
         """
         pass
 
-    def test_get_task_archive_organizations_organization_id_tasks_task_id_archive_get(self) -> None:
+    async def test_get_task_archive_organizations_organization_id_tasks_task_id_archive_get(self) -> None:
         """Test case for get_task_archive_organizations_organization_id_tasks_task_id_archive_get
 
         Get Task Archive
         """
         pass
 
-    def test_get_task_catalog_organizations_organization_id_tasks_task_id_catalog_get(self) -> None:
+    async def test_get_task_catalog_organizations_organization_id_tasks_task_id_catalog_get(self) -> None:
         """Test case for get_task_catalog_organizations_organization_id_tasks_task_id_catalog_get
 
         Get Task Catalog
         """
         pass
 
-    def test_get_task_file_organizations_organization_id_tasks_task_id_file_get(self) -> None:
+    async def test_get_task_credits_organizations_organization_id_tasks_task_id_credits_get(self) -> None:
+        """Test case for get_task_credits_organizations_organization_id_tasks_task_id_credits_get
+
+        Get task credit consumption
+        """
+        pass
+
+    async def test_get_task_file_organizations_organization_id_tasks_task_id_file_get(self) -> None:
         """Test case for get_task_file_organizations_organization_id_tasks_task_id_file_get
 
         Get Task File
         """
         pass
 
-    def test_get_task_findings_for_analysis_result_organizations_organization_id_tasks_task_id_findings_analysis_result_id_get(self) -> None:
+    async def test_get_task_findings_for_analysis_result_organizations_organization_id_tasks_task_id_findings_analysis_result_id_get(self) -> None:
         """Test case for get_task_findings_for_analysis_result_organizations_organization_id_tasks_task_id_findings_analysis_result_id_get
 
         Get Task Findings For Analysis Result
         """
         pass
 
-    def test_get_task_findings_organizations_organization_id_tasks_task_id_findings_get(self) -> None:
+    async def test_get_task_findings_organizations_organization_id_tasks_task_id_findings_get(self) -> None:
         """Test case for get_task_findings_organizations_organization_id_tasks_task_id_findings_get
 
         Get Task Findings
         """
         pass
 
-    def test_get_tasks_organizations_organization_id_tasks_get(self) -> None:
+    async def test_get_tasks_organizations_organization_id_tasks_get(self) -> None:
         """Test case for get_tasks_organizations_organization_id_tasks_get
 
         Get Tasks
         """
         pass
 
-    def test_patch_task_organizations_organization_id_tasks_task_id_patch(self) -> None:
+    async def test_patch_task_organizations_organization_id_tasks_task_id_patch(self) -> None:
         """Test case for patch_task_organizations_organization_id_tasks_task_id_patch
 
         Patch Task
         """
         pass
 
-    def test_put_task_finding_actions_organizations_organization_id_tasks_task_id_findings_actions_put(self) -> None:
+    async def test_put_task_finding_actions_organizations_organization_id_tasks_task_id_findings_actions_put(self) -> None:
         """Test case for put_task_finding_actions_organizations_organization_id_tasks_task_id_findings_actions_put
 
         Put Task Finding Actions

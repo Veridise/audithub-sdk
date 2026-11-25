@@ -36,12 +36,11 @@ class TestPackageData(unittest.TestCase):
         if include_optional:
             return PackageData(
                 organization_name = '',
-                user_limit = 56,
                 projects = [
                     audithub_sdk.models.project_data.ProjectData(
                         definition = audithub_sdk.models.project_info.ProjectInfo(
                             name = '', 
-                            project_root = '', 
+                            project_root = '.', 
                             env_vars = null, 
                             dependencies = null, 
                             build_system = 'hardhat', 
@@ -60,34 +59,19 @@ class TestPackageData(unittest.TestCase):
                             commit_hash = '', 
                             data_path = '', ), )
                     ],
-                org_restrictions = [
-                    audithub_sdk.models.organization_access_restriction.OrganizationAccessRestriction(
-                        function = '', 
-                        value = 56, 
-                        detector = '', )
-                    ],
-                user_restrictions = [
-                    audithub_sdk.models.user_access_restriction.UserAccessRestriction(
-                        function = '', 
-                        value = 56, 
-                        detector = '', 
-                        project_id = 56, )
-                    ],
-                subscription = audithub_sdk.models.package_subscription.PackageSubscription(
-                    duration_months = 56, 
-                    monthly_cpu_minutes = 56, 
-                    storage_mb = 56, 
-                    enforce_monthly_resource_consumption = True, )
+                extra_credits = audithub_sdk.models.package_extra_credits.PackageExtraCredits(
+                    extra_option_id = 0.0, 
+                    extra_option_name = '0', ),
+                tools_only = True
             )
         else:
             return PackageData(
                 organization_name = '',
-                user_limit = 56,
                 projects = [
                     audithub_sdk.models.project_data.ProjectData(
                         definition = audithub_sdk.models.project_info.ProjectInfo(
                             name = '', 
-                            project_root = '', 
+                            project_root = '.', 
                             env_vars = null, 
                             dependencies = null, 
                             build_system = 'hardhat', 
@@ -106,24 +90,6 @@ class TestPackageData(unittest.TestCase):
                             commit_hash = '', 
                             data_path = '', ), )
                     ],
-                org_restrictions = [
-                    audithub_sdk.models.organization_access_restriction.OrganizationAccessRestriction(
-                        function = '', 
-                        value = 56, 
-                        detector = '', )
-                    ],
-                user_restrictions = [
-                    audithub_sdk.models.user_access_restriction.UserAccessRestriction(
-                        function = '', 
-                        value = 56, 
-                        detector = '', 
-                        project_id = 56, )
-                    ],
-                subscription = audithub_sdk.models.package_subscription.PackageSubscription(
-                    duration_months = 56, 
-                    monthly_cpu_minutes = 56, 
-                    storage_mb = 56, 
-                    enforce_monthly_resource_consumption = True, ),
         )
         """
 
