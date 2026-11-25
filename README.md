@@ -9,16 +9,16 @@ The client code in this repository is generated from the live OpenAPI document:
 
 `https://audithub.dev.veridise.tools/api/v1/openapi.json`
 
-The repository contents are produced with OpenAPI Generator 7.20.0. The current generated package version is `0.1.0`.
+The repository contents are produced with OpenAPI Generator 7.20.0. The current generated package version is `1.1.0`.
 
-The current generation command is:
+The regeneration script downloads the schema and resolves relative server URLs against the document URL. It then runs:
 
 ```sh
 openapi-generator generate \
-  -i https://audithub.dev.veridise.tools/api/v1/openapi.json \
+  -i "$SCHEMA_FILE" \
   -g python \
   -o . \
-  --additional-properties=packageName=audithub_sdk,projectName=audithub-sdk,packageVersion=1.0.3,hideGenerationTimestamp=true,library=httpx
+  --additional-properties=packageName=audithub_sdk,projectName=audithub-sdk,packageVersion=1.1.0,hideGenerationTimestamp=true,library=httpx
 ```
 
 ## Regenerating
@@ -26,7 +26,7 @@ openapi-generator generate \
 When the AuditHub API schema changes, regenerate the SDK from the repository root and pass the new SDK version:
 
 ```sh
-scripts/regenerate-sdk.sh 0.1.1
+scripts/regenerate-sdk.sh 1.1.0
 ```
 
 The script passes that version as `packageVersion` to OpenAPI Generator, then syncs repository-maintained version references in:
@@ -41,7 +41,7 @@ The version in this README's generator command is intentionally updated only whe
 Manual changes in this repo should stay limited to repository-specific files such as:
 
 - `README.md`
-- packaging metadata
+- packaging metadata and dependency requirements
 - CI workflows
 - `scripts/regenerate-sdk.sh`
 

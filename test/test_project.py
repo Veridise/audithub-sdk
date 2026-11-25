@@ -36,7 +36,7 @@ class TestProject(unittest.TestCase):
         if include_optional:
             return Project(
                 name = '',
-                project_root = '',
+                project_root = '.',
                 env_vars = [
                     audithub_sdk.models.env_var.EnvVar(
                         name = '', 
@@ -63,7 +63,6 @@ class TestProject(unittest.TestCase):
         else:
             return Project(
                 name = '',
-                project_root = '',
                 src_path = '',
                 input_info = None,
                 id = 56,

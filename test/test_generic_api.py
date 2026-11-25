@@ -17,44 +17,44 @@ import unittest
 from audithub_sdk.api.generic_api import GenericApi
 
 
-class TestGenericApi(unittest.TestCase):
+class TestGenericApi(unittest.IsolatedAsyncioTestCase):
     """GenericApi unit test stubs"""
 
-    def setUp(self) -> None:
+    async def asyncSetUp(self) -> None:
         self.api = GenericApi()
 
-    def tearDown(self) -> None:
-        pass
+    async def asyncTearDown(self) -> None:
+        await self.api.api_client.close()
 
-    def test_about_about_get(self) -> None:
+    async def test_about_about_get(self) -> None:
         """Test case for about_about_get
 
         About
         """
         pass
 
-    def test_get_psa_psa_get(self) -> None:
+    async def test_get_psa_psa_get(self) -> None:
         """Test case for get_psa_psa_get
 
         Get Psa
         """
         pass
 
-    def test_get_task_redirect_task_redirect_get(self) -> None:
+    async def test_get_task_redirect_task_redirect_get(self) -> None:
         """Test case for get_task_redirect_task_redirect_get
 
         Get Task Redirect
         """
         pass
 
-    def test_health_check_health_check_get(self) -> None:
+    async def test_health_check_health_check_get(self) -> None:
         """Test case for health_check_health_check_get
 
         Health Check
         """
         pass
 
-    def test_private_private_get(self) -> None:
+    async def test_private_private_get(self) -> None:
         """Test case for private_private_get
 
         Private

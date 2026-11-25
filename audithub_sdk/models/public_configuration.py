@@ -52,7 +52,8 @@ class PublicConfiguration(BaseModel):
     onboarding_package: StrictStr
     subscription_error_msg_suffix: StrictStr
     disable_stripe: StrictBool
-    __properties: ClassVar[List[str]] = ["agent_allowed_organization_name_prefixes", "fork_networks", "vanguard_solc_versions", "vanguard_defi_detectors", "vanguard_v2_defi_detectors", "vanguard_zk_detectors", "vanguard_v2_zk_detectors", "node_versions", "workflow_steps", "orca", "issue_configuration_options", "available_tools", "application_functions", "ai_budgets", "version_archive_size_limit", "onboarding_package", "subscription_error_msg_suffix", "disable_stripe"]
+    stripe_seat_price: StrictStr
+    __properties: ClassVar[List[str]] = ["agent_allowed_organization_name_prefixes", "fork_networks", "vanguard_solc_versions", "vanguard_defi_detectors", "vanguard_v2_defi_detectors", "vanguard_zk_detectors", "vanguard_v2_zk_detectors", "node_versions", "workflow_steps", "orca", "issue_configuration_options", "available_tools", "application_functions", "ai_budgets", "version_archive_size_limit", "onboarding_package", "subscription_error_msg_suffix", "disable_stripe", "stripe_seat_price"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -225,7 +226,8 @@ class PublicConfiguration(BaseModel):
             "version_archive_size_limit": obj.get("version_archive_size_limit") if obj.get("version_archive_size_limit") is not None else 200000000,
             "onboarding_package": obj.get("onboarding_package"),
             "subscription_error_msg_suffix": obj.get("subscription_error_msg_suffix"),
-            "disable_stripe": obj.get("disable_stripe")
+            "disable_stripe": obj.get("disable_stripe"),
+            "stripe_seat_price": obj.get("stripe_seat_price")
         })
         return _obj
 

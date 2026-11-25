@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **onboarding_package** | **str** |  | 
 **subscription_error_msg_suffix** | **str** |  | 
 **disable_stripe** | **bool** |  | 
+**stripe_seat_price** | **str** |  | 
 
 ## Example
 

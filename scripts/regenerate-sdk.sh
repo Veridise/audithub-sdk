@@ -39,8 +39,29 @@ if ! command -v "$PYTHON" >/dev/null 2>&1; then
   exit 127
 fi
 
+SCHEMA_URL="https://audithub.dev.veridise.tools/api/v1/openapi.json"
+SCHEMA_FILE="$(mktemp)"
+trap 'rm -f "$SCHEMA_FILE"' EXIT
+curl --fail --silent --show-error --location "$SCHEMA_URL" --output "$SCHEMA_FILE"
+
+# Resolve OpenAPI server URLs against the document URL. The Python generator
+# would otherwise use a relative server URL as its default HTTP client host.
+"$PYTHON" - "$SCHEMA_URL" "$SCHEMA_FILE" <<'PYTHON_SCRIPT'
+import json
+from pathlib import Path
+import sys
+from urllib.parse import urljoin
+
+schema_url, schema_path = sys.argv[1:]
+path = Path(schema_path)
+schema = json.loads(path.read_text(encoding="utf-8"))
+for server in schema.get("servers", []):
+    server["url"] = urljoin(schema_url, server["url"])
+path.write_text(json.dumps(schema), encoding="utf-8")
+PYTHON_SCRIPT
+
 openapi-generator generate \
-  -i https://audithub.dev.veridise.tools/api/v1/openapi.json \
+  -i "$SCHEMA_FILE" \
   -g python \
   -o . \
   --additional-properties="packageName=audithub_sdk,projectName=audithub-sdk,packageVersion=${VERSION},hideGenerationTimestamp=true,library=httpx"

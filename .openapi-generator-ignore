@@ -28,6 +28,7 @@ README.md
 AGENTS.md
 pyproject.toml
 setup.py
+requirements.txt
 .openapi-generator-ignore
 .github/
 scripts/

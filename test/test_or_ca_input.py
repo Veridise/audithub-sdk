@@ -44,6 +44,7 @@ class TestOrCaInput(unittest.TestCase):
                 deployment_script_path_override = '',
                 on_chain = True,
                 deployment_info_file = '',
+                auxiliary_deployment_script = '',
                 name = '',
                 parameters = audithub_sdk.models.or_ca_parameters.OrCaParameters(
                     disable_user_proxies = True, 

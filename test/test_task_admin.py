@@ -36,6 +36,8 @@ class TestTaskAdmin(unittest.TestCase):
         if include_optional:
             return TaskAdmin(
                 id = 56,
+                org_id = 56,
+                project_id = 56,
                 name = '',
                 tool_name = '',
                 tool_version = '',
@@ -54,6 +56,8 @@ class TestTaskAdmin(unittest.TestCase):
         else:
             return TaskAdmin(
                 id = 56,
+                org_id = 56,
+                project_id = 56,
                 tool_name = '',
                 tool_version = '',
                 status = 'Queued',

@@ -17,26 +17,54 @@ import unittest
 from audithub_sdk.api.configuration_api import ConfigurationApi
 
 
-class TestConfigurationApi(unittest.TestCase):
+class TestConfigurationApi(unittest.IsolatedAsyncioTestCase):
     """ConfigurationApi unit test stubs"""
 
-    def setUp(self) -> None:
+    async def asyncSetUp(self) -> None:
         self.api = ConfigurationApi()
 
-    def tearDown(self) -> None:
-        pass
+    async def asyncTearDown(self) -> None:
+        await self.api.api_client.close()
 
-    def test_get_api_keys_api_keys_configuration_get(self) -> None:
+    async def test_get_api_keys_api_keys_configuration_get(self) -> None:
         """Test case for get_api_keys_api_keys_configuration_get
 
         Get Api Keys
         """
         pass
 
-    def test_get_configuration_configuration_get(self) -> None:
+    async def test_get_configuration_configuration_get(self) -> None:
         """Test case for get_configuration_configuration_get
 
         Get Configuration
+        """
+        pass
+
+    async def test_get_extras_configuration_extra_credits_options_get(self) -> None:
+        """Test case for get_extras_configuration_extra_credits_options_get
+
+        Get Extras
+        """
+        pass
+
+    async def test_get_stripe_extras_configuration_stripe_extra_credits_options_get(self) -> None:
+        """Test case for get_stripe_extras_configuration_stripe_extra_credits_options_get
+
+        Get Stripe Extras
+        """
+        pass
+
+    async def test_get_stripe_subscription_plans_configuration_stripe_subscription_plans_get(self) -> None:
+        """Test case for get_stripe_subscription_plans_configuration_stripe_subscription_plans_get
+
+        Get Stripe Subscription Plans
+        """
+        pass
+
+    async def test_get_subscription_plans_configuration_subscription_plans_get(self) -> None:
+        """Test case for get_subscription_plans_configuration_subscription_plans_get
+
+        Get Subscription Plans
         """
         pass
 
